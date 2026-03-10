@@ -1,0 +1,262 @@
+{
+  "equipments": {
+    "weapon_01": {
+      "id": "weapon_01",
+      "name": "新手剑",
+      "slot": "weapon",
+      "baseStats": {
+        "atk": 5
+      },
+      "basePrice": 75
+    },
+    "weapon_02": {
+      "id": "weapon_02",
+      "name": "铁剑",
+      "slot": "weapon",
+      "baseStats": {
+        "atk": 8,
+        "critRate": 2
+      },
+      "basePrice": 225
+    },
+    "weapon_03": {
+      "id": "weapon_03",
+      "name": "精钢剑",
+      "slot": "weapon",
+      "baseStats": {
+        "atk": 12,
+        "critRate": 5,
+        "critDmg": 10
+      },
+      "basePrice": 600
+    },
+    "weapon_04": {
+      "id": "weapon_04",
+      "name": "暗影之刃",
+      "slot": "weapon",
+      "baseStats": {
+        "atk": 20,
+        "critRate": 8,
+        "critDmg": 20,
+        "atkSpd": 0.1
+      },
+      "basePrice": 1500
+    },
+    "weapon_05": {
+      "id": "weapon_05",
+      "name": "龙牙剑",
+      "slot": "weapon",
+      "baseStats": {
+        "atk": 35,
+        "critRate": 10,
+        "critDmg": 30,
+        "atkSpd": 0.2
+      },
+      "basePrice": 4000
+    },
+    "helmet_01": {
+      "id": "helmet_01",
+      "name": "皮帽",
+      "slot": "helmet",
+      "baseStats": {
+        "def": 3,
+        "hp": 10
+      },
+      "basePrice": 75
+    },
+    "helmet_02": {
+      "id": "helmet_02",
+      "name": "铁盔",
+      "slot": "helmet",
+      "baseStats": {
+        "def": 5,
+        "hp": 20
+      },
+      "basePrice": 225
+    },
+    "helmet_03": {
+      "id": "helmet_03",
+      "name": "精钢盔",
+      "slot": "helmet",
+      "baseStats": {
+        "def": 8,
+        "hp": 35
+      },
+      "basePrice": 600
+    },
+    "helmet_04": {
+      "id": "helmet_04",
+      "name": "暗影头盔",
+      "slot": "helmet",
+      "baseStats": {
+        "def": 12,
+        "hp": 50
+      },
+      "basePrice": 1500
+    },
+    "helmet_05": {
+      "id": "helmet_05",
+      "name": "龙骨头盔",
+      "slot": "helmet",
+      "baseStats": {
+        "def": 18,
+        "hp": 80
+      },
+      "basePrice": 4000
+    },
+    "armor_01": {
+      "id": "armor_01",
+      "name": "皮甲",
+      "slot": "armor",
+      "baseStats": {
+        "def": 3,
+        "hp": 15
+      },
+      "basePrice": 75
+    },
+    "armor_02": {
+      "id": "armor_02",
+      "name": "铁甲",
+      "slot": "armor",
+      "baseStats": {
+        "def": 5,
+        "hp": 25
+      },
+      "basePrice": 225
+    },
+    "armor_03": {
+      "id": "armor_03",
+      "name": "精钢甲",
+      "slot": "armor",
+      "baseStats": {
+        "def": 10,
+        "hp": 45
+      },
+      "basePrice": 600
+    },
+    "armor_04": {
+      "id": "armor_04",
+      "name": "暗影铠甲",
+      "slot": "armor",
+      "baseStats": {
+        "def": 15,
+        "hp": 70
+      },
+      "basePrice": 1500
+    },
+    "armor_05": {
+      "id": "armor_05",
+      "name": "龙鳞甲",
+      "slot": "armor",
+      "baseStats": {
+        "def": 22,
+        "hp": 100
+      },
+      "basePrice": 4000
+    },
+    "boots_01": {
+      "id": "boots_01",
+      "name": "皮靴",
+      "slot": "boots",
+      "baseStats": {
+        "def": 2,
+        "hp": 5
+      },
+      "basePrice": 75
+    },
+    "boots_02": {
+      "id": "boots_02",
+      "name": "铁靴",
+      "slot": "boots",
+      "baseStats": {
+        "def": 4,
+        "hp": 10,
+        "atkSpd": 0.05
+      },
+      "basePrice": 225
+    },
+    "boots_03": {
+      "id": "boots_03",
+      "name": "精钢靴",
+      "slot": "boots",
+      "baseStats": {
+        "def": 6,
+        "hp": 20,
+        "atkSpd": 0.1
+      },
+      "basePrice": 600
+    },
+    "boots_04": {
+      "id": "boots_04",
+      "name": "暗影之靴",
+      "slot": "boots",
+      "baseStats": {
+        "def": 10,
+        "hp": 35,
+        "atkSpd": 0.15
+      },
+      "basePrice": 1500
+    },
+    "boots_05": {
+      "id": "boots_05",
+      "name": "龙骨战靴",
+      "slot": "boots",
+      "baseStats": {
+        "def": 14,
+        "hp": 50,
+        "atkSpd": 0.2
+      },
+      "basePrice": 4000
+    },
+    "accessory_01": {
+      "id": "accessory_01",
+      "name": "铜戒指",
+      "slot": "accessory",
+      "baseStats": {
+        "critRate": 2,
+        "critDmg": 10
+      },
+      "basePrice": 75
+    },
+    "accessory_02": {
+      "id": "accessory_02",
+      "name": "银戒指",
+      "slot": "accessory",
+      "baseStats": {
+        "critRate": 4,
+        "critDmg": 20
+      },
+      "basePrice": 225
+    },
+    "accessory_03": {
+      "id": "accessory_03",
+      "name": "金戒指",
+      "slot": "accessory",
+      "baseStats": {
+        "critRate": 6,
+        "critDmg": 30
+      },
+      "basePrice": 600
+    },
+    "accessory_04": {
+      "id": "accessory_04",
+      "name": "暗���宝石",
+      "slot": "accessory",
+      "baseStats": {
+        "critRate": 10,
+        "critDmg": 40
+      },
+      "basePrice": 1500
+    },
+    "accessory_05": {
+      "id": "accessory_05",
+      "name": "龙心吊坠",
+      "slot": "accessory",
+      "baseStats": {
+        "critRate": 15,
+        "critDmg": 50
+      },
+      "basePrice": 4000
+    }
+  }
+}

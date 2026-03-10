@@ -1,0 +1,4 @@
+type,name,baseAmount,respawnable,respawnTime
+wood,木材,50,TRUE,300000
+stone,石材,30,TRUE,600000
+food,食物,20,TRUE,180000

@@ -1,0 +1,6 @@
+type,name,maxLevel,expMultiplier
+gathering,采集,10,1.5
+mining,挖矿,10,1.5
+building,建造,10,1.3
+cooking,烹饪,10,1.4
+combat,战斗,10,1.6

@@ -1,0 +1,6 @@
+id,name,level,hp,atk,def,drop_quality_min,drop_quality_max,gold_reward,exp_reward
+boss_01,哥布林首领,1,500,15,5,common,uncommon,50,10
+boss_02,石像鬼,5,1000,30,15,uncommon,rare,250,50
+boss_03,暗影骑士,10,2000,50,25,rare,epic,500,100
+boss_04,炎魔领主,15,4000,80,40,epic,epic,750,150
+boss_05,远古巨龙,20,8000,120,60,epic,legendary,1000,200

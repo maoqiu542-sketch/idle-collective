@@ -1,0 +1,5 @@
+type,name,description,bonusSkills,baseEfficiency
+gatherer,采集者,擅长采集各种资源,"gathering,mining",1.2
+builder,建造者,擅长建造和制作,building,1.3
+farmer,农夫,擅长种植和烹饪,cooking,1.2
+warrior,战士,擅长战斗和狩猎,combat,1.5

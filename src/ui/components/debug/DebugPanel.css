@@ -1,0 +1,103 @@
+.debug-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 165, 0, 0.8);
+  border: 2px solid #ffd700;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.debug-toggle:hover {
+  background: rgba(255, 165, 0, 1);
+  transform: scale(1.1);
+}
+
+.debug-panel {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 240px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  padding: 12px;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.debug-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ffd700;
+}
+
+.debug-header h3 {
+  margin: 0;
+  color: #ffd700;
+  font-size: 14px;
+}
+
+.debug-close {
+  background: transparent;
+  border: none;
+  color: #ffd700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.debug-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.debug-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.debug-action:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+}
+
+.debug-action-icon {
+  font-size: 24px;
+}
+
+.debug-action-name {
+  font-size: 11px;
+  color: #ccc;
+}
+
+.debug-info {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #444;
+  font-size: 11px;
+  color: #888;
+}
+
+.debug-info div {
+  margin: 4px 0;
+}

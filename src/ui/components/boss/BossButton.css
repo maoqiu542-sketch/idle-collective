@@ -1,0 +1,66 @@
+.boss-button {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: linear-gradient(180deg, #ff6b6b 0%, #cc4444 100%);
+  border: 2px solid #ff8888;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 100;
+  animation: pulse 2s infinite;
+}
+
+.boss-button:hover {
+  transform: scale(1.05);
+}
+
+.boss-icon {
+  font-size: 24px;
+}
+
+.boss-info {
+  text-align: left;
+}
+
+.boss-label {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.boss-name {
+  color: #ffd700;
+  font-size: 14px;
+}
+
+.pulse-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 107, 107, 0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
+  }
+}

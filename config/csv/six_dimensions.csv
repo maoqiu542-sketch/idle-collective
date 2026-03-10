@@ -1,0 +1,7 @@
+id,name,base_value,growth_rate,exp_formula
+atk,攻击力,10,1.08,100*level^1.5
+def,防御力,5,1.08,100*level^1.5
+hp,生命值,100,1.08,100*level^1.5
+crit_rate,暴击率,5,1.08,100*level^1.5
+crit_dmg,暴击伤害,150,1.08,100*level^1.5
+atk_spd,攻击速度,1,1.08,100*level^1.5

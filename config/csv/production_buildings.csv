@@ -1,0 +1,4 @@
+type,name,description,width,height,cost_wood,cost_stone,cost_gold,build_time,production_interval,production_type,production_amount,worker_skill
+lumber_mill,伐木机,自动生产木材的生产建筑,2,2,100,50,200,60,60,wood,10,gathering
+quarry,采石机,自动生产石材的生产建筑,2,2,150,80,300,90,90,stone,6,mining
+ranch,牧场,自动生产皮革的生产建筑,2,2,200,100,500,120,120,leather,4,cooking

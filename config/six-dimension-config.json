@@ -1,0 +1,46 @@
+{
+  "sixDimensions": {
+    "atk": {
+      "id": "atk",
+      "name": "攻击力",
+      "baseValue": 10,
+      "growthRate": 1.08,
+      "expFormula": "100*level^1.5"
+    },
+    "def": {
+      "id": "def",
+      "name": "防御力",
+      "baseValue": 5,
+      "growthRate": 1.08,
+      "expFormula": "100*level^1.5"
+    },
+    "hp": {
+      "id": "hp",
+      "name": "生命值",
+      "baseValue": 100,
+      "growthRate": 1.08,
+      "expFormula": "100*level^1.5"
+    },
+    "crit_rate": {
+      "id": "crit_rate",
+      "name": "暴击率",
+      "baseValue": 5,
+      "growthRate": 1.08,
+      "expFormula": "100*level^1.5"
+    },
+    "crit_dmg": {
+      "id": "crit_dmg",
+      "name": "暴击伤害",
+      "baseValue": 150,
+      "growthRate": 1.08,
+      "expFormula": "100*level^1.5"
+    },
+    "atk_spd": {
+      "id": "atk_spd",
+      "name": "攻击速度",
+      "baseValue": 1,
+      "growthRate": 1.08,
+      "expFormula": "100*level^1.5"
+    }
+  }
+}

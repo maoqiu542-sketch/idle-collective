@@ -1,0 +1,5 @@
+type,name,color,passable,movementCost,resources
+grass,草地,#7CBA5F,TRUE,1,
+forest,森林,#2D5A27,TRUE,2,wood
+mountain,山地,#8B7355,TRUE,3,stone
+water,水域,#4A90D9,FALSE,999,

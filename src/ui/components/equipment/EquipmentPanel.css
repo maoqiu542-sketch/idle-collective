@@ -1,0 +1,271 @@
+.equipment-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-height: 80vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #4a90d9;
+  border-radius: 12px;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #4a90d9;
+}
+
+.panel-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ff6b6b;
+}
+
+.panel-content {
+  padding: 16px;
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+}
+
+.equipment-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.slot-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.equipment-slot {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #666;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.equipment-slot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(74, 144, 217, 0.5);
+}
+
+.equipment-slot.selected {
+  box-shadow: 0 0 15px rgba(74, 144, 217, 0.8);
+  border-width: 3px;
+}
+
+.equipment-slot.equipped {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.slot-icon {
+  font-size: 28px;
+  opacity: 0.8;
+}
+
+.equipment-slot.equipped .slot-icon {
+  opacity: 1;
+}
+
+.slot-quality-indicator {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.slot-name {
+  font-size: 14px;
+  color: #aaa;
+  min-width: 60px;
+}
+
+.slot-detail {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #444;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.equipped-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.item-level {
+  font-size: 12px;
+  color: #888;
+}
+
+.item-quality {
+  font-size: 12px;
+  color: #888;
+}
+
+.item-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #7cba5f;
+}
+
+.unequip-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #ef4444;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.unequip-btn:hover {
+  background: #dc2626;
+}
+
+.empty-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty-text {
+  color: #666;
+  font-size: 14px;
+}
+
+.available-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.available-label {
+  font-size: 12px;
+  color: #888;
+}
+
+.available-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.available-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.item-stats-preview {
+  font-size: 11px;
+  color: #7cba5f;
+}
+
+.no-items {
+  color: #666;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.total-stats {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #444;
+}
+
+.total-stats h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #4a90d9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.stat-item span:first-child {
+  color: #888;
+}
+
+.stat-item span:last-child {
+  color: #7cba5f;
+  font-weight: bold;
+}

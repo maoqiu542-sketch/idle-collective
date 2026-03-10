@@ -1,0 +1,5 @@
+type,name,description,width,height,cost_wood,cost_stone,capacity,efficiencyBonus
+warehouse,仓库,存储资源的仓库,2,2,20,10,500,0
+workbench,工作台,加工木材和石材的工作台,1,1,15,5,0,1.5
+kitchen,厨房,烹饪食物的设施,2,1,10,15,0,0
+house,房屋,角色休息恢复的场所,2,2,30,20,2,0

@@ -1,0 +1,14 @@
+category,key,value,type,description
+map,width,20,number,地图宽度
+map,height,20,number,地图高度
+map,defaultTerrain,grass,string,默认地形
+character,maxCount,10,number,最大角色数
+character,baseStats_health,100,number,基础生命值
+character,baseStats_mood,100,number,基础心情值
+character,moodDecayRate,0.1,number,心情衰减速度
+character,healthRegenRate,0.05,number,生命恢复速度
+economy,sellMultiplier,1.0,number,出售倍率
+economy,expandCost,1000,number,扩展地图消耗
+economy,expandSize,5,number,扩展地图大小
+game,tickRate,60,number,游戏帧率
+game,autoSaveInterval,300000,number,自动保存间隔(ms)

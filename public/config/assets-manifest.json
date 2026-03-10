@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "images": {
+    "terrain.grass": "assets/images/terrain/grass.png",
+    "terrain.forest": "assets/images/terrain/forest.png",
+    "terrain.mountain": "assets/images/terrain/mountain.png",
+    "terrain.water": "assets/images/terrain/water.png",
+    "character.gatherer": "assets/images/characters/gatherer.png",
+    "character.builder": "assets/images/characters/builder.png",
+    "character.farmer": "assets/images/characters/farmer.png",
+    "character.warrior": "assets/images/characters/warrior.png",
+    "building.warehouse": "assets/images/buildings/warehouse.png",
+    "building.workbench": "assets/images/buildings/workbench.png",
+    "building.kitchen": "assets/images/buildings/kitchen.png",
+    "building.house": "assets/images/buildings/house.png"
+  },
+  "audio": {
+    "bgm.main": "assets/audio/bgm/main.mp3",
+    "sfx.collect": "assets/audio/sfx/collect.wav",
+    "sfx.build": "assets/audio/sfx/build.wav"
+  }
+}

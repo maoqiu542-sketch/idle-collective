@@ -1,0 +1,126 @@
+.settlement-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  z-index: 3000;
+  overflow: hidden;
+  animation: panel-appear 0.3s ease-out;
+}
+
+@keyframes panel-appear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.settlement-header {
+  padding: 24px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.settlement-header.victory {
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0.1) 100%);
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+}
+
+.settlement-header.defeat {
+  background: linear-gradient(180deg, rgba(255, 107, 107, 0.3) 0%, rgba(255, 107, 107, 0.1) 100%);
+  color: #ff6b6b;
+  border-bottom: 2px solid #ff6b6b;
+}
+
+.settlement-content {
+  padding: 20px;
+}
+
+.rewards-section h3,
+.resting-section h3 {
+  color: #888;
+  font-size: 12px;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+}
+
+.rewards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.reward-icon {
+  font-size: 24px;
+}
+
+.reward-text {
+  color: #fff;
+  font-size: 14px;
+}
+
+.resting-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resting-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.character-name {
+  color: #fff;
+  font-size: 14px;
+}
+
+.resting-status {
+  color: #ff6b6b;
+  font-size: 12px;
+}
+
+.resting-note {
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.confirm-btn {
+  width: calc(100% - 40px);
+  margin: 0 20px 20px;
+  padding: 14px;
+  background: linear-gradient(180deg, #4a90d9 0%, #357abd 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background: linear-gradient(180deg, #5aa0e9 0%, #4589cd 100%);
+}
