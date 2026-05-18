@@ -1,0 +1,99 @@
+{
+  "asset_id": "resource_rock",
+  "category": "resource_node",
+  "variant": "cand04",
+  "workflow": "resource_workflow",
+  "seed": 2004,
+  "prompt_template": "storybook game resource node, volcano daughter inspired softness, stone boulder resource, single subject, top-down map icon, transparent background, warm pastel palette, readable silhouette, game asset, single readable subject, transparent background, clean silhouette, keep safe margins around subject, stay within assigned palette, strong outer contour, clear silhouette separation",
+  "negative_prompt": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, multiple objects, crowded scene, busy background, landscape, room interior, thick border, framed icon, text label, background scene, multiple objects, cropped object, cropped subject, touching frame edge, off-palette colors, neon accents",
+  "strategy": "comfyui_prompt_tuned",
+  "note": "Adaptive retry using prompt_tuned; tags",
+  "request": {
+    "prompt": {
+      "1": {
+        "class_type": "CheckpointLoaderSimple",
+        "inputs": {
+          "ckpt_name": "AWPainting_v1.3.safetensors"
+        }
+      },
+      "2": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "storybook game resource node, volcano daughter inspired softness, stone boulder resource, single subject, top-down map icon, transparent background, warm pastel palette, readable silhouette, game asset, single readable subject, transparent background, clean silhouette, keep safe margins around subject, stay within assigned palette, strong outer contour, clear silhouette separation",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "3": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, multiple objects, crowded scene, busy background, landscape, room interior, thick border, framed icon, text label, background scene, multiple objects, cropped object, cropped subject, touching frame edge, off-palette colors, neon accents",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "4": {
+        "class_type": "EmptyLatentImage",
+        "inputs": {
+          "width": 256,
+          "height": 256,
+          "batch_size": 1
+        }
+      },
+      "5": {
+        "class_type": "KSampler",
+        "inputs": {
+          "seed": 2004,
+          "steps": 35,
+          "cfg": 5.5,
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "denoise": 1,
+          "model": [
+            "1",
+            0
+          ],
+          "positive": [
+            "2",
+            0
+          ],
+          "negative": [
+            "3",
+            0
+          ],
+          "latent_image": [
+            "4",
+            0
+          ]
+        }
+      },
+      "6": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "5",
+            0
+          ],
+          "vae": [
+            "1",
+            2
+          ]
+        }
+      },
+      "7": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "6",
+            0
+          ],
+          "filename_prefix": "resource_rock__cand04__v001"
+        }
+      }
+    }
+  }
+}

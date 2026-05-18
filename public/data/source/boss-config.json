@@ -1,0 +1,94 @@
+{
+  "bosses": {
+    "boss_01": {
+      "id": "boss_01",
+      "name": "哥布林首领",
+      "level": 1,
+      "stats": {
+        "hp": 500,
+        "atk": 15,
+        "def": 5
+      },
+      "drops": {
+        "qualityMin": "common",
+        "qualityMax": "uncommon"
+      },
+      "rewards": {
+        "gold": 50,
+        "exp": 10
+      }
+    },
+    "boss_02": {
+      "id": "boss_02",
+      "name": "石像鬼",
+      "level": 5,
+      "stats": {
+        "hp": 1000,
+        "atk": 30,
+        "def": 15
+      },
+      "drops": {
+        "qualityMin": "uncommon",
+        "qualityMax": "rare"
+      },
+      "rewards": {
+        "gold": 250,
+        "exp": 50
+      }
+    },
+    "boss_03": {
+      "id": "boss_03",
+      "name": "暗影骑士",
+      "level": 10,
+      "stats": {
+        "hp": 2000,
+        "atk": 50,
+        "def": 25
+      },
+      "drops": {
+        "qualityMin": "rare",
+        "qualityMax": "epic"
+      },
+      "rewards": {
+        "gold": 500,
+        "exp": 100
+      }
+    },
+    "boss_04": {
+      "id": "boss_04",
+      "name": "炎魔领主",
+      "level": 15,
+      "stats": {
+        "hp": 4000,
+        "atk": 80,
+        "def": 40
+      },
+      "drops": {
+        "qualityMin": "epic",
+        "qualityMax": "epic"
+      },
+      "rewards": {
+        "gold": 750,
+        "exp": 150
+      }
+    },
+    "boss_05": {
+      "id": "boss_05",
+      "name": "远古巨龙",
+      "level": 20,
+      "stats": {
+        "hp": 8000,
+        "atk": 120,
+        "def": 60
+      },
+      "drops": {
+        "qualityMin": "epic",
+        "qualityMax": "legendary"
+      },
+      "rewards": {
+        "gold": 1000,
+        "exp": 200
+      }
+    }
+  }
+}

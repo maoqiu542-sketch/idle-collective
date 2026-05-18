@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { EquipmentQuality } from '@app-types/equipment.types'
+import { ResourceType } from '@app-types/map.types'
 import { useGameStore } from '@ui/stores/gameStore'
+import { useCharacterStore } from '@ui/stores/characterStore'
+import { useResourceStore } from '@ui/stores/resourceStore'
 import './DebugPanel.css'
-
-const isDevelopment = import.meta.env.DEV
 
 interface DebugAction {
   id: string
@@ -14,12 +16,23 @@ interface DebugAction {
 
 export function DebugPanel() {
   const [isVisible, setIsVisible] = useState(false)
-  const { game, resources, characters, addResource } = useGameStore()
+  const {
+    game,
+    addResource,
+    grantDebugEquipmentPack,
+    spawnDebugBoss,
+    updateResources,
+    updateEssence,
+    updateSettlementState,
+  } = useGameStore()
+  const { characters, equipments } = useCharacterStore()
+  const { resources, coreParts, corePartsCapacity } = useResourceStore()
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-        setIsVisible((prev) => !prev)
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'd') {
+        event.preventDefault()
+        setIsVisible(prev => !prev)
       }
     }
 
@@ -27,86 +40,70 @@ export function DebugPanel() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  if (!isDevelopment) {
-    return null
+  const handleAddMaterials = () => {
+    addResource(ResourceType.WOOD, 500)
+    addResource(ResourceType.STONE, 500)
+    addResource(ResourceType.FOOD, 500)
+    addResource(ResourceType.GOLD, 3000)
+  }
+
+  const handleAddCoreParts = () => {
+    addResource(ResourceType.CORE_PARTS, 80)
+  }
+
+  const handleGrantLegendaryGear = () => {
+    const created = grantDebugEquipmentPack(EquipmentQuality.LEGENDARY)
+    alert(created > 0 ? `已添加 ${created} 件传奇装备。` : '没有可用的装备配置。')
   }
 
   const handleQuickBoss = () => {
     if (!game) return
-    const bossManager = game.getBossManager()
-    bossManager.forceSpawn()
-    console.log('[Debug] Boss spawned')
+    spawnDebugBoss()
+    updateSettlementState()
+    alert('已立即刷新一只 Boss。')
   }
 
-  const handleGetArtifact = () => {
-    if (!game) return
-    console.log('[Debug] Artifact created')
-  }
-
-  const handleMaxResources = () => {
-    addResource('wood' as any, 10000)
-    addResource('stone' as any, 10000)
-    addResource('food' as any, 10000)
-    addResource('gold' as any, 100000)
-    addResource('leather' as any, 5000)
-    console.log('[Debug] Resources maxed')
-  }
-
-  const handleMaxLevel = () => {
-    console.log('[Debug] Characters maxed')
-  }
-
-  const handleSkipBuild = () => {
-    if (!game) return
-    console.log('[Debug] Build skipped')
-  }
-
-  const handleGodMode = () => {
-    console.log('[Debug] God mode toggled')
+  const handleSyncState = () => {
+    updateResources()
+    updateEssence()
+    updateSettlementState()
   }
 
   const debugActions: DebugAction[] = [
     {
+      id: 'materials',
+      name: '加基础材料',
+      icon: '📦',
+      description: '增加木材、石材、食物和金币',
+      action: handleAddMaterials,
+    },
+    {
+      id: 'core-parts',
+      name: '加核心零件',
+      icon: '⚙',
+      description: '增加 80 个核心零件',
+      action: handleAddCoreParts,
+    },
+    {
+      id: 'legendary-gear',
+      name: '传奇装备',
+      icon: '🗡',
+      description: '添加一组传奇装备',
+      action: handleGrantLegendaryGear,
+    },
+    {
       id: 'quick-boss',
-      name: '快速BOSS',
+      name: '刷新 Boss',
       icon: '👹',
-      description: '立即生成BOSS进入战斗',
+      description: '立即生成一只 Boss',
       action: handleQuickBoss,
     },
     {
-      id: 'get-artifact',
-      name: '获取神器',
-      icon: '⚔️',
-      description: '商店添加传说级装备',
-      action: handleGetArtifact,
-    },
-    {
-      id: 'max-resources',
-      name: '满资源',
-      icon: '💰',
-      description: '所有资源+10000',
-      action: handleMaxResources,
-    },
-    {
-      id: 'max-level',
-      name: '满级角色',
-      icon: '⭐',
-      description: '所有角色等级+50',
-      action: handleMaxLevel,
-    },
-    {
-      id: 'skip-build',
-      name: '跳过建造',
-      icon: '⏩',
-      description: '建筑立即完成',
-      action: handleSkipBuild,
-    },
-    {
-      id: 'god-mode',
-      name: '无敌模式',
-      icon: '🛡️',
-      description: '角色不受伤害',
-      action: handleGodMode,
+      id: 'sync',
+      name: '同步状态',
+      icon: '🔄',
+      description: '强制同步当前显示状态',
+      action: handleSyncState,
     },
   ]
 
@@ -115,9 +112,9 @@ export function DebugPanel() {
       <button
         className="debug-toggle"
         onClick={() => setIsVisible(true)}
-        title="调试面板 (Ctrl+Shift+D)"
+        title="调试面板（Ctrl+Shift+D）"
       >
-        🔧
+        🛠
       </button>
     )
   }
@@ -125,13 +122,14 @@ export function DebugPanel() {
   return (
     <div className="debug-panel">
       <div className="debug-header">
-        <h3>🔧 调试面板</h3>
+        <h3>调试工具</h3>
         <button className="debug-close" onClick={() => setIsVisible(false)}>
-          ✕
+          ×
         </button>
       </div>
+
       <div className="debug-actions">
-        {debugActions.map((action) => (
+        {debugActions.map(action => (
           <button
             key={action.id}
             className="debug-action"
@@ -143,9 +141,12 @@ export function DebugPanel() {
           </button>
         ))}
       </div>
+
       <div className="debug-info">
-        <div>角色数: {characters.length}</div>
-        <div>资源种类: {resources.size}</div>
+        <div>角色数：{characters.length}</div>
+        <div>装备数：{equipments.length}</div>
+        <div>资源种类：{resources.size}</div>
+        <div>核心零件：{coreParts}/{corePartsCapacity}</div>
       </div>
     </div>
   )

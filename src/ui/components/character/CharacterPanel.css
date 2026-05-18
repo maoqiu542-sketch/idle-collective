@@ -63,6 +63,15 @@
   margin-right: 16px;
 }
 
+.character-basic--art .avatar {
+  font-size: 0;
+  color: transparent;
+  background-image: var(--character-panel-avatar);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .basic-info {
   flex: 1;
 }
@@ -206,4 +215,95 @@
 .equipment-count {
   color: #888;
   font-size: 12px;
+}
+
+/* --- Task Priority Panel --- */
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 0;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.priority-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.priority-item:hover {
+  background: rgba(74, 144, 217, 0.1);
+}
+
+.priority-item.disabled {
+  opacity: 0.45;
+}
+
+.priority-icon {
+  width: 24px;
+  text-align: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.priority-label {
+  flex: 1;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.priority-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.priority-slider {
+  width: 80px;
+  accent-color: #4a90d9;
+  cursor: pointer;
+}
+
+.priority-value {
+  width: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #4a90d9;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.toggle-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.reset-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  background: rgba(74, 144, 217, 0.15);
+  border: 1px solid #4a90d9;
+  border-radius: 8px;
+  color: #4a90d9;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.reset-btn:hover {
+  background: rgba(74, 144, 217, 0.3);
 }

@@ -1,0 +1,181 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/ui/components/milestone/DevelopmentMilestone.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=39d6738e"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import { useGameStore } from "/src/ui/stores/gameStore.ts?t=1779113656768";
+import "/src/ui/components/milestone/DevelopmentMilestone.css";
+const MILESTONE_TIERS = [
+  { name: "聚落初创", min: 0, max: 15, unlocks: ["基础建筑（房屋、农场、伐木机、采石机）"] },
+  { name: "生存成型", min: 15, max: 30, unlocks: ["厨房、研究台、基础科技"] },
+  { name: "扩张启动", min: 30, max: 45, unlocks: ["招募站、仓库、中级科技"] },
+  { name: "发展阶段", min: 45, max: 60, unlocks: ["兵营、贸易站、中阶 Boss"] },
+  { name: "繁荣推进", min: 60, max: 80, unlocks: ["高级科技、建筑 Lv.3+"] },
+  { name: "V1 终局", min: 80, max: 100, unlocks: ["高阶 Boss、建筑 Lv.5"] }
+];
+function getCurrentTier(development) {
+  for (let i = 0; i < MILESTONE_TIERS.length; i++) {
+    const t = MILESTONE_TIERS[i];
+    if (development >= t.min && development < t.max) {
+      const range = t.max - t.min;
+      const progress = range > 0 ? Math.min((development - t.min) / range * 100, 100) : 100;
+      return { tier: t, index: i, progress };
+    }
+  }
+  const last = MILESTONE_TIERS[MILESTONE_TIERS.length - 1];
+  return { tier: last, index: MILESTONE_TIERS.length - 1, progress: 100 };
+}
+export function DevelopmentMilestone() {
+  _s();
+  const development = useGameStore((state) => state.settlementDevelopment);
+  if (development == null) return null;
+  const { tier, index, progress } = getCurrentTier(development);
+  const nextTier = index < MILESTONE_TIERS.length - 1 ? MILESTONE_TIERS[index + 1] : null;
+  const prevTier = index > 0 ? MILESTONE_TIERS[index - 1] : null;
+  const isAtCap = development >= 100;
+  return /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-header", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-stage", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-label", children: "发展阶段" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 67,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-name", children: tier.name }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 68,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 66,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-score", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-value", children: Math.round(development) }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 71,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-max", children: "/ 100" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 72,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 70,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+      lineNumber: 65,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-bar-track", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-bar-fill", style: { width: `${progress}%` } }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 77,
+        columnNumber: 9
+      }, this),
+      prevTier && /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-marker prev", style: { left: `${prevTier.max / 100 * 100}%` }, children: prevTier.max }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 79,
+        columnNumber: 9
+      }, this),
+      nextTier && /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-marker next", style: { left: `${nextTier.min / 100 * 100}%` }, children: nextTier.min }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 84,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+      lineNumber: 76,
+      columnNumber: 7
+    }, this),
+    nextTier && !isAtCap && /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-next", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-next-header", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-next-label", children: "下一阶段" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 93,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-next-name", children: nextTier.name }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 94,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-next-need", children: [
+          "还需 ",
+          Math.round(nextTier.min - development)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 95,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 92,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-next-unlocks", children: nextTier.unlocks.map(
+        (u, i) => /* @__PURE__ */ jsxDEV("span", { className: "dev-milestone-unlock-tag", children: u }, i, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+          lineNumber: 101,
+          columnNumber: 11
+        }, this)
+      ) }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+        lineNumber: 99,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+      lineNumber: 91,
+      columnNumber: 7
+    }, this),
+    isAtCap && /* @__PURE__ */ jsxDEV("div", { className: "dev-milestone-complete", children: "发展度已达上限，挑战最高难度 Boss 并探索 V1 终局内容" }, void 0, false, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+      lineNumber: 108,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx",
+    lineNumber: 64,
+    columnNumber: 5
+  }, this);
+}
+_s(DevelopmentMilestone, "+KSU4MVMMBfBgfdTaVBONVvoJTU=", false, function() {
+  return [useGameStore];
+});
+_c = DevelopmentMilestone;
+var _c;
+$RefreshReg$(_c, "DevelopmentMilestone");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/GameDesign/Projects/idle-collective/src/ui/components/milestone/DevelopmentMilestone.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QTtBQUFBLGVBQXNEO0FBQUEsTUFDdkQsS0FISDtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBSUE7QUFBQSxTQVpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FhQTtBQUFBLElBR0RlLFdBQ0MsdUJBQUMsU0FBSSxXQUFVLDBCQUF3QiwrQ0FBdkM7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUVBO0FBQUEsT0E5Q0o7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQWdEQTtBQUVKO0FBQUNMLEdBOURlRCxzQkFBb0I7QUFBQSxVQUNkakIsWUFBWTtBQUFBO0FBQUEsS0FEbEJpQjtBQUFvQixJQUFBWTtBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJ1c2VHYW1lU3RvcmUiLCJNSUxFU1RPTkVfVElFUlMiLCJuYW1lIiwibWluIiwibWF4IiwidW5sb2NrcyIsImdldEN1cnJlbnRUaWVyIiwiZGV2ZWxvcG1lbnQiLCJpIiwibGVuZ3RoIiwidCIsInJhbmdlIiwicHJvZ3Jlc3MiLCJNYXRoIiwidGllciIsImluZGV4IiwibGFzdCIsIkRldmVsb3BtZW50TWlsZXN0b25lIiwiX3MiLCJzdGF0ZSIsInNldHRsZW1lbnREZXZlbG9wbWVudCIsIm5leHRUaWVyIiwicHJldlRpZXIiLCJpc0F0Q2FwIiwicm91bmQiLCJ3aWR0aCIsImxlZnQiLCJtYXAiLCJ1IiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiRGV2ZWxvcG1lbnRNaWxlc3RvbmUudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZUdhbWVTdG9yZSB9IGZyb20gJy4uLy4uL3N0b3Jlcy9nYW1lU3RvcmUnXG5pbXBvcnQgJy4vRGV2ZWxvcG1lbnRNaWxlc3RvbmUuY3NzJ1xuXG5pbnRlcmZhY2UgTWlsZXN0b25lVGllciB7XG4gIG5hbWU6IHN0cmluZ1xuICBtaW46IG51bWJlclxuICBtYXg6IG51bWJlclxuICB1bmxvY2tzOiBzdHJpbmdbXVxufVxuXG5jb25zdCBNSUxFU1RPTkVfVElFUlM6IE1pbGVzdG9uZVRpZXJbXSA9IFtcbiAgeyBuYW1lOiAn6IGa6JC95Yid5YibJywgbWluOiAwLCBtYXg6IDE1LCB1bmxvY2tzOiBbJ+WfuuehgOW7uuetke+8iOaIv+Wxi+OAgeWGnOWcuuOAgeS8kOacqOacuuOAgemHh+efs+acuu+8iSddIH0sXG4gIHsgbmFtZTogJ+eUn+WtmOaIkOWeiycsIG1pbjogMTUsIG1heDogMzAsIHVubG9ja3M6IFsn5Y6o5oi/44CB56CU56m25Y+w44CB5Z+656GA56eR5oqAJ10gfSxcbiAgeyBuYW1lOiAn5omp5byg5ZCv5YqoJywgbWluOiAzMCwgbWF4OiA0NSwgdW5sb2NrczogWyfmi5vli5/nq5njgIHku5PlupPjgIHkuK3nuqfnp5HmioAnXSB9LFxuICB7IG5hbWU6ICflj5HlsZXpmLbmrrUnLCBtaW46IDQ1LCBtYXg6IDYwLCB1bmxvY2tzOiBbJ+WFteiQpeOAgei0uOaYk+ermeOAgeS4remYtiBCb3NzJ10gfSxcbiAgeyBuYW1lOiAn57mB6I2j5o6o6L+bJywgbWluOiA2MCwgbWF4OiA4MCwgdW5sb2NrczogWyfpq5jnuqfnp5HmioDjgIHlu7rnrZEgTHYuMysnXSB9LFxuICB7IG5hbWU6ICdWMSDnu4jlsYAnLCBtaW46IDgwLCBtYXg6IDEwMCwgdW5sb2NrczogWyfpq5jpmLYgQm9zc+OAgeW7uuetkSBMdi41J10gfSxcbl1cblxuZnVuY3Rpb24gZ2V0Q3VycmVudFRpZXIoZGV2ZWxvcG1lbnQ6IG51bWJlcik6IHsgdGllcjogTWlsZXN0b25lVGllcjsgaW5kZXg6IG51bWJlcjsgcHJvZ3Jlc3M6IG51bWJlciB9IHtcbiAgZm9yIChsZXQgaSA9IDA7IGkgPCBNSUxFU1RPTkVfVElFUlMubGVuZ3RoOyBpKyspIHtcbiAgICBjb25zdCB0ID0gTUlMRVNUT05FX1RJRVJTW2ldXG4gICAgaWYgKGRldmVsb3BtZW50ID49IHQubWluICYmIGRldmVsb3BtZW50IDwgdC5tYXgpIHtcbiAgICAgIGNvbnN0IHJhbmdlID0gdC5tYXggLSB0Lm1pblxuICAgICAgY29uc3QgcHJvZ3Jlc3MgPSByYW5nZSA+IDAgPyBNYXRoLm1pbigoZGV2ZWxvcG1lbnQgLSB0Lm1pbikgLyByYW5nZSAqIDEwMCwgMTAwKSA6IDEwMFxuICAgICAgcmV0dXJuIHsgdGllcjogdCwgaW5kZXg6IGksIHByb2dyZXNzIH1cbiAgICB9XG4gIH1cbiAgY29uc3QgbGFzdCA9IE1JTEVTVE9ORV9USUVSU1tNSUxFU1RPTkVfVElFUlMubGVuZ3RoIC0gMV1cbiAgcmV0dXJuIHsgdGllcjogbGFzdCwgaW5kZXg6IE1JTEVTVE9ORV9USUVSUy5sZW5ndGggLSAxLCBwcm9ncmVzczogMTAwIH1cbn1cblxuZXhwb3J0IGZ1bmN0aW9uIERldmVsb3BtZW50TWlsZXN0b25lKCkge1xuICBjb25zdCBkZXZlbG9wbWVudCA9IHVzZUdhbWVTdG9yZShzdGF0ZSA9PiBzdGF0ZS5zZXR0bGVtZW50RGV2ZWxvcG1lbnQpXG5cbiAgaWYgKGRldmVsb3BtZW50ID09IG51bGwpIHJldHVybiBudWxsXG5cbiAgY29uc3QgeyB0aWVyLCBpbmRleCwgcHJvZ3Jlc3MgfSA9IGdldEN1cnJlbnRUaWVyKGRldmVsb3BtZW50KVxuICBjb25zdCBuZXh0VGllciA9IGluZGV4IDwgTUlMRVNUT05FX1RJRVJTLmxlbmd0aCAtIDEgPyBNSUxFU1RPTkVfVElFUlNbaW5kZXggKyAxXSA6IG51bGxcbiAgY29uc3QgcHJldlRpZXIgPSBpbmRleCA+IDAgPyBNSUxFU1RPTkVfVElFUlNbaW5kZXggLSAxXSA6IG51bGxcblxuICBjb25zdCBpc0F0Q2FwID0gZGV2ZWxvcG1lbnQgPj0gMTAwXG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImRldi1taWxlc3RvbmVcIj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1oZWFkZXJcIj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkZXYtbWlsZXN0b25lLXN0YWdlXCI+XG4gICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1sYWJlbFwiPuWPkeWxlemYtuautTwvc3Bhbj5cbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJkZXYtbWlsZXN0b25lLW5hbWVcIj57dGllci5uYW1lfTwvc3Bhbj5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1zY29yZVwiPlxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImRldi1taWxlc3RvbmUtdmFsdWVcIj57TWF0aC5yb3VuZChkZXZlbG9wbWVudCl9PC9zcGFuPlxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImRldi1taWxlc3RvbmUtbWF4XCI+LyAxMDA8L3NwYW4+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1iYXItdHJhY2tcIj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkZXYtbWlsZXN0b25lLWJhci1maWxsXCIgc3R5bGU9e3sgd2lkdGg6IGAke3Byb2dyZXNzfSVgIH19IC8+XG4gICAgICAgIHtwcmV2VGllciAmJiAoXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkZXYtbWlsZXN0b25lLW1hcmtlciBwcmV2XCIgc3R5bGU9e3sgbGVmdDogYCR7KHByZXZUaWVyLm1heCAvIDEwMCkgKiAxMDB9JWAgfX0+XG4gICAgICAgICAgICB7cHJldlRpZXIubWF4fVxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICApfVxuICAgICAgICB7bmV4dFRpZXIgJiYgKFxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1tYXJrZXIgbmV4dFwiIHN0eWxlPXt7IGxlZnQ6IGAkeyhuZXh0VGllci5taW4gLyAxMDApICogMTAwfSVgIH19PlxuICAgICAgICAgICAge25leHRUaWVyLm1pbn1cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKX1cbiAgICAgIDwvZGl2PlxuXG4gICAgICB7bmV4dFRpZXIgJiYgIWlzQXRDYXAgJiYgKFxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImRldi1taWxlc3RvbmUtbmV4dFwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1uZXh0LWhlYWRlclwiPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1uZXh0LWxhYmVsXCI+5LiL5LiA6Zi25q61PC9zcGFuPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1uZXh0LW5hbWVcIj57bmV4dFRpZXIubmFtZX08L3NwYW4+XG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJkZXYtbWlsZXN0b25lLW5leHQtbmVlZFwiPlxuICAgICAgICAgICAgICDov5jpnIAge01hdGgucm91bmQobmV4dFRpZXIubWluIC0gZGV2ZWxvcG1lbnQpfVxuICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZGV2LW1pbGVzdG9uZS1uZXh0LXVubG9ja3NcIj5cbiAgICAgICAgICAgIHtuZXh0VGllci51bmxvY2tzLm1hcCgodSwgaSkgPT4gKFxuICAgICAgICAgICAgICA8c3BhbiBrZXk9e2l9IGNsYXNzTmFtZT1cImRldi1taWxlc3RvbmUtdW5sb2NrLXRhZ1wiPnt1fTwvc3Bhbj5cbiAgICAgICAgICAgICkpfVxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICl9XG5cbiAgICAgIHtpc0F0Q2FwICYmIChcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkZXYtbWlsZXN0b25lLWNvbXBsZXRlXCI+XG4gICAgICAgICAg5Y+R5bGV5bqm5bey6L6+5LiK6ZmQ77yM5oyR5oiY5pyA6auY6Zq+5bqmIEJvc3Mg5bm25o6i57SiIFYxIOe7iOWxgOWGheWuuVxuICAgICAgICA8L2Rpdj5cbiAgICAgICl9XG4gICAgPC9kaXY+XG4gIClcbn1cbiJdLCJmaWxlIjoiRDovR2FtZURlc2lnbi9Qcm9qZWN0cy9pZGxlLWNvbGxlY3RpdmUvc3JjL3VpL2NvbXBvbmVudHMvbWlsZXN0b25lL0RldmVsb3BtZW50TWlsZXN0b25lLnRzeCJ9

@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "stages": [
+    {
+      "id": "settlement_founding",
+      "name": "聚落初创",
+      "description": "基础建筑（房屋、农场、伐木机、采石机）"
+    },
+    {
+      "id": "survival_formed",
+      "name": "生存成型",
+      "description": "厨房、研究台、基础科技"
+    },
+    {
+      "id": "expansion_start",
+      "name": "扩张启动",
+      "description": "招募站、仓库、中级科技"
+    },
+    {
+      "id": "development_stage",
+      "name": "发展阶段",
+      "description": "兵营、贸易站、中阶 Boss"
+    },
+    {
+      "id": "prosperity_push",
+      "name": "繁荣推进",
+      "description": "高级科技、建筑 Lv.3+"
+    },
+    {
+      "id": "v1_endgame",
+      "name": "V1 终局",
+      "description": "高阶 Boss、建筑 Lv.5"
+    }
+  ]
+}

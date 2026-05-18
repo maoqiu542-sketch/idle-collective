@@ -1,3 +1,8 @@
+/**
+ * @deprecated Not connected to the main AI pipeline (AISystem.ts).
+ * AISystem handles decision-making internally via calculateUtility.
+ * Only retained because UtilityEvaluator imports WorldState.
+ */
 import { Character, ProfessionType } from '@app-types/character.types'
 import { Task, TaskType, TaskPriority, TaskStatus } from '@app-types/priority.types'
 import { EventBus } from '@core/EventBus'
@@ -12,10 +17,13 @@ export interface WorldState {
 }
 
 const PROFESSION_PREFERENCES: Record<ProfessionType, TaskType[]> = {
-  [ProfessionType.GATHERER]: [TaskType.GATHER, TaskType.HAUL],
-  [ProfessionType.BUILDER]: [TaskType.BUILD, TaskType.CONSTRUCT],
-  [ProfessionType.FARMER]: [TaskType.GROW, TaskType.HARVEST],
-  [ProfessionType.WARRIOR]: [TaskType.COMBAT, TaskType.GUARD],
+  [ProfessionType.FARMER]:   [TaskType.GROW, TaskType.HARVEST, TaskType.FARM],
+  [ProfessionType.HUNTER]:   [TaskType.HUNT, TaskType.GATHER, TaskType.HAUL],
+  [ProfessionType.WARRIOR]:  [TaskType.COMBAT, TaskType.GUARD],
+  [ProfessionType.ENGINEER]: [TaskType.BUILD, TaskType.CONSTRUCT, TaskType.CRAFT],
+  [ProfessionType.COOK]:     [TaskType.COOK, TaskType.GATHER],
+  [ProfessionType.DOCTOR]:   [TaskType.HEAL, TaskType.PATIENT, TaskType.RESCUE],
+  [ProfessionType.SCHOLAR]:  [TaskType.RESEARCH],
 }
 
 export class DecisionMaker {

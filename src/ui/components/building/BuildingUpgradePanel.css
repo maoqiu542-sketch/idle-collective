@@ -1,0 +1,118 @@
+.building-upgrade-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.building-upgrade-panel {
+  width: min(680px, 92vw);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  color: #f5f7fb;
+}
+
+.building-upgrade-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.building-upgrade-header h3 {
+  margin: 0 0 4px 0;
+}
+
+.building-upgrade-header p {
+  margin: 0;
+  color: #99a3b3;
+}
+
+.building-upgrade-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.building-upgrade-section h4,
+.building-upgrade-costs h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #d7deea;
+}
+
+.building-upgrade-section ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #b9c2cf;
+}
+
+.building-upgrade-cost-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.building-upgrade-cost {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.building-upgrade-cost.enough {
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.building-upgrade-cost.not-enough {
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.building-upgrade-reason {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #ffb4b4;
+}
+
+.building-upgrade-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.building-upgrade-actions .secondary-btn,
+.building-upgrade-actions .primary-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.building-upgrade-actions .secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.building-upgrade-actions .primary-btn {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1b1306;
+}
+
+.building-upgrade-actions .primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

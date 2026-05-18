@@ -38,6 +38,11 @@ export enum TaskType {
   SOCIAL = 'social',
   MEDITATE = 'meditate',
   GUARD = 'guard',
+  FARM = 'farm',
+  HUNT = 'hunt',
+  COOK = 'cook',
+  HEAL = 'heal',
+  RESEARCH = 'research',
 }
 
 export enum TaskPriority {

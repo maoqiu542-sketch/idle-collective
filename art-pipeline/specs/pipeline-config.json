@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "comfyui": {
+    "baseUrl": "http://127.0.0.1:8189",
+    "outputDir": "D:\\teae\\openclaw\\ComfyUI\\output"
+  },
+  "monitoring": {
+    "intervalMinutes": 10,
+    "minimumDurationHours": 8,
+    "queueBatchSize": 4,
+    "maxPendingReviews": 12,
+    "maxAttemptsPerAsset": 48,
+    "historyLimit": 144
+  },
+  "review": {
+    "reviewerVersion": "heuristic_v2",
+    "scoreThreshold": 85,
+    "criticalScoreThreshold": 80,
+    "semanticReviewRequiredForFinal": true,
+    "semanticReviewMode": "deepseek_text_assist",
+    "semanticReviewProvider": "deepseek",
+    "semanticReviewModel": "deepseek-chat"
+  },
+  "generation": {
+    "localFallbackEnabled": true,
+    "localFallbackStartAttempt": 7
+  },
+  "promotion": {
+    "liveMode": "manual_only"
+  }
+}

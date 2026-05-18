@@ -1,3 +1,8 @@
+/**
+ * @deprecated Not connected to the main AI pipeline (AISystem.ts).
+ * All task scheduling is handled internally by AISystem.
+ * Kept for reference; do not import into new code.
+ */
 import { Character } from '@app-types/character.types'
 import { Task, TaskStatus, TaskPriority, TaskType } from '@app-types/priority.types'
 import { EventBus } from '@core/EventBus'

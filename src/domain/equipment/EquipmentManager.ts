@@ -94,21 +94,28 @@ export class EquipmentManager {
     const equipment = this.equipments.get(equipmentId)
     if (!equipment) return false
 
-    equipment.level += 1
-
+    const newStats: EquipmentStats = {}
     for (const key of Object.keys(equipment.stats) as (keyof EquipmentStats)[]) {
       const value = equipment.stats[key]
       if (value !== undefined) {
-        (equipment.stats as Record<string, number>)[key] = Math.floor(value * 1.1)
+        newStats[key] = Math.floor(value * 1.1)
       }
     }
 
+    const upgradedEquipment: Equipment = {
+      ...equipment,
+      level: equipment.level + 1,
+      stats: newStats
+    }
+
+    this.equipments.set(equipmentId, upgradedEquipment)
+
     this.eventBus.emit('equipment:upgraded', {
       equipmentId,
-      newLevel: equipment.level
+      newLevel: upgradedEquipment.level
     })
 
-    this.logger.info(`Upgraded equipment ${equipmentId} to level ${equipment.level}`)
+    this.logger.info(`Upgraded equipment ${equipmentId} to level ${upgradedEquipment.level}`)
     return true
   }
 
@@ -248,5 +255,24 @@ export class EquipmentManager {
     }
 
     return total
+  }
+
+  serialize(): Equipment[] {
+    return this.getAllEquipments().map(equipment => ({
+      ...equipment,
+      stats: { ...equipment.stats }
+    }))
+  }
+
+  deserialize(equipments: Equipment[]): void {
+    this.equipments = new Map(
+      equipments.map(equipment => [
+        equipment.id,
+        {
+          ...equipment,
+          stats: { ...equipment.stats }
+        }
+      ])
+    )
   }
 }

@@ -1,0 +1,129 @@
+{
+  "version": "1.0.0",
+  "resources": {
+    "wood": "木材",
+    "stone": "石材",
+    "food": "食物",
+    "gold": "金币",
+    "core_parts": "核心零件"
+  },
+  "resource_icons": {
+    "wood": "木",
+    "stone": "石",
+    "food": "食",
+    "gold": "金",
+    "core_parts": "核"
+  },
+  "professions": {
+    "farmer": "农夫",
+    "hunter": "猎人",
+    "warrior": "战士",
+    "engineer": "工程师",
+    "cook": "厨师",
+    "doctor": "医生",
+    "scholar": "学者",
+    "gatherer": "采集者",
+    "builder": "建造者",
+    "researcher": "研究员"
+  },
+  "skills": {
+    "farming": "耕种",
+    "hunting": "狩猎",
+    "gathering": "采集",
+    "combat": "战斗",
+    "engineering": "工程",
+    "building": "建造",
+    "cooking": "烹饪",
+    "medicine": "医疗",
+    "research": "研究"
+  },
+  "character_states": {
+    "idle": "空闲",
+    "moving": "移动中",
+    "working": "工作中",
+    "gathering": "采集中",
+    "farming": "耕种中",
+    "hunting": "狩猎中",
+    "building": "建造中",
+    "crafting": "制作中",
+    "cooking": "烹饪中",
+    "healing": "治疗中",
+    "researching": "研究中",
+    "resting": "休息中",
+    "eating": "进食中",
+    "sleeping": "睡眠中",
+    "fighting": "战斗中",
+    "socializing": "社交中"
+  },
+  "equipment_slots": {
+    "weapon": "武器",
+    "helmet": "头盔",
+    "armor": "护甲",
+    "boots": "鞋子",
+    "accessory": "饰品"
+  },
+  "equipment_quality": {
+    "common": "普通",
+    "uncommon": "精良",
+    "rare": "稀有",
+    "epic": "史诗",
+    "legendary": "传说"
+  },
+  "task_priorities": {
+    "gather": "采集资源",
+    "build": "建造",
+    "craft": "制作",
+    "rest": "休息",
+    "eat": "进食",
+    "socialize": "社交",
+    "work": "工作",
+    "combat": "战斗"
+  },
+  "needs": {
+    "hunger": "饥饿",
+    "energy": "精力",
+    "safety": "安全",
+    "comfort": "舒适"
+  },
+  "six_dimensions": {
+    "atk": "攻击力",
+    "def": "防御力",
+    "hp": "生命值",
+    "crit_rate": "暴击率",
+    "crit_dmg": "暴击伤害",
+    "atk_spd": "攻击速度"
+  },
+  "resource_points": {
+    "tree": "树木",
+    "stone": "石头",
+    "crop": "野生作物",
+    "ore": "矿石"
+  },
+  "terrains": {
+    "grass": "草地",
+    "forest": "森林",
+    "mountain": "山地",
+    "water": "水域",
+    "sand": "沙地",
+    "snow": "雪地"
+  },
+  "boss": {
+    "level_1": "森林守护者",
+    "level_2": "岩石巨人",
+    "level_3": "风暴领主",
+    "level_4": "深渊巨兽",
+    "level_5": "世界之主"
+  },
+  "building_descriptions": {
+    "lumber_mill": "自动产出木材，支撑聚落扩张与升级。",
+    "quarry": "自动产出石材，支撑建造和建筑升级。",
+    "farm": "稳定产出食物，维持聚落运转。",
+    "house": "提供住房容量，并提升休息恢复效率。",
+    "kitchen": "提高进食恢复，并强化农场与后勤效率。",
+    "warehouse": "提高核心零件容量，并提升生产周转效率。",
+    "trade_station": "将盈余木材、石材与食物自动转成金币，为招募和装备提供经济来源。",
+    "barracks": "强化战备训练和 Boss 前准备。",
+    "recruitment_station": "开放商队招募，提升候选质量与刷新收益。",
+    "research_desk": "提供研究席位并提升研究产出。"
+  }
+}

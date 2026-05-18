@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useGameStore } from '@ui/stores/gameStore'
+import { useResourceStore } from '@ui/stores/resourceStore'
+import { useCharacterStore } from '@ui/stores/characterStore'
+import { useBuildingStore } from '@ui/stores/buildingStore'
 import { SaveMetadata } from '@app-types/save.types'
 import './SaveLoadPanel.css'
 
@@ -14,30 +17,20 @@ export function SaveLoadPanel({ mode, onClose }: SaveLoadPanelProps) {
   const [saveName, setSaveName] = useState('')
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
-  const { game, characters, buildings, equipments, resources } = useGameStore()
+  const { saveGameToSlot, loadGameFromSlot, deleteSaveSlot, getSaveSlots } = useGameStore()
+  const { resources } = useResourceStore()
+  const { characters, equipments } = useCharacterStore()
+  const { buildings } = useBuildingStore()
+
+  const loadSaveSlots = useCallback(() => {
+    const slots = getSaveSlots()
+    const normalized: (SaveMetadata | null)[] = Array.from({ length: 5 }, (_, index) => slots[index] ?? null)
+    setSaveSlots(normalized)
+  }, [getSaveSlots])
 
   useEffect(() => {
     loadSaveSlots()
-  }, [])
-
-  const loadSaveSlots = () => {
-    const slots: (SaveMetadata | null)[] = []
-    for (let i = 0; i < 5; i++) {
-      const key = `idle_collective_save_${i}`
-      const json = localStorage.getItem(key)
-      if (json) {
-        try {
-          const data = JSON.parse(json)
-          slots.push(data.metadata)
-        } catch {
-          slots.push(null)
-        }
-      } else {
-        slots.push(null)
-      }
-    }
-    setSaveSlots(slots)
-  }
+  }, [loadSaveSlots])
 
   const formatDate = (timestamp: number): string => {
     const date = new Date(timestamp)
@@ -65,78 +58,37 @@ export function SaveLoadPanel({ mode, onClose }: SaveLoadPanelProps) {
   }
 
   const handleSave = (slotIndex: number) => {
-    if (!game) return
-
     const name = saveName.trim() || `存档 ${slotIndex + 1}`
-    const now = Date.now()
+    const result = saveGameToSlot(slotIndex, name)
 
-    const saveData = {
-      metadata: {
-        id: `save_${now}_${Math.random().toString(36).substr(2, 9)}`,
-        name,
-        createdAt: now,
-        updatedAt: now,
-        playTime: 0,
-        version: '1.0.0',
-      },
-      game: {
-        tick: 0,
-        gameTime: 0,
-        isPaused: false,
-      },
-      characters: characters.map(c => ({
-        ...c,
-        talents: Object.fromEntries(c.talents) as any,
-      })),
-      buildings,
-      equipments,
-      resources: Array.from(resources.entries()),
-      settings: {
-        autoSaveInterval: 60000,
-        soundEnabled: true,
-        musicEnabled: true,
-        language: 'zh-CN',
-      },
-    }
-
-    try {
-      const key = `idle_collective_save_${slotIndex}`
-      localStorage.setItem(key, JSON.stringify(saveData))
-      setMessage({ type: 'success', text: '存档成功！' })
+    if (result.success) {
+      setMessage({ type: 'success', text: '存档成功' })
       loadSaveSlots()
       setSelectedSlot(null)
       setSaveName('')
-    } catch (error) {
-      setMessage({ type: 'error', text: '存档失败：存储空间不足' })
-    }
-  }
-
-  const handleLoad = (slotIndex: number) => {
-    const key = `idle_collective_save_${slotIndex}`
-    const json = localStorage.getItem(key)
-
-    if (!json) {
-      setMessage({ type: 'error', text: '该槽位没有存档' })
       return
     }
 
-    try {
-      const saveData = JSON.parse(json)
-      console.log('[SaveLoadPanel] Loading save:', saveData.metadata.name)
-      setMessage({ type: 'success', text: '读档成功！' })
-      setTimeout(() => {
-        onClose()
-      }, 1000)
-    } catch (error) {
-      setMessage({ type: 'error', text: '读档失败：存档数据损坏' })
+    setMessage({ type: 'error', text: result.message || '存档失败' })
+  }
+
+  const handleLoad = (slotIndex: number) => {
+    const result = loadGameFromSlot(slotIndex)
+    if (!result.success) {
+      setMessage({ type: 'error', text: result.message || '读取失败' })
+      return
     }
+
+    setMessage({ type: 'success', text: '读取成功' })
+    loadSaveSlots()
+    setTimeout(() => {
+      onClose()
+    }, 800)
   }
 
   const handleDelete = (slotIndex: number) => {
     if (!confirm('确定要删除这个存档吗？')) return
-
-    const key = `idle_collective_save_${slotIndex}`
-    localStorage.removeItem(key)
+    deleteSaveSlot(slotIndex)
     setMessage({ type: 'success', text: '存档已删除' })
     loadSaveSlots()
   }
@@ -145,15 +97,13 @@ export function SaveLoadPanel({ mode, onClose }: SaveLoadPanelProps) {
     <div className="save-load-panel">
       <div className="panel-header">
         <h2>{mode === 'save' ? '保存游戏' : '读取存档'}</h2>
-        <button className="close-btn" onClick={onClose}>✕</button>
+        <button className="close-btn" onClick={onClose}>
+          ×
+        </button>
       </div>
 
       <div className="panel-content">
-        {message && (
-          <div className={`message ${message.type}`}>
-            {message.text}
-          </div>
-        )}
+        {message && <div className={`message ${message.type}`}>{message.text}</div>}
 
         {mode === 'save' && selectedSlot !== null && (
           <div className="save-name-input">
@@ -161,7 +111,7 @@ export function SaveLoadPanel({ mode, onClose }: SaveLoadPanelProps) {
               type="text"
               placeholder="输入存档名称..."
               value={saveName}
-              onChange={(e) => setSaveName(e.target.value)}
+              onChange={(event) => setSaveName(event.target.value)}
               maxLength={20}
             />
             <button className="confirm-btn" onClick={() => handleSave(selectedSlot)}>
@@ -195,13 +145,13 @@ export function SaveLoadPanel({ mode, onClose }: SaveLoadPanelProps) {
                   <div className="save-name">{save.name}</div>
                   <div className="save-details">
                     <span>{formatDate(save.updatedAt)}</span>
-                    <span>游玩时间: {formatPlayTime(save.playTime)}</span>
+                    <span>游玩时长：{formatPlayTime(save.playTime)}</span>
                   </div>
                   {mode === 'load' && (
                     <button
                       className="delete-btn"
-                      onClick={(e) => {
-                        e.stopPropagation()
+                      onClick={(event) => {
+                        event.stopPropagation()
                         handleDelete(index)
                       }}
                     >
@@ -220,9 +170,10 @@ export function SaveLoadPanel({ mode, onClose }: SaveLoadPanelProps) {
 
         <div className="panel-footer">
           <div className="current-status">
-            <span>当前角色: {characters.length}</span>
-            <span>建筑: {buildings.length}</span>
-            <span>装备: {equipments.length}</span>
+            <span>角色：{characters.length}</span>
+            <span>建筑：{buildings.length}</span>
+            <span>装备：{equipments.length}</span>
+            <span>资源种类：{resources.size}</span>
           </div>
         </div>
       </div>

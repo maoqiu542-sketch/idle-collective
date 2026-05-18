@@ -1,32 +1,32 @@
 @echo off
 chcp 65001 >nul
-title Idle Collective - 打包发布
+title Idle Collective - Package
 
 echo.
-echo  ╔═══════════════════════════════════════════════╗
-echo  ║                                               ║
-echo  ║       🎮 Idle Collective - 打包发布 🎮        ║
-echo  ║                                               ║
-echo  ╚═══════════════════════════════════════════════╝
+echo  =====================================================
+echo.
+echo       Idle Collective - Package & Release
+echo.
+echo  =====================================================
 echo.
 
 cd /d "%~dp0"
 
-echo  正在打包游戏...
-echo  这可能需要几分钟时间...
+echo  Packaging game...
+echo  This may take a few minutes...
 echo.
 
 call npm run package
 
 if %errorlevel% neq 0 (
     echo.
-    echo  [错误] 打包失败
+    echo  [ERROR] Package failed
     pause
     exit /b 1
 )
 
 echo.
-echo  [√] 打包完成！
-echo  可执行文件位于 release 目录
+echo  [OK] Package completed!
+echo  Executable is in release directory
 echo.
 pause

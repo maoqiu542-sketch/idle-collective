@@ -1,14 +1,22 @@
+/**
+ * @deprecated Not connected to the main AI pipeline (AISystem.ts).
+ * All action execution is handled internally by AISystem.
+ * Kept for reference; do not import into new code.
+ */
 import { Character, CharacterState } from '@app-types/character.types'
 import { Task, TaskType } from '@app-types/priority.types'
 import { EventBus } from '@core/EventBus'
+import { CharacterManager } from '@domain/character/CharacterManager'
 import { Logger } from '@utils/logger'
 
 export class ActionExecutor {
   private eventBus: EventBus
+  private characterManager: CharacterManager
   private logger: Logger
 
-  constructor(eventBus: EventBus) {
+  constructor(eventBus: EventBus, characterManager: CharacterManager) {
     this.eventBus = eventBus
+    this.characterManager = characterManager
     this.logger = new Logger('ActionExecutor')
   }
 
@@ -49,7 +57,7 @@ export class ActionExecutor {
       return false
     }
 
-    character.state = CharacterState.MOVING
+    this.characterManager.setState(character.id, CharacterState.MOVING)
 
     this.eventBus.emit('character:moving', {
       characterId: character.id,
@@ -66,7 +74,7 @@ export class ActionExecutor {
       return false
     }
 
-    character.state = CharacterState.WORKING
+    this.characterManager.setState(character.id, CharacterState.WORKING)
 
     this.eventBus.emit('resource:gathered', {
       characterId: character.id,
@@ -82,7 +90,7 @@ export class ActionExecutor {
       return false
     }
 
-    character.state = CharacterState.WORKING
+    this.characterManager.setState(character.id, CharacterState.WORKING)
 
     this.eventBus.emit('building:progress', {
       characterId: character.id,
@@ -94,7 +102,7 @@ export class ActionExecutor {
   }
 
   private executeCraft(character: Character, task: Task): boolean {
-    character.state = CharacterState.WORKING
+    this.characterManager.setState(character.id, CharacterState.WORKING)
 
     this.eventBus.emit('craft:progress', {
       characterId: character.id,
@@ -106,13 +114,7 @@ export class ActionExecutor {
   }
 
   private executeRest(character: Character, _task: Task): boolean {
-    character.state = CharacterState.RESTING
-
-    this.eventBus.emit('character:state-changed', {
-      characterId: character.id,
-      from: CharacterState.WORKING,
-      to: CharacterState.RESTING
-    })
+    this.characterManager.setState(character.id, CharacterState.RESTING)
 
     return true
   }
@@ -143,7 +145,7 @@ export class ActionExecutor {
       return false
     }
 
-    character.state = CharacterState.WORKING
+    this.characterManager.setState(character.id, CharacterState.WORKING)
 
     this.eventBus.emit('work:progress', {
       characterId: character.id,
@@ -159,7 +161,7 @@ export class ActionExecutor {
       return false
     }
 
-    character.state = CharacterState.WORKING
+    this.characterManager.setState(character.id, CharacterState.WORKING)
 
     const stats = character.sixDimensions || { atk: 10, def: 5, hp: 100, critRate: 5, critDmg: 150, atkSpd: 1 }
     const atk = stats.atk || 10
@@ -179,7 +181,7 @@ export class ActionExecutor {
   }
 
   interrupt(character: Character): void {
-    character.state = CharacterState.IDLE
+    this.characterManager.setState(character.id, CharacterState.IDLE)
     this.logger.debug(`Interrupted character ${character.id}`)
   }
 }

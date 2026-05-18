@@ -1,0 +1,80 @@
+{
+  "professions": {
+    "gatherer": {
+      "type": "gatherer",
+      "name": "采集者",
+      "description": "擅长采集各种资源",
+      "bonusSkills": [
+        "gathering",
+        "mining"
+      ],
+      "baseEfficiency": 1.2
+    },
+    "builder": {
+      "type": "builder",
+      "name": "建造者",
+      "description": "擅长建造和制作",
+      "bonusSkills": [
+        "building"
+      ],
+      "baseEfficiency": 1.3
+    },
+    "farmer": {
+      "type": "farmer",
+      "name": "农夫",
+      "description": "擅长种植和烹饪",
+      "bonusSkills": [
+        "cooking"
+      ],
+      "baseEfficiency": 1.2
+    },
+    "warrior": {
+      "type": "warrior",
+      "name": "战士",
+      "description": "擅长战斗和狩猎",
+      "bonusSkills": [
+        "combat"
+      ],
+      "baseEfficiency": 1.5
+    }
+  },
+  "talents": {
+    "gathering": {
+      "name": "采集",
+      "maxLevel": 10,
+      "expMultiplier": 1.5
+    },
+    "mining": {
+      "name": "挖矿",
+      "maxLevel": 10,
+      "expMultiplier": 1.5
+    },
+    "building": {
+      "name": "建造",
+      "maxLevel": 10,
+      "expMultiplier": 1.3
+    },
+    "cooking": {
+      "name": "烹饪",
+      "maxLevel": 10,
+      "expMultiplier": 1.4
+    },
+    "combat": {
+      "name": "战斗",
+      "maxLevel": 10,
+      "expMultiplier": 1.6
+    }
+  },
+  "expTable": [
+    0,
+    100,
+    250,
+    500,
+    900,
+    1500,
+    2400,
+    3700,
+    5500,
+    8000
+  ]
+}

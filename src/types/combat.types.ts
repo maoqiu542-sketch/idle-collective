@@ -9,12 +9,20 @@ import { SixDimensionStats } from './six-dimension.types'
 export enum BossStatus {
   AVAILABLE = 'available',
   IN_COMBAT = 'in_combat',
+  DEFEATED = 'defeated',   // 已被击败，等待下一阶段解锁
   RESTING = 'resting'
+}
+
+/** BOSS阶段 */
+export enum BossStage {
+  EARLY = 'early',    // 早期 boss_01~02
+  MID = 'mid',        // 中期 boss_03
+  LATE = 'late',      // 后期 boss_04~05
 }
 
 /** BOSS奖励 */
 export interface BossReward {
-  type: 'gold' | 'equipment' | 'exp'
+  type: 'gold' | 'equipment' | 'exp' | 'essence' | 'core_parts'
   itemId?: string
   amount: number
   dropRate: number
@@ -25,11 +33,18 @@ export interface BossConfig {
   id: string
   name: string
   level: number
+  stage: BossStage
+  /** 解锁所需的上一个boss id（为空则默认可挑战） */
+  prerequisiteBossId?: string
   baseHp: number
   baseAtk: number
   baseDef: number
   baseSpeed?: number
   rewards: BossReward[]
+  /** 击败后解锁的地图区域格子数 */
+  mapExpansion?: number
+  /** 击败后解锁的科技id列表 */
+  techUnlocks?: string[]
 }
 
 /** BOSS状态数据 */
@@ -47,6 +62,9 @@ export interface Boss {
   configId: string
   name: string
   level: number
+  stage: BossStage
+  difficultyTier?: number
+  difficultyScale?: number
   stats: {
     hp: number
     maxHp: number
@@ -92,9 +110,14 @@ export interface CombatLog {
 export interface CombatResult {
   victory: boolean
   goldReward: number
+  essenceReward: number   // 通用货币奖励（取代旧的goldReward单一用途）
   expReward: number
   equipmentDrop?: string
   restingCharacters: string[]
+  /** 本次战斗解锁的地图扩张格子数 */
+  mapExpansionGained?: number
+  /** 本次战斗解锁的科技id列表 */
+  techUnlocked?: string[]
 }
 
 /** 计算伤害 */

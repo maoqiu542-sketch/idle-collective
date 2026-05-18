@@ -1,0 +1,203 @@
+{
+  "version": "1.0.0",
+  "recipes": [
+    {
+      "id": "terrain_tile",
+      "category": "terrain",
+      "workflow": "terrain_workflow",
+      "candidate_count": 6,
+      "source_resolution": {
+        "width": 256,
+        "height": 256
+      },
+      "export_presets": [
+        {
+          "name": "32",
+          "width": 32,
+          "height": 32,
+          "fit": "cover"
+        },
+        {
+          "name": "64",
+          "width": 64,
+          "height": 64,
+          "fit": "cover"
+        },
+        {
+          "name": "128",
+          "width": 128,
+          "height": 128,
+          "fit": "cover"
+        }
+      ],
+      "background": "opaque",
+      "camera": "top_down",
+      "prompt_template": "natural terrain texture only, {subject}, pure outdoor ground surface, seamless edge-to-edge ground fill, aerial texture swatch, flat terrain material, micro variation across the whole frame, no border, no frame, no vignette, no centered subject, no focal point, no island, no patch, no disk, no ring, no medallion, no circular composition, no radial composition, no landscape, no sky, no horizon, soft painterly shading, warm pastel palette, texture asset"
+    },
+    {
+      "id": "resource_node_icon",
+      "category": "resource_node",
+      "workflow": "resource_workflow",
+      "candidate_count": 6,
+      "source_resolution": {
+        "width": 256,
+        "height": 256
+      },
+      "export_presets": [
+        {
+          "name": "32",
+          "width": 32,
+          "height": 32,
+          "fit": "contain"
+        },
+        {
+          "name": "64",
+          "width": 64,
+          "height": 64,
+          "fit": "contain"
+        },
+        {
+          "name": "128",
+          "width": 128,
+          "height": 128,
+          "fit": "contain"
+        }
+      ],
+      "background": "transparent",
+      "camera": "top_down",
+      "prompt_template": "storybook game resource node, volcano daughter inspired softness, {subject}, single subject, top-down map icon, transparent background, warm pastel palette, readable silhouette, game asset"
+    },
+    {
+      "id": "building_map_icon",
+      "category": "building_map",
+      "workflow": "building_workflow",
+      "candidate_count": 8,
+      "source_resolution": {
+        "width": 256,
+        "height": 256
+      },
+      "export_presets": [
+        {
+          "name": "32",
+          "width": 32,
+          "height": 32,
+          "fit": "contain"
+        },
+        {
+          "name": "64",
+          "width": 64,
+          "height": 64,
+          "fit": "contain"
+        },
+        {
+          "name": "128",
+          "width": 128,
+          "height": 128,
+          "fit": "contain"
+        }
+      ],
+      "background": "transparent",
+      "camera": "three_quarter_top_down",
+      "prompt_template": "storybook game building, volcano daughter inspired softness, {subject}, top-down building icon, readable silhouette at 32px, warm pastel palette, transparent background, consistent light from top left, game asset"
+    },
+    {
+      "id": "ui_fallback_icon",
+      "category": "ui_icon_fallback",
+      "workflow": "resource_workflow",
+      "candidate_count": 4,
+      "source_resolution": {
+        "width": 128,
+        "height": 128
+      },
+      "export_presets": [
+        {
+          "name": "32",
+          "width": 32,
+          "height": 32,
+          "fit": "contain"
+        },
+        {
+          "name": "64",
+          "width": 64,
+          "height": 64,
+          "fit": "contain"
+        },
+        {
+          "name": "128",
+          "width": 128,
+          "height": 128,
+          "fit": "contain"
+        }
+      ],
+      "background": "transparent",
+      "camera": "icon",
+      "prompt_template": "storybook UI icon, volcano daughter inspired softness, {subject}, centered symbol, clean silhouette, warm pastel palette, transparent background, game UI asset"
+    },
+    {
+      "id": "character_portrait",
+      "category": "character_portrait",
+      "workflow": "portrait_workflow",
+      "candidate_count": 6,
+      "source_resolution": {
+        "width": 256,
+        "height": 256
+      },
+      "export_presets": [
+        {
+          "name": "32",
+          "width": 32,
+          "height": 32,
+          "fit": "contain"
+        },
+        {
+          "name": "64",
+          "width": 64,
+          "height": 64,
+          "fit": "contain"
+        },
+        {
+          "name": "128",
+          "width": 128,
+          "height": 128,
+          "fit": "contain"
+        }
+      ],
+      "background": "transparent",
+      "camera": "portrait",
+      "prompt_template": "storybook game character portrait, volcano daughter inspired softness, {subject}, bust portrait, forward-facing, readable face at 64px, warm pastel palette, transparent background, game portrait asset"
+    },
+    {
+      "id": "boss_portrait",
+      "category": "boss_portrait",
+      "workflow": "portrait_workflow",
+      "candidate_count": 6,
+      "source_resolution": {
+        "width": 256,
+        "height": 256
+      },
+      "export_presets": [
+        {
+          "name": "32",
+          "width": 32,
+          "height": 32,
+          "fit": "contain"
+        },
+        {
+          "name": "64",
+          "width": 64,
+          "height": 64,
+          "fit": "contain"
+        },
+        {
+          "name": "128",
+          "width": 128,
+          "height": 128,
+          "fit": "contain"
+        }
+      ],
+      "background": "transparent",
+      "camera": "portrait",
+      "prompt_template": "storybook game boss portrait, volcano daughter inspired softness, {subject}, intimidating bust portrait, readable silhouette at 64px, warm pastel palette, transparent background, game portrait asset"
+    }
+  ]
+}

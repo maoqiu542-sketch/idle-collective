@@ -1,0 +1,253 @@
+.terrain-editor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.terrain-editor {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.editor-content h3 {
+  margin: 0 0 12px 0;
+  color: #aaa;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tools-section,
+.terrain-section,
+.brush-section {
+  margin-bottom: 20px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tool-btn.active {
+  background: rgba(100, 149, 237, 0.3);
+  border-color: #6495ED;
+}
+
+.tool-icon {
+  font-size: 20px;
+}
+
+.tool-name {
+  color: #fff;
+  font-size: 12px;
+}
+
+.tool-cost {
+  color: #ffd700;
+  font-size: 10px;
+}
+
+.terrain-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.terrain-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.terrain-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.terrain-btn.active {
+  background: rgba(100, 149, 237, 0.3);
+}
+
+.terrain-icon {
+  font-size: 20px;
+}
+
+.terrain-name {
+  color: #fff;
+  font-size: 11px;
+}
+
+.terrain-color {
+  width: 20px;
+  height: 12px;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+
+.brush-sizes {
+  display: flex;
+  gap: 8px;
+}
+
+.brush-btn {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.brush-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.brush-btn.active {
+  background: rgba(100, 149, 237, 0.3);
+  border-color: #6495ED;
+}
+
+.cost-info {
+  text-align: center;
+  padding: 12px;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.cost-info span {
+  color: #ffd700;
+  font-size: 14px;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.start-btn {
+  flex: 1;
+  padding: 14px;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.start-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.4);
+}
+
+.start-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stop-btn {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.stop-btn:hover {
+  transform: scale(1.02);
+}
+
+.editor-tip {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.editor-tip p {
+  margin: 0 0 8px 0;
+  color: #888;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.editor-tip p:last-child {
+  margin-bottom: 0;
+}

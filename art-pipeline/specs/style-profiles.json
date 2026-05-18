@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "profiles": [
+    {
+      "id": "idle_collective_pastel_map_v1",
+      "label": "Idle Collective pastel map art",
+      "description": "Warm, readable map art inspired by soft storybook 2D illustration.",
+      "model": {
+        "checkpoint": "AWPainting_v1.3.safetensors",
+        "sampler": "dpmpp_2m",
+        "scheduler": "karras",
+        "steps": 35,
+        "cfg": 5.5
+      },
+      "loras": [],
+      "negative_prompt": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges",
+      "palette": [
+        "#E8B4B8",
+        "#A8D8B9",
+        "#F4D03F",
+        "#F5E6D3",
+        "#9B8AA5",
+        "#7CBA5F"
+      ],
+      "seed_ranges": {
+        "terrain": {
+          "start": 1000,
+          "end": 1999
+        },
+        "resource_node": {
+          "start": 2000,
+          "end": 2999
+        },
+        "building_map": {
+          "start": 3000,
+          "end": 3999
+        },
+        "ui_icon_fallback": {
+          "start": 4000,
+          "end": 4999
+        },
+        "character_portrait": {
+          "start": 5000,
+          "end": 5999
+        },
+        "boss_portrait": {
+          "start": 6000,
+          "end": 6999
+        }
+      },
+      "postprocess": {
+        "safe_margin": 8,
+        "alpha_threshold": 12,
+        "blur_threshold": 0.18
+      }
+    }
+  ]
+}

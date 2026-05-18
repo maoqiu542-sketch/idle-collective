@@ -1,0 +1,59 @@
+{
+  "buildings": {
+    "warehouse": {
+      "type": "warehouse",
+      "name": "仓库",
+      "description": "存储资源的仓库",
+      "size": {
+        "width": 2,
+        "height": 2
+      },
+      "cost": {
+        "wood": 20,
+        "stone": 10
+      },
+      "capacity": 500
+    },
+    "workbench": {
+      "type": "workbench",
+      "name": "工作台",
+      "description": "加工木材和石材的工作台",
+      "size": {
+        "width": 1,
+        "height": 1
+      },
+      "cost": {
+        "wood": 15,
+        "stone": 5
+      },
+      "efficiencyBonus": 1.5
+    },
+    "kitchen": {
+      "type": "kitchen",
+      "name": "厨房",
+      "description": "烹饪食物的设施",
+      "size": {
+        "width": 2,
+        "height": 1
+      },
+      "cost": {
+        "wood": 10,
+        "stone": 15
+      }
+    },
+    "house": {
+      "type": "house",
+      "name": "房屋",
+      "description": "角色休息恢复的场所",
+      "size": {
+        "width": 2,
+        "height": 2
+      },
+      "cost": {
+        "wood": 30,
+        "stone": 20
+      },
+      "capacity": 2
+    }
+  }
+}

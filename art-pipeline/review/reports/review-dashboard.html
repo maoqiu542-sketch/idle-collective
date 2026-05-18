@@ -1,0 +1,2109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Idle Collective Art Review</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe6;
+      --panel: #fffaf2;
+      --ink: #2b261f;
+      --muted: #7b6d5a;
+      --line: #decfb9;
+      --accent: #8ab66b;
+      --accent-soft: #e7f2dd;
+      --danger: #b4574a;
+      --danger-soft: #f8e5e0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background: radial-gradient(circle at top, #fff8ec, var(--bg) 55%);
+      color: var(--ink);
+    }
+    main {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    h1, h2, h3 { margin: 0; }
+    .lead, .section-lead { color: var(--muted); }
+    .hero {
+      display: grid;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,250,242,0.92));
+      box-shadow: 0 22px 48px rgba(70, 48, 18, 0.09);
+    }
+    .hero__copy {
+      display: grid;
+      gap: 8px;
+    }
+    .eyebrow {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 800;
+      color: #6c8551;
+    }
+    .hero__copy h1 {
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.04;
+    }
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .stat {
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 14px 16px;
+      display: grid;
+      gap: 6px;
+    }
+    .stat__label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .stat strong {
+      font-size: 28px;
+      line-height: 1;
+    }
+    .stat__meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .progress-panel {
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+    .progress-panel__row,
+    .progress-panel__foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+    .progress-bar {
+      height: 14px;
+      border-radius: 999px;
+      background: #efe5d5;
+      overflow: hidden;
+    }
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #7ca856, #b4d897);
+    }
+    .section {
+      margin-top: 28px;
+      display: grid;
+      gap: 18px;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .feedback-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+    .feedback-card h3 {
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+    .feedback-card__label {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .feedback-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 250, 242, 0.94);
+      padding: 18px;
+      box-shadow: 0 18px 40px rgba(70, 48, 18, 0.08);
+    }
+    .card__header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+    .card__header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #3e5e29;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .card__badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .recommendation {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .recommendation--reject { background: var(--danger-soft); color: var(--danger); }
+    .recommendation--approve { background: var(--accent-soft); color: #3e5e29; }
+    .recommendation--manual_review { background: #efe8da; color: #705f48; }
+    .card__images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 12px;
+    }
+    figcaption {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f7f2e7, #fbfaf6);
+    }
+    .empty {
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f7f2e7, #fbfaf6);
+      color: var(--muted);
+      text-align: center;
+      padding: 12px;
+    }
+    .card__commands {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .button:disabled { opacity: 0.55; cursor: wait; }
+    .button--approve { background: #567d3a; color: #fff; }
+    .button--reject { background: #a75548; color: #fff; }
+    code {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #5b4130;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .card__meta, .card__rationale, .card__status {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 960px) {
+      .hero__stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .feedback-grid {
+        grid-template-columns: 1fr;
+      }
+      .card__images {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero__stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Live session monitor</p>
+        <h1>Idle Collective Art Pipeline</h1>
+        <p class="lead">This page shows what is running, what only passed auto-screening, and what is still waiting for your final decision.</p>
+      </div>
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__label">Auto-Screen Passed</span>
+          <strong>44/61</strong>
+          <span class="stat__meta">72% of target assets currently passed heuristic screening</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Semantic Approved</span>
+          <strong>0/61</strong>
+          <span class="stat__meta">Actually passed semantic AI review</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Final Pending</span>
+          <strong>0</strong>
+          <span class="stat__meta">Awaiting your review</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Pending Review</span>
+          <strong>0</strong>
+          <span class="stat__meta">AI queue</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Uptime</span>
+          <strong>357.39h</strong>
+          <span class="stat__meta">Last tick 2026-04-17T11:49:47.065Z</span>
+        </div>
+      </div>
+      <div class="progress-panel">
+        <div class="progress-panel__row">
+          <span>Completion</span>
+          <strong>72%</strong>
+        </div>
+        <div class="progress-bar"><span style="width:72%"></span></div>
+        <div class="progress-panel__foot">
+          <span>Next action: semantic_review_required</span>
+          <span>Heartbeat: running @ 2026-04-17T12:19:47.089Z</span>
+        </div>
+      </div>
+    </section>
+  
+    
+    <section class="section">
+      <div>
+        <h2>Failure Feedback</h2>
+        <p class="section-lead">These are the repeated problems the pipeline has learned from recent rejects, and the extra constraints now added to the next generation rounds.</p>
+      </div>
+      <div class="feedback-grid">
+        
+      <article class="feedback-card">
+        <h3>terrain</h3>
+        <p class="feedback-card__label">Recent failure patterns</p>
+        <ul><li><strong>palette_drift</strong> x82</li><li><strong>low_variation</strong> x52</li><li><strong>duplicate_candidate</strong> x46</li><li><strong>low_readability_32px</strong> x16</li></ul>
+        <p class="feedback-card__label">What the system tightened</p>
+        <ul><li>Color drift appeared repeatedly and now tightens palette guidance.</li><li>Too many near-duplicate candidates were produced.</li><li>Small-size readability failed repeatedly and is now an enforced rule.</li></ul>
+        <p class="feedback-card__label">Now strongly avoiding</p>
+        <ul><li>off-palette accents</li><li>near-identical candidate structure</li><li>micro details that disappear at 32px</li></ul>
+      </article>
+    
+
+      <article class="feedback-card">
+        <h3>resource_node</h3>
+        <p class="feedback-card__label">Recent failure patterns</p>
+        <ul><li><strong>palette_drift</strong> x2</li></ul>
+        <p class="feedback-card__label">What the system tightened</p>
+        <ul><li>Color drift appeared repeatedly and now tightens palette guidance.</li></ul>
+        <p class="feedback-card__label">Now strongly avoiding</p>
+        <ul><li>off-palette accents</li></ul>
+      </article>
+    
+
+      <article class="feedback-card">
+        <h3>building_map</h3>
+        <p class="feedback-card__label">Recent failure patterns</p>
+        <ul><li><strong>palette_drift</strong> x22</li></ul>
+        <p class="feedback-card__label">What the system tightened</p>
+        <ul><li>Color drift appeared repeatedly and now tightens palette guidance.</li></ul>
+        <p class="feedback-card__label">Now strongly avoiding</p>
+        <ul><li>off-palette accents</li></ul>
+      </article>
+    
+
+      <article class="feedback-card">
+        <h3>ui_icon_fallback</h3>
+        <p class="feedback-card__label">Recent failure patterns</p>
+        <ul><li><strong>weak_silhouette</strong> x124</li><li><strong>palette_drift</strong> x117</li><li><strong>low_readability_32px</strong> x1</li></ul>
+        <p class="feedback-card__label">What the system tightened</p>
+        <ul><li>Color drift appeared repeatedly and now tightens palette guidance.</li><li>Silhouette clarity failed repeatedly.</li></ul>
+        <p class="feedback-card__label">Now strongly avoiding</p>
+        <ul><li>off-palette accents</li><li>mushy outline</li></ul>
+      </article>
+    
+
+      <article class="feedback-card">
+        <h3>character_portrait</h3>
+        <p class="feedback-card__label">Recent failure patterns</p>
+        <ul><li><strong>portrait_crop_or_scale</strong> x36</li><li><strong>edge_dirty</strong> x32</li><li><strong>subject_out_of_frame</strong> x32</li><li><strong>subject_touching_edge</strong> x32</li></ul>
+        <p class="feedback-card__label">What the system tightened</p>
+        <ul><li>Color drift appeared repeatedly and now tightens palette guidance.</li><li>Portrait crop and scale failed repeatedly.</li><li>Subjects repeatedly touched the export edge and became hard to read.</li></ul>
+        <p class="feedback-card__label">Now strongly avoiding</p>
+        <ul><li>off-palette accents</li><li>tiny face</li><li>off-center bust crop</li><li>cropped subject touching frame edge</li></ul>
+      </article>
+    
+
+      <article class="feedback-card">
+        <h3>boss_portrait</h3>
+        <p class="feedback-card__label">Recent failure patterns</p>
+        <ul><li><strong>low_readability_32px</strong> x46</li><li><strong>palette_drift</strong> x43</li><li><strong>edge_dirty</strong> x15</li><li><strong>subject_out_of_frame</strong> x15</li></ul>
+        <p class="feedback-card__label">What the system tightened</p>
+        <ul><li>Color drift appeared repeatedly and now tightens palette guidance.</li><li>Small-size readability failed repeatedly and is now an enforced rule.</li><li>Subjects repeatedly touched the export edge and became hard to read.</li><li>Portrait crop and scale failed repeatedly.</li></ul>
+        <p class="feedback-card__label">Now strongly avoiding</p>
+        <ul><li>off-palette accents</li><li>micro details that disappear at 32px</li><li>cropped subject touching frame edge</li><li>tiny face</li></ul>
+      </article>
+    
+      </div>
+    </section>
+  
+
+    <section class="section">
+      <div>
+        <h2>AI Review Queue</h2>
+        <p class="section-lead">Candidates waiting for QC and heuristic auto-screening.</p>
+      </div>
+      <div class="grid">
+        <p>No pending AI review assets.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div>
+        <h2>Auto-Screen Passed</h2>
+        <p class="section-lead">These assets only passed heuristic screening. They are not semantic AI approvals and should not be promoted as final-ready.</p>
+      </div>
+      <div class="grid">
+        
+    <article class="card" data-asset-id="terrain_forest_c" data-variant="cand29">
+      <div class="card__header">
+        <div>
+          <h2>terrain_forest_c</h2>
+          <p>terrain · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_forest_c/terrain_forest_c__src__v001__seed1007.svg" alt="terrain_forest_c current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_forest_c/terrain_forest_c__cand29__v001.png" alt="terrain_forest_c candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/terrain_forest_c__staged-preview.png" alt="terrain_forest_c preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 90, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="terrain_forest_c" data-variant="cand29">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="terrain_forest_c" data-variant="cand29">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=terrain_forest_c</code>
+        <code>npm run art:final-review -- --action=reject --asset=terrain_forest_c</code>
+      </div>
+      <p class="card__status" id="status-final-terrain_forest_c">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T07:43:28.953Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="terrain_mountain_b" data-variant="cand29">
+      <div class="card__header">
+        <div>
+          <h2>terrain_mountain_b</h2>
+          <p>terrain · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_mountain_b/terrain_mountain_b__src__v001__seed1009.svg" alt="terrain_mountain_b current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_mountain_b/terrain_mountain_b__cand29__v001.png" alt="terrain_mountain_b candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/terrain_mountain_b__staged-preview.png" alt="terrain_mountain_b preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="terrain_mountain_b" data-variant="cand29">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="terrain_mountain_b" data-variant="cand29">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=terrain_mountain_b</code>
+        <code>npm run art:final-review -- --action=reject --asset=terrain_mountain_b</code>
+      </div>
+      <p class="card__status" id="status-final-terrain_mountain_b">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T08:44:29.157Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="terrain_mountain_c" data-variant="cand29">
+      <div class="card__header">
+        <div>
+          <h2>terrain_mountain_c</h2>
+          <p>terrain · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_mountain_c/terrain_mountain_c__src__v001__seed1010.svg" alt="terrain_mountain_c current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_mountain_c/terrain_mountain_c__cand29__v001.png" alt="terrain_mountain_c candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/terrain_mountain_c__staged-preview.png" alt="terrain_mountain_c preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 89, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="terrain_mountain_c" data-variant="cand29">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="terrain_mountain_c" data-variant="cand29">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=terrain_mountain_c</code>
+        <code>npm run art:final-review -- --action=reject --asset=terrain_mountain_c</code>
+      </div>
+      <p class="card__status" id="status-final-terrain_mountain_c">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T09:15:20.453Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="terrain_water" data-variant="cand28">
+      <div class="card__header">
+        <div>
+          <h2>terrain_water</h2>
+          <p>terrain · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_water/terrain_water__src__v001__seed1011.svg" alt="terrain_water current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_water/terrain_water__cand28__v001.png" alt="terrain_water candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/terrain_water__staged-preview.png" alt="terrain_water preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="terrain_water" data-variant="cand28">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="terrain_water" data-variant="cand28">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=terrain_water</code>
+        <code>npm run art:final-review -- --action=reject --asset=terrain_water</code>
+      </div>
+      <p class="card__status" id="status-final-terrain_water">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T03:39:08.635Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="terrain_sand_c" data-variant="cand04">
+      <div class="card__header">
+        <div>
+          <h2>terrain_sand_c</h2>
+          <p>terrain · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_sand_c/terrain_sand_c__src__v001__seed1016.svg" alt="terrain_sand_c current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/terrain/terrain_sand_c/terrain_sand_c__cand04__v001.png" alt="terrain_sand_c candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/terrain_sand_c__staged-preview.png" alt="terrain_sand_c preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 92, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="terrain_sand_c" data-variant="cand04">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="terrain_sand_c" data-variant="cand04">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=terrain_sand_c</code>
+        <code>npm run art:final-review -- --action=reject --asset=terrain_sand_c</code>
+      </div>
+      <p class="card__status" id="status-final-terrain_sand_c">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T15:26:47.868Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="resource_tree" data-variant="cand27">
+      <div class="card__header">
+        <div>
+          <h2>resource_tree</h2>
+          <p>resource_node · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_tree/resource_tree__src__v001__seed2000.svg" alt="resource_tree current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_tree/resource_tree__cand27__v001.png" alt="resource_tree candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/resource_tree__staged-preview.png" alt="resource_tree preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 92, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="resource_tree" data-variant="cand27">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="resource_tree" data-variant="cand27">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=resource_tree</code>
+        <code>npm run art:final-review -- --action=reject --asset=resource_tree</code>
+      </div>
+      <p class="card__status" id="status-final-resource_tree">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T15:58:01.417Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="resource_rock" data-variant="cand08">
+      <div class="card__header">
+        <div>
+          <h2>resource_rock</h2>
+          <p>resource_node · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_rock/resource_rock__src__v001__seed2001.svg" alt="resource_rock current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_rock/resource_rock__cand08__v001.png" alt="resource_rock candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/resource_rock__staged-preview.png" alt="resource_rock preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 98, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="resource_rock" data-variant="cand08">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="resource_rock" data-variant="cand08">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=resource_rock</code>
+        <code>npm run art:final-review -- --action=reject --asset=resource_rock</code>
+      </div>
+      <p class="card__status" id="status-final-resource_rock">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-07T06:32:55.679Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="resource_crop" data-variant="cand27">
+      <div class="card__header">
+        <div>
+          <h2>resource_crop</h2>
+          <p>resource_node · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_crop/resource_crop__src__v001__seed2002.svg" alt="resource_crop current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_crop/resource_crop__cand27__v001.png" alt="resource_crop candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/resource_crop__staged-preview.png" alt="resource_crop preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 93, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="resource_crop" data-variant="cand27">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="resource_crop" data-variant="cand27">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=resource_crop</code>
+        <code>npm run art:final-review -- --action=reject --asset=resource_crop</code>
+      </div>
+      <p class="card__status" id="status-final-resource_crop">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T16:28:34.908Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="resource_ore" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>resource_ore</h2>
+          <p>resource_node · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_ore/resource_ore__src__v001__seed2003.svg" alt="resource_ore current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/resource_node/resource_ore/resource_ore__cand26__v001.png" alt="resource_ore candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/resource_ore__staged-preview.png" alt="resource_ore preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="resource_ore" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="resource_ore" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=resource_ore</code>
+        <code>npm run art:final-review -- --action=reject --asset=resource_ore</code>
+      </div>
+      <p class="card__status" id="status-final-resource_ore">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T15:27:01.837Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_lumber_mill" data-variant="cand27">
+      <div class="card__header">
+        <div>
+          <h2>building_lumber_mill</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_lumber_mill/building_lumber_mill__src__v001__seed3000.svg" alt="building_lumber_mill current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_lumber_mill/building_lumber_mill__cand27__v001.png" alt="building_lumber_mill candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_lumber_mill__staged-preview.png" alt="building_lumber_mill preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 90, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_lumber_mill" data-variant="cand27">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_lumber_mill" data-variant="cand27">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_lumber_mill</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_lumber_mill</code>
+      </div>
+      <p class="card__status" id="status-final-building_lumber_mill">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T19:31:26.125Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_quarry" data-variant="cand27">
+      <div class="card__header">
+        <div>
+          <h2>building_quarry</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_quarry/building_quarry__src__v001__seed3001.svg" alt="building_quarry current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_quarry/building_quarry__cand27__v001.png" alt="building_quarry candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_quarry__staged-preview.png" alt="building_quarry preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 87, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_quarry" data-variant="cand27">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_quarry" data-variant="cand27">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_quarry</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_quarry</code>
+      </div>
+      <p class="card__status" id="status-final-building_quarry">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T20:01:51.967Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_farm" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_farm</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_farm/building_farm__src__v001__seed3002.svg" alt="building_farm current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_farm/building_farm__cand26__v001.png" alt="building_farm candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_farm__staged-preview.png" alt="building_farm preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 90, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_farm" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_farm" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_farm</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_farm</code>
+      </div>
+      <p class="card__status" id="status-final-building_farm">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T15:27:09.042Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_warehouse" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_warehouse</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_warehouse/building_warehouse__src__v001__seed3003.svg" alt="building_warehouse current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_warehouse/building_warehouse__cand26__v001.png" alt="building_warehouse candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_warehouse__staged-preview.png" alt="building_warehouse preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 89, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_warehouse" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_warehouse" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_warehouse</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_warehouse</code>
+      </div>
+      <p class="card__status" id="status-final-building_warehouse">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T15:58:09.106Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_kitchen" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_kitchen</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_kitchen/building_kitchen__src__v001__seed3004.svg" alt="building_kitchen current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_kitchen/building_kitchen__cand26__v001.png" alt="building_kitchen candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_kitchen__staged-preview.png" alt="building_kitchen preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_kitchen" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_kitchen" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_kitchen</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_kitchen</code>
+      </div>
+      <p class="card__status" id="status-final-building_kitchen">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T16:28:40.038Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_house" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_house</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_house/building_house__src__v001__seed3005.svg" alt="building_house current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_house/building_house__cand26__v001.png" alt="building_house candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_house__staged-preview.png" alt="building_house preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_house" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_house" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_house</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_house</code>
+      </div>
+      <p class="card__status" id="status-final-building_house">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T16:59:08.106Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_trade_station" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_trade_station</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_trade_station/building_trade_station__src__v001__seed3006.svg" alt="building_trade_station current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_trade_station/building_trade_station__cand26__v001.png" alt="building_trade_station candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_trade_station__staged-preview.png" alt="building_trade_station preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 90, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_trade_station" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_trade_station" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_trade_station</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_trade_station</code>
+      </div>
+      <p class="card__status" id="status-final-building_trade_station">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T17:29:32.329Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_barracks" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_barracks</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_barracks/building_barracks__src__v001__seed3007.svg" alt="building_barracks current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_barracks/building_barracks__cand26__v001.png" alt="building_barracks candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_barracks__staged-preview.png" alt="building_barracks preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 89, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_barracks" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_barracks" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_barracks</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_barracks</code>
+      </div>
+      <p class="card__status" id="status-final-building_barracks">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T17:59:58.937Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_recruitment_station" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_recruitment_station</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_recruitment_station/building_recruitment_station__src__v001__seed3008.svg" alt="building_recruitment_station current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_recruitment_station/building_recruitment_station__cand26__v001.png" alt="building_recruitment_station candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_recruitment_station__staged-preview.png" alt="building_recruitment_station preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 92, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_recruitment_station" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_recruitment_station" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_recruitment_station</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_recruitment_station</code>
+      </div>
+      <p class="card__status" id="status-final-building_recruitment_station">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T18:30:30.162Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="building_research_desk" data-variant="cand26">
+      <div class="card__header">
+        <div>
+          <h2>building_research_desk</h2>
+          <p>building_map · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/building_map/building_research_desk/building_research_desk__src__v001__seed3009.svg" alt="building_research_desk current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/building_map/building_research_desk/building_research_desk__cand26__v001.png" alt="building_research_desk candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/building_research_desk__staged-preview.png" alt="building_research_desk preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="building_research_desk" data-variant="cand26">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="building_research_desk" data-variant="cand26">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=building_research_desk</code>
+        <code>npm run art:final-review -- --action=reject --asset=building_research_desk</code>
+      </div>
+      <p class="card__status" id="status-final-building_research_desk">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T19:00:59.161Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_resource_core_parts" data-variant="cand10">
+      <div class="card__header">
+        <div>
+          <h2>ui_resource_core_parts</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_resource_core_parts/ui_resource_core_parts__src__v001__seed4004.svg" alt="ui_resource_core_parts current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_resource_core_parts/ui_resource_core_parts__cand10__v001.png" alt="ui_resource_core_parts candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_resource_core_parts__staged-preview.png" alt="ui_resource_core_parts preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_resource_core_parts" data-variant="cand10">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_resource_core_parts" data-variant="cand10">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_resource_core_parts</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_resource_core_parts</code>
+      </div>
+      <p class="card__status" id="status-final-ui_resource_core_parts">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T02:38:14.621Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_profession_gatherer" data-variant="cand09">
+      <div class="card__header">
+        <div>
+          <h2>ui_profession_gatherer</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_gatherer/ui_profession_gatherer__src__v001__seed4007.svg" alt="ui_profession_gatherer current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_gatherer/ui_profession_gatherer__cand09__v001.png" alt="ui_profession_gatherer candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_profession_gatherer__staged-preview.png" alt="ui_profession_gatherer preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_profession_gatherer" data-variant="cand09">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_profession_gatherer" data-variant="cand09">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_profession_gatherer</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_profession_gatherer</code>
+      </div>
+      <p class="card__status" id="status-final-ui_profession_gatherer">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T21:33:02.790Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_profession_builder" data-variant="cand09">
+      <div class="card__header">
+        <div>
+          <h2>ui_profession_builder</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_builder/ui_profession_builder__src__v001__seed4008.svg" alt="ui_profession_builder current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_builder/ui_profession_builder__cand09__v001.png" alt="ui_profession_builder candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_profession_builder__staged-preview.png" alt="ui_profession_builder preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 87, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_profession_builder" data-variant="cand09">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_profession_builder" data-variant="cand09">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_profession_builder</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_profession_builder</code>
+      </div>
+      <p class="card__status" id="status-final-ui_profession_builder">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T22:03:24.112Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_profession_farmer" data-variant="cand11">
+      <div class="card__header">
+        <div>
+          <h2>ui_profession_farmer</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_farmer/ui_profession_farmer__src__v001__seed4009.svg" alt="ui_profession_farmer current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_farmer/ui_profession_farmer__cand11__v001.png" alt="ui_profession_farmer candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_profession_farmer__staged-preview.png" alt="ui_profession_farmer preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_profession_farmer" data-variant="cand11">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_profession_farmer" data-variant="cand11">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_profession_farmer</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_profession_farmer</code>
+      </div>
+      <p class="card__status" id="status-final-ui_profession_farmer">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T09:15:28.656Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_profession_warrior" data-variant="cand10">
+      <div class="card__header">
+        <div>
+          <h2>ui_profession_warrior</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_warrior/ui_profession_warrior__src__v001__seed4010.svg" alt="ui_profession_warrior current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_warrior/ui_profession_warrior__cand10__v001.png" alt="ui_profession_warrior candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_profession_warrior__staged-preview.png" alt="ui_profession_warrior preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 86, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_profession_warrior" data-variant="cand10">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_profession_warrior" data-variant="cand10">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_profession_warrior</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_profession_warrior</code>
+      </div>
+      <p class="card__status" id="status-final-ui_profession_warrior">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T04:40:17.733Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_profession_researcher" data-variant="cand11">
+      <div class="card__header">
+        <div>
+          <h2>ui_profession_researcher</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_researcher/ui_profession_researcher__src__v001__seed4011.svg" alt="ui_profession_researcher current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_profession_researcher/ui_profession_researcher__cand11__v001.png" alt="ui_profession_researcher candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_profession_researcher__staged-preview.png" alt="ui_profession_researcher preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 91, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_profession_researcher" data-variant="cand11">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_profession_researcher" data-variant="cand11">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_profession_researcher</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_profession_researcher</code>
+      </div>
+      <p class="card__status" id="status-final-ui_profession_researcher">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T09:46:21.737Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_building_default" data-variant="cand08">
+      <div class="card__header">
+        <div>
+          <h2>ui_building_default</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_building_default/ui_building_default__src__v001__seed4012.svg" alt="ui_building_default current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_building_default/ui_building_default__cand08__v001.png" alt="ui_building_default candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_building_default__staged-preview.png" alt="ui_building_default preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 86, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_building_default" data-variant="cand08">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_building_default" data-variant="cand08">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_building_default</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_building_default</code>
+      </div>
+      <p class="card__status" id="status-final-ui_building_default">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T16:28:47.894Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_resource_default" data-variant="cand09">
+      <div class="card__header">
+        <div>
+          <h2>ui_resource_default</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_resource_default/ui_resource_default__src__v001__seed4013.svg" alt="ui_resource_default current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_resource_default/ui_resource_default__cand09__v001.png" alt="ui_resource_default candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_resource_default__staged-preview.png" alt="ui_resource_default preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_resource_default" data-variant="cand09">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_resource_default" data-variant="cand09">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_resource_default</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_resource_default</code>
+      </div>
+      <p class="card__status" id="status-final-ui_resource_default">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T00:05:24.851Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="ui_terrain_default" data-variant="cand08">
+      <div class="card__header">
+        <div>
+          <h2>ui_terrain_default</h2>
+          <p>ui_icon_fallback · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_terrain_default/ui_terrain_default__src__v001__seed4014.svg" alt="ui_terrain_default current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/ui_icon_fallback/ui_terrain_default/ui_terrain_default__cand08__v001.png" alt="ui_terrain_default candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/ui_terrain_default__staged-preview.png" alt="ui_terrain_default preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 82, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="ui_terrain_default" data-variant="cand08">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="ui_terrain_default" data-variant="cand08">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=ui_terrain_default</code>
+        <code>npm run art:final-review -- --action=reject --asset=ui_terrain_default</code>
+      </div>
+      <p class="card__status" id="status-final-ui_terrain_default">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-16T17:29:38.554Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_farmer" data-variant="cand07">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_farmer</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_farmer/character_portrait_farmer__src__v001__seed5000.svg" alt="character_portrait_farmer current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_farmer/character_portrait_farmer__cand07__v001.png" alt="character_portrait_farmer candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_farmer__staged-preview.png" alt="character_portrait_farmer preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 82, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_farmer" data-variant="cand07">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_farmer" data-variant="cand07">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_farmer</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_farmer</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_farmer">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T06:12:02.471Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_hunter" data-variant="cand09">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_hunter</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_hunter/character_portrait_hunter__src__v001__seed5001.svg" alt="character_portrait_hunter current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_hunter/character_portrait_hunter__cand09__v001.png" alt="character_portrait_hunter candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_hunter__staged-preview.png" alt="character_portrait_hunter preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 84, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_hunter" data-variant="cand09">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_hunter" data-variant="cand09">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_hunter</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_hunter</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_hunter">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T10:17:35.998Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_warrior" data-variant="cand07">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_warrior</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_warrior/character_portrait_warrior__src__v001__seed5002.svg" alt="character_portrait_warrior current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_warrior/character_portrait_warrior__cand07__v001.png" alt="character_portrait_warrior candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_warrior__staged-preview.png" alt="character_portrait_warrior preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 84, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_warrior" data-variant="cand07">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_warrior" data-variant="cand07">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_warrior</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_warrior</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_warrior">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T07:13:14.167Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_engineer" data-variant="cand07">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_engineer</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_engineer/character_portrait_engineer__src__v001__seed5003.svg" alt="character_portrait_engineer current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_engineer/character_portrait_engineer__cand07__v001.png" alt="character_portrait_engineer candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_engineer__staged-preview.png" alt="character_portrait_engineer preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_engineer" data-variant="cand07">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_engineer" data-variant="cand07">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_engineer</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_engineer</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_engineer">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T07:43:41.041Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_cook" data-variant="cand07">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_cook</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_cook/character_portrait_cook__src__v001__seed5004.svg" alt="character_portrait_cook current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_cook/character_portrait_cook__cand07__v001.png" alt="character_portrait_cook candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_cook__staged-preview.png" alt="character_portrait_cook preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_cook" data-variant="cand07">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_cook" data-variant="cand07">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_cook</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_cook</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_cook">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T08:14:11.659Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_doctor" data-variant="cand07">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_doctor</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_doctor/character_portrait_doctor__src__v001__seed5005.svg" alt="character_portrait_doctor current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_doctor/character_portrait_doctor__cand07__v001.png" alt="character_portrait_doctor candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_doctor__staged-preview.png" alt="character_portrait_doctor preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_doctor" data-variant="cand07">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_doctor" data-variant="cand07">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_doctor</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_doctor</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_doctor">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T08:44:51.081Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="character_portrait_scholar" data-variant="cand07">
+      <div class="card__header">
+        <div>
+          <h2>character_portrait_scholar</h2>
+          <p>character_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_scholar/character_portrait_scholar__src__v001__seed5006.svg" alt="character_portrait_scholar current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/character_portrait/character_portrait_scholar/character_portrait_scholar__cand07__v001.png" alt="character_portrait_scholar candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/character_portrait_scholar__staged-preview.png" alt="character_portrait_scholar preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 85, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="character_portrait_scholar" data-variant="cand07">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="character_portrait_scholar" data-variant="cand07">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=character_portrait_scholar</code>
+        <code>npm run art:final-review -- --action=reject --asset=character_portrait_scholar</code>
+      </div>
+      <p class="card__status" id="status-final-character_portrait_scholar">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T09:15:35.893Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="boss_portrait_01" data-variant="cand10">
+      <div class="card__header">
+        <div>
+          <h2>boss_portrait_01</h2>
+          <p>boss_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_01/boss_portrait_01__src__v001__seed6000.svg" alt="boss_portrait_01 current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_01/boss_portrait_01__cand10__v001.png" alt="boss_portrait_01 candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/boss_portrait_01__staged-preview.png" alt="boss_portrait_01 preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 82, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="boss_portrait_01" data-variant="cand10">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="boss_portrait_01" data-variant="cand10">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=boss_portrait_01</code>
+        <code>npm run art:final-review -- --action=reject --asset=boss_portrait_01</code>
+      </div>
+      <p class="card__status" id="status-final-boss_portrait_01">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T05:11:01.747Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="boss_portrait_02" data-variant="cand10">
+      <div class="card__header">
+        <div>
+          <h2>boss_portrait_02</h2>
+          <p>boss_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_02/boss_portrait_02__src__v001__seed6001.svg" alt="boss_portrait_02 current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_02/boss_portrait_02__cand10__v001.png" alt="boss_portrait_02 candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/boss_portrait_02__staged-preview.png" alt="boss_portrait_02 preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 82, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="boss_portrait_02" data-variant="cand10">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="boss_portrait_02" data-variant="cand10">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=boss_portrait_02</code>
+        <code>npm run art:final-review -- --action=reject --asset=boss_portrait_02</code>
+      </div>
+      <p class="card__status" id="status-final-boss_portrait_02">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T06:12:22.127Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="boss_portrait_03" data-variant="cand08">
+      <div class="card__header">
+        <div>
+          <h2>boss_portrait_03</h2>
+          <p>boss_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_03/boss_portrait_03__src__v001__seed6002.svg" alt="boss_portrait_03 current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_03/boss_portrait_03__cand08__v001.png" alt="boss_portrait_03 candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/boss_portrait_03__staged-preview.png" alt="boss_portrait_03 preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 82, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="boss_portrait_03" data-variant="cand08">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="boss_portrait_03" data-variant="cand08">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=boss_portrait_03</code>
+        <code>npm run art:final-review -- --action=reject --asset=boss_portrait_03</code>
+      </div>
+      <p class="card__status" id="status-final-boss_portrait_03">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T02:07:49.782Z</p>
+    </article>
+  
+
+    <article class="card" data-asset-id="boss_portrait_05" data-variant="cand08">
+      <div class="card__header">
+        <div>
+          <h2>boss_portrait_05</h2>
+          <p>boss_portrait · final review pending</p>
+        </div>
+        <div class="card__badges">
+          <span class="badge">seeded</span>
+          <span class="recommendation recommendation--manual_review">manual_review</span>
+        </div>
+      </div>
+      <div class="card__images">
+        <figure>
+          <figcaption>Current Runtime</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_05/boss_portrait_05__src__v001__seed6004.svg" alt="boss_portrait_05 current runtime" />
+        </figure>
+        <figure>
+          <figcaption>Staged Asset</figcaption>
+          <img src="../../../art-source/generated/boss_portrait/boss_portrait_05/boss_portrait_05__cand08__v001.png" alt="boss_portrait_05 candidate" />
+        </figure>
+        <figure>
+          <figcaption>Staged Preview</figcaption>
+          <img src="previews/boss_portrait_05__staged-preview.png" alt="boss_portrait_05 preview" />
+        </figure>
+      </div>
+      <p class="card__rationale">Heuristic auto-screen passed with score 83, but no semantic visual AI review was performed. Keep this in staging only.</p>
+      <p class="card__meta">Review method: heuristic_screen | Semantic checked: no</p>
+      <div class="card__commands">
+        <div class="button-row">
+          <button class="button button--approve" data-action="final-approve" data-asset="boss_portrait_05" data-variant="cand08">Promote To Live</button>
+          <button class="button button--reject" data-action="final-reject" data-asset="boss_portrait_05" data-variant="cand08">Reject Final</button>
+        </div>
+        <code>npm run art:final-review -- --action=approve --asset=boss_portrait_05</code>
+        <code>npm run art:final-review -- --action=reject --asset=boss_portrait_05</code>
+      </div>
+      <p class="card__status" id="status-final-boss_portrait_05">Ready for review.</p>
+      <p class="card__meta">Updated at 2026-04-17T03:08:58.646Z</p>
+    </article>
+  
+      </div>
+    </section>
+
+    <section class="section">
+      <div>
+        <h2>Final Review Queue</h2>
+        <p class="section-lead">Only assets with actual semantic AI review may appear here before your final approval.</p>
+      </div>
+      <div class="grid">
+        <p>No final review pending assets.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    async function refreshMonitor() {
+      try {
+        const response = await fetch('http://127.0.0.1:4318/monitor')
+        if (!response.ok) {
+          return
+        }
+
+        const payload = await response.json()
+        const session = payload.monitorSession || {}
+        const heartbeat = payload.heartbeat || {}
+        const approved = session.autoScreenPassedCount ?? 0
+        const semanticApproved = session.semanticApprovedCount ?? 0
+        const target = session.targetAssetCount ?? 0
+        const percent = target > 0 ? Math.round((approved / target) * 100) : 0
+
+        const statNodes = document.querySelectorAll('.stat strong')
+        if (statNodes[0]) statNodes[0].textContent = approved + '/' + target
+        if (statNodes[1]) statNodes[1].textContent = semanticApproved + '/' + target
+        if (statNodes[2]) statNodes[2].textContent = session.finalPendingCount ?? (payload.queue?.finalPending || []).length
+        if (statNodes[3]) statNodes[3].textContent = session.pendingReviewCount ?? (payload.queue?.pending || []).length
+        if (statNodes[4]) statNodes[4].textContent = ((session.elapsedMs || 0) / 3600000).toFixed(2) + 'h'
+
+        const progressValue = document.querySelector('.progress-panel__row strong')
+        const bar = document.querySelector('.progress-bar span')
+        const foot = document.querySelector('.progress-panel__foot')
+        if (progressValue) progressValue.textContent = percent + '%'
+        if (bar) bar.style.width = percent + '%'
+        if (foot) {
+          const nextRunAt = heartbeat.nextRunAt ? ', next tick ' + heartbeat.nextRunAt : ''
+          foot.innerHTML = '<span>Next action: ' + (session.nextAction || 'idle') + '</span><span>Heartbeat: ' + (heartbeat.status || 'unknown') + ' @ ' + (heartbeat.updatedAt || 'n/a') + nextRunAt + '</span>'
+        }
+
+        const feedbackPayload = payload.reviewFeedback || { categories: {} }
+        const feedbackGrid = document.querySelector('.feedback-grid')
+        if (feedbackGrid) {
+          const entries = Object.entries(feedbackPayload.categories || {})
+          feedbackGrid.innerHTML = entries.map(([category, entry]) => {
+            const failures = Object.entries(entry?.observed_failures || {})
+              .sort((left, right) => right[1] - left[1])
+              .slice(0, 4)
+              .map(([tag, count]) => '<li><strong>' + tag + '</strong> x' + count + '</li>')
+              .join('')
+            const notes = (entry?.enforced_additions?.notes || [])
+              .slice(0, 4)
+              .map(note => '<li>' + note + '</li>')
+              .join('')
+            const mustAvoid = (entry?.enforced_additions?.must_avoid || [])
+              .slice(0, 4)
+              .map(note => '<li>' + note + '</li>')
+              .join('')
+            return '<article class="feedback-card"><h3>' + category + '</h3><p class="feedback-card__label">Recent failure patterns</p><ul>' + (failures || '<li>No repeated failures yet.</li>') + '</ul><p class="feedback-card__label">What the system tightened</p><ul>' + (notes || '<li>No extra feedback rules yet.</li>') + '</ul><p class="feedback-card__label">Now strongly avoiding</p><ul>' + (mustAvoid || '<li>No extra avoid rules yet.</li>') + '</ul></article>'
+          }).join('')
+        }
+      } catch (error) {
+        console.warn(error)
+      }
+    }
+
+    async function submitReview(button) {
+      const asset = button.dataset.asset
+      const action = button.dataset.action
+      const variant = button.dataset.variant
+      const article = button.closest('.card')
+      const prefix = action.startsWith('final') ? 'final' : 'ai'
+      const statusNode = document.getElementById('status-' + prefix + '-' + asset)
+      const buttons = article.querySelectorAll('button')
+
+      buttons.forEach(node => { node.disabled = true })
+      statusNode.textContent = 'Submitting ' + action + '...'
+
+      try {
+        const response = await fetch(action.startsWith('final') ? 'http://127.0.0.1:4318/final-review' : 'http://127.0.0.1:4318/review', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ asset, action, variant })
+        })
+
+        const payload = await response.json()
+        if (!response.ok) {
+          throw new Error(payload.error || 'Request failed.')
+        }
+
+        statusNode.textContent = payload.message || 'Updated.'
+        article.style.opacity = '0.55'
+      } catch (error) {
+        statusNode.textContent = error.message
+        buttons.forEach(node => { node.disabled = false })
+      }
+    }
+
+    document.querySelectorAll('button[data-action]').forEach(button => {
+      button.addEventListener('click', () => submitReview(button))
+    })
+
+    refreshMonitor()
+    setInterval(refreshMonitor, 60000)
+  </script>
+</body>
+</html>

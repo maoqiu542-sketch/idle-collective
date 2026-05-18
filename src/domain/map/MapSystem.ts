@@ -1,8 +1,3 @@
-/**
- * 地图系统 - 管理地图数据和地形
- * @module domain/map/MapSystem
- */
-
 import { SimplexNoise } from '@utils/noise'
 import {
   MapData,
@@ -13,9 +8,27 @@ import {
 } from '@app-types/map.types'
 import { EventBus } from '@core/EventBus'
 
-interface ResourceCluster {
+interface TerrainCluster {
+  type: TerrainType
+  center: Position
+  coreRadius: number
+  transitionRadius: number
+}
+
+interface ResourcePoint {
   type: ResourceType
-  positions: Position[]
+  position: Position
+  amount: number
+  maxAmount: number
+  respawnable: boolean
+  respawnTime: number
+}
+
+const RESOURCE_POINT_TYPES: Record<string, { resource: ResourceType; terrain: TerrainType[]; icon: string; name: string }> = {
+  tree: { resource: ResourceType.WOOD, terrain: [TerrainType.FOREST], icon: '🌲', name: '树木' },
+  rock: { resource: ResourceType.STONE, terrain: [TerrainType.MOUNTAIN], icon: '🪨', name: '石头' },
+  crop: { resource: ResourceType.FOOD, terrain: [TerrainType.GRASS, TerrainType.FOREST], icon: '🌾', name: '野生作物' },
+  ore: { resource: ResourceType.GOLD, terrain: [TerrainType.MOUNTAIN, TerrainType.SAND], icon: '💎', name: '矿石' },
 }
 
 export class MapSystem {
@@ -24,9 +37,10 @@ export class MapSystem {
   private eventBus: EventBus
   private width: number
   private height: number
-  private resourceClusters: ResourceCluster[] = []
+  private terrainClusters: TerrainCluster[] = []
+  private resourcePoints: ResourcePoint[] = []
 
-  constructor(eventBus: EventBus, width: number = 100, height: number = 100) {
+  constructor(eventBus: EventBus, width: number = 50, height: number = 50) {
     this.noise = new SimplexNoise(12345)
     this.eventBus = eventBus
     this.width = width
@@ -49,8 +63,9 @@ export class MapSystem {
       }
     }
 
-    this.generateResourceClusters()
-    this.placeClusteredResources(tiles)
+    this.generateTerrainClusters()
+    this.applyTerrainClusters(tiles)
+    this.generateResourcePoints(tiles)
 
     this.mapData = {
       width: this.width,
@@ -67,125 +82,125 @@ export class MapSystem {
   }
 
   private generateTile(x: number, y: number): Tile {
-    const terrain = this.determineTerrain(x, y)
-    
     return {
       position: { x, y },
-      terrain,
+      terrain: TerrainType.GRASS,
       resource: undefined,
-      isPassable: terrain !== TerrainType.WATER,
-      movementCost: this.getMovementCost(terrain),
+      isPassable: true,
+      movementCost: 1,
     }
   }
 
-  private determineTerrain(x: number, y: number): TerrainType {
-    const scale1 = 0.08
-    const scale2 = 0.25
-    const scale3 = 0.5
+  private generateTerrainClusters(): void {
+    this.terrainClusters = []
 
-    const noise1 = this.noise.noise2D(x * scale1 + 1000, y * scale1 + 1000)
-    const noise2 = this.noise.noise2D(x * scale2 + 2000, y * scale2 + 2000)
-    const noise3 = this.noise.noise2D(x * scale3 + 3000, y * scale3 + 3000)
+    const clusterConfigs: { type: TerrainType; count: number; minCore: number; maxCore: number }[] = [
+      { type: TerrainType.FOREST, count: 3, minCore: 4, maxCore: 7 },
+      { type: TerrainType.MOUNTAIN, count: 2, minCore: 3, maxCore: 5 },
+      { type: TerrainType.WATER, count: 2, minCore: 3, maxCore: 6 },
+      { type: TerrainType.SAND, count: 1, minCore: 2, maxCore: 4 },
+      { type: TerrainType.SNOW, count: 1, minCore: 2, maxCore: 3 },
+    ]
 
-    const combined = noise1 * 0.5 + noise2 * 0.3 + noise3 * 0.2
+    for (const config of clusterConfigs) {
+      for (let i = 0; i < config.count; i++) {
+        const centerX = 5 + Math.floor(Math.random() * (this.width - 10))
+        const centerY = 5 + Math.floor(Math.random() * (this.height - 10))
+        const coreRadius = config.minCore + Math.floor(Math.random() * (config.maxCore - config.minCore))
+        const transitionRadius = coreRadius + 2 + Math.floor(Math.random() * 2)
 
-    if (combined < -0.5) return TerrainType.WATER
-    if (combined < -0.2) return TerrainType.SAND
-    if (combined < 0.3) return TerrainType.GRASS
-    if (combined < 0.6) return TerrainType.FOREST
-    if (combined < 0.8) return TerrainType.MOUNTAIN
-    return TerrainType.SNOW
+        this.terrainClusters.push({
+          type: config.type,
+          center: { x: centerX, y: centerY },
+          coreRadius,
+          transitionRadius,
+        })
+      }
+    }
   }
 
-  private generateResourceClusters(): void {
-    this.resourceClusters = []
+  private applyTerrainClusters(tiles: Tile[][]): void {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        const tile = tiles[y][x]
+        let bestTerrain: TerrainType = TerrainType.GRASS
+        let bestWeight = 0
 
-    const clusterCount = Math.max(5, Math.floor((this.width * this.height) / 80))
+        for (const cluster of this.terrainClusters) {
+          const dist = Math.sqrt(
+            Math.pow(x - cluster.center.x, 2) + 
+            Math.pow(y - cluster.center.y, 2)
+          )
 
-    for (let i = 0; i < clusterCount; i++) {
-      const centerX = Math.floor(Math.random() * this.width)
-      const centerY = Math.floor(Math.random() * this.height)
-      const radius = 3 + Math.floor(Math.random() * 5)
-      
-      const random = Math.random() * 100
-
-      let resourceType: ResourceType
-      if (random < 15) {
-        resourceType = ResourceType.GOLD
-      } else if (random < 35) {
-        resourceType = ResourceType.FOOD
-      } else if (random < 65) {
-        resourceType = ResourceType.WOOD
-      } else {
-        resourceType = ResourceType.STONE
-      }
-      
-      const positions: Position[] = []
-      for (let dy = -radius; dy <= radius; dy++) {
-        for (let dx = -radius; dx <= radius; dx++) {
-          const px = centerX + dx
-          const py = centerY + dy
-          
-          if (px >= 0 && px < this.width && py >= 0 && py < this.height) {
-            const dist = Math.sqrt(dx * dx + dy * dy)
-            if (dist <= radius && Math.random() < 0.7) {
-              positions.push({ x: px, y: py })
+          if (dist <= cluster.coreRadius) {
+            bestTerrain = cluster.type
+            bestWeight = 1.0
+          } else if (dist <= cluster.transitionRadius) {
+            const transitionWeight = 1 - (dist - cluster.coreRadius) / (cluster.transitionRadius - cluster.coreRadius)
+            if (transitionWeight > bestWeight) {
+              bestWeight = transitionWeight
+              const noiseValue = this.noise.noise2D(x * 0.3, y * 0.3)
+              if (noiseValue > 0) {
+                bestTerrain = cluster.type
+              }
             }
           }
         }
-      }
-      
-      if (positions.length > 0) {
-        this.resourceClusters.push({ type: resourceType, positions })
+
+        tile.terrain = bestTerrain
+        tile.isPassable = bestTerrain !== TerrainType.WATER
+        tile.movementCost = this.getMovementCost(bestTerrain)
       }
     }
   }
 
-  private placeClusteredResources(tiles: Tile[][]): void {
-    for (const cluster of this.resourceClusters) {
-      let maxAmount = 0
-      switch (cluster.type) {
-        case ResourceType.WOOD: maxAmount = 50; break
-        case ResourceType.STONE: maxAmount = 30; break
-        case ResourceType.FOOD: maxAmount = 15; break
-        case ResourceType.GOLD: maxAmount = 10; break
-        case ResourceType.LEATHER: maxAmount = 8; break
-      }
-      
-      for (const pos of cluster.positions) {
-        const tile = tiles[pos.y][pos.x]
-        
-        if (tile.terrain === TerrainType.WATER) continue
-        
-        const isCompatible = this.isResourceTerrainCompatible(cluster.type, tile.terrain)
+  private generateResourcePoints(tiles: Tile[][]): void {
+    this.resourcePoints = []
+    const resourcePointConfigs: { type: string; count: number; minAmount: number; maxAmount: number }[] = [
+      { type: 'tree', count: 15, minAmount: 500, maxAmount: 1000 },
+      { type: 'rock', count: 10, minAmount: 300, maxAmount: 600 },
+      { type: 'crop', count: 8, minAmount: 200, maxAmount: 400 },
+      { type: 'ore', count: 5, minAmount: 100, maxAmount: 200 },
+    ]
 
-        if (isCompatible && Math.random() < 0.6) {
-          tile.resource = {
-            type: cluster.type,
-            amount: Math.floor(maxAmount * (0.5 + Math.random() * 0.5)),
-            maxAmount,
-            respawnable: true,
-            respawnTime: 5 * 60 * 1000,
-          }
+    for (const config of resourcePointConfigs) {
+      const pointInfo = RESOURCE_POINT_TYPES[config.type]
+      if (!pointInfo) continue
+
+      let placed = 0
+      let attempts = 0
+      const maxAttempts = config.count * 10
+
+      while (placed < config.count && attempts < maxAttempts) {
+        attempts++
+        const x = Math.floor(Math.random() * this.width)
+        const y = Math.floor(Math.random() * this.height)
+        const tile = tiles[y][x]
+
+        if (!pointInfo.terrain.includes(tile.terrain)) continue
+        if (tile.resource) continue
+
+        const amount = config.minAmount + Math.floor(Math.random() * (config.maxAmount - config.minAmount))
+        
+        tile.resource = {
+          type: pointInfo.resource,
+          amount,
+          maxAmount: amount,
+          respawnable: true,
+          respawnTime: 5 * 60 * 1000,
         }
-      }
-    }
-  }
 
-  private isResourceTerrainCompatible(resourceType: ResourceType, terrain: TerrainType): boolean {
-    switch (resourceType) {
-      case ResourceType.WOOD:
-        return terrain === TerrainType.FOREST
-      case ResourceType.STONE:
-        return terrain === TerrainType.MOUNTAIN
-      case ResourceType.FOOD:
-        return terrain === TerrainType.GRASS
-      case ResourceType.GOLD:
-        return terrain === TerrainType.MOUNTAIN || terrain === TerrainType.SAND
-      case ResourceType.LEATHER:
-        return terrain === TerrainType.GRASS || terrain === TerrainType.FOREST
-      default:
-        return false
+        this.resourcePoints.push({
+          type: pointInfo.resource,
+          position: { x, y },
+          amount,
+          maxAmount: amount,
+          respawnable: true,
+          respawnTime: 5 * 60 * 1000,
+        })
+
+        placed++
+      }
     }
   }
 
@@ -231,7 +246,7 @@ export class MapSystem {
       [ResourceType.STONE]: 0,
       [ResourceType.FOOD]: 0,
       [ResourceType.GOLD]: 0,
-      [ResourceType.LEATHER]: 0,
+      [ResourceType.CORE_PARTS]: 0,
     }
     
     let totalResources = 0
@@ -244,13 +259,13 @@ export class MapSystem {
       }
     }
     
-    console.log('[MapSystem] 资源分布统计:')
+    console.log('[MapSystem] 资源点分布统计:')
     const total = this.width * this.height
     for (const [resource, count] of Object.entries(stats)) {
       const percent = ((count / total) * 100).toFixed(1)
-      console.log(`  ${resource}: ${count} (${percent}%)`)
+      console.log(`  ${resource}: ${count}个资源点 (${percent}%)`)
     }
-    console.log(`  总资源格子: ${totalResources}/${total} (${((totalResources/total)*100).toFixed(1)}%)`)
+    console.log(`  总资源点: ${totalResources}个`)
   }
 
   getMapData(): MapData | null {
@@ -278,31 +293,16 @@ export class MapSystem {
 
   harvestResource(x: number, y: number): { type: ResourceType; amount: number } | null {
     const tile = this.getTile(x, y)
-    if (!tile) {
-      console.log(`[MapSystem] harvestResource failed: tile not found at (${x}, ${y})`)
-      return null
-    }
-    if (!tile.resource) {
-      console.log(`[MapSystem] harvestResource failed: no resource at (${x}, ${y})`)
-      return null
-    }
-    if (tile.resource.amount <= 0) {
-      console.log(`[MapSystem] harvestResource failed: resource depleted at (${x}, ${y})`)
-      return null
-    }
+    if (!tile || !tile.resource || tile.resource.amount <= 0) return null
 
     const harvestAmount = Math.min(5, tile.resource.amount)
-    const resourceType = tile.resource.type
-    const beforeAmount = tile.resource.amount
     tile.resource.amount -= harvestAmount
-
-    console.log(`[MapSystem] Harvested ${harvestAmount} ${resourceType} at (${x}, ${y}), remaining: ${tile.resource.amount}/${beforeAmount}`)
 
     if (tile.resource.amount <= 0 && !tile.resource.respawnable) {
       tile.resource = undefined
     }
 
-    return { type: resourceType, amount: harvestAmount }
+    return { type: tile.resource!.type, amount: harvestAmount }
   }
 
   canPlaceBuilding(x: number, y: number): boolean {
@@ -388,5 +388,43 @@ export class MapSystem {
     }
 
     return []
+  }
+
+  serialize(): { width: number; height: number; tiles: Tile[][]; seed?: number } | null {
+    if (!this.mapData) return null
+    return {
+      width: this.mapData.width,
+      height: this.mapData.height,
+      tiles: this.mapData.tiles.map(row =>
+        row.map(tile => ({
+          position: { ...tile.position },
+          terrain: tile.terrain,
+          resource: tile.resource ? { ...tile.resource } : undefined,
+          isPassable: tile.isPassable,
+          movementCost: tile.movementCost,
+        }))
+      ),
+      seed: this.mapData.seed,
+    }
+  }
+
+  deserialize(data: { width: number; height: number; tiles: Tile[][]; seed?: number }): void {
+    this.width = data.width
+    this.height = data.height
+    this.mapData = {
+      width: data.width,
+      height: data.height,
+      tiles: data.tiles.map(row =>
+        row.map(tile => ({
+          position: { ...tile.position },
+          terrain: tile.terrain,
+          resource: tile.resource ? { ...tile.resource } : undefined,
+          isPassable: tile.isPassable,
+          movementCost: tile.movementCost,
+        }))
+      ),
+      seed: data.seed,
+    }
+    this.eventBus.emit('map:loaded', { width: this.width, height: this.height })
   }
 }

@@ -9,6 +9,49 @@
   user-select: none;
 }
 
+.map-container--dragging .character,
+.map-container--dragging .building {
+  transition: none;
+}
+
+.map-container--dragging .character-state-floating,
+.map-container--dragging .character-assignment-tag,
+.map-container--dragging .building-name,
+.map-container--dragging .building-level,
+.map-container--dragging .building-status-tag,
+.map-container--dragging .building-effect-chip,
+.map-container--dragging .building-worker-tag,
+.map-container--dragging .construction-progress,
+.map-container--dragging .production-progress,
+.map-container--dragging .floating-text {
+  display: none;
+}
+
+.map-container--dragging .resource-icon,
+.map-container--dragging .building-icon,
+.map-container--dragging .character-icon {
+  filter: none;
+  animation: none;
+}
+
+.map-container--dragging .map-tile,
+.map-container--dragging .building,
+.map-container--dragging .character {
+  box-shadow: none;
+}
+
+.map-container--dragging .map-tile--resource-art .resource-icon,
+.map-container--dragging .character-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+.map-container--dragging .terrain-water,
+.map-container--dragging .resource-icon,
+.map-container--dragging .character-icon {
+  animation: none;
+}
+
 .viewport-info {
   position: absolute;
   top: 8px;
@@ -25,6 +68,9 @@
 .map-grid {
   position: relative;
   background-color: #1a1a2e;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: layout paint;
 }
 
 .map-loading {
@@ -45,6 +91,7 @@
   justify-content: center;
   box-sizing: border-box;
   border: none;
+  image-rendering: pixelated;
 }
 
 .map-tile.background {
@@ -81,6 +128,17 @@
   animation: resourceFloat 3s ease-in-out infinite;
 }
 
+.map-tile--resource-art .resource-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  color: transparent;
+  background-image: var(--map-resource-art-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .building-marker {
   font-size: 16px;
   filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
@@ -113,10 +171,26 @@
   animation: selectedPulse 1.5s ease-in-out infinite;
 }
 
+.character.assigned-to-building {
+  background: rgba(251, 191, 36, 0.24);
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.85), 0 0 10px rgba(251, 191, 36, 0.45);
+}
+
 .character-icon {
   font-size: 18px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
   pointer-events: none;
+}
+
+.character--art .character-icon {
+  width: 22px;
+  height: 22px;
+  font-size: 0;
+  color: transparent;
+  background-image: var(--character-art-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .character-state-label {
@@ -268,11 +342,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   z-index: 18;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(66, 44, 20, 0.55);
+  border: 1px solid rgba(255, 214, 140, 0.4);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease;
+  overflow: visible;
+  will-change: transform;
 }
 
 .building:hover {
@@ -281,8 +359,105 @@
 }
 
 .building-icon {
-  font-size: 20px;
+  font-size: 24px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.building--art .building-icon {
+  width: calc(100% - 8px);
+  height: calc(100% - 10px);
+  font-size: 0;
+  color: transparent;
+  background-image: var(--building-art-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.building-name {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: #f6e5b3;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.building-level {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  color: #000;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 1px 4px;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.building-status-tag {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #dbeafe;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.building-effect-chip {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  max-width: calc(100% - 8px);
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.84);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  color: #dbeafe;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+  z-index: 11;
+  pointer-events: none;
+}
+
+.building-worker-tag {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #fff7ed;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 12;
+}
+
+.building-worker-tag.building {
+  background: rgba(180, 83, 9, 0.9);
+}
+
+.building-worker-tag.operational {
+  background: rgba(22, 101, 52, 0.9);
 }
 
 .building.under-construction {
@@ -332,6 +507,19 @@
   z-index: 50;
 }
 
+.character-assignment-tag {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  color: #fde68a;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  z-index: 50;
+}
+
 .floating-text {
   position: absolute;
   font-size: 14px;
@@ -364,4 +552,98 @@
     opacity: 0;
     transform: translateY(-40px) translateX(-50%);
   }
+}
+
+.building-upgrade-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 120;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.building-upgrade-card {
+  width: 360px;
+  max-width: calc(100% - 32px);
+  background: linear-gradient(180deg, rgba(31, 22, 12, 0.96), rgba(18, 14, 10, 0.96));
+  border: 1px solid rgba(255, 214, 140, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  padding: 16px;
+  color: #f6e5b3;
+}
+
+.building-upgrade-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.building-upgrade-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.building-upgrade-levels {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ffd36b;
+}
+
+.building-upgrade-section {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.building-upgrade-line,
+.building-upgrade-cost,
+.building-upgrade-reason {
+  font-size: 13px;
+  color: #eadfca;
+}
+
+.building-upgrade-line.next {
+  color: #8ef0a4;
+}
+
+.building-upgrade-reason {
+  margin-top: 10px;
+  color: #ff8d8d;
+}
+
+.building-upgrade-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.upgrade-cancel-btn,
+.upgrade-confirm-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.upgrade-cancel-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f5f5f5;
+}
+
+.upgrade-confirm-btn {
+  background: linear-gradient(135deg, #f0c35d, #d8912c);
+  color: #21180b;
+}
+
+.upgrade-confirm-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }

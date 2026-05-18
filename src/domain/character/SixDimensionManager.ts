@@ -15,6 +15,7 @@ import {
   calculatePower,
   SIX_DIMENSION_NAMES,
 } from '@app-types/six-dimension.types'
+import { EquipmentStats } from '@app-types/equipment.types'
 
 const BASE_VALUES: Record<SixDimensionType, number> = {
   [SixDimensionType.ATK]: 10,
@@ -118,17 +119,17 @@ export class SixDimensionManager {
     return charDims?.dimensions
   }
 
-  getStats(characterId: string): SixDimensionStats {
+  getStats(characterId: string, equipmentBonus?: Partial<EquipmentStats>): SixDimensionStats {
     const charDims = this.characterDimensions.get(characterId)
     
     if (!charDims) {
       return {
-        atk: BASE_VALUES[SixDimensionType.ATK],
-        def: BASE_VALUES[SixDimensionType.DEF],
-        hp: BASE_VALUES[SixDimensionType.HP],
-        critRate: BASE_VALUES[SixDimensionType.CRIT_RATE],
-        critDmg: BASE_VALUES[SixDimensionType.CRIT_DMG],
-        atkSpd: BASE_VALUES[SixDimensionType.ATK_SPD],
+        atk: (BASE_VALUES[SixDimensionType.ATK] || 0) + (equipmentBonus?.atk || 0),
+        def: (BASE_VALUES[SixDimensionType.DEF] || 0) + (equipmentBonus?.def || 0),
+        hp: (BASE_VALUES[SixDimensionType.HP] || 0) + (equipmentBonus?.hp || 0),
+        critRate: (BASE_VALUES[SixDimensionType.CRIT_RATE] || 0) + (equipmentBonus?.critRate || 0),
+        critDmg: (BASE_VALUES[SixDimensionType.CRIT_DMG] || 0) + (equipmentBonus?.critDmg || 0),
+        atkSpd: (BASE_VALUES[SixDimensionType.ATK_SPD] || 0) + (equipmentBonus?.atkSpd || 0),
       }
     }
 
@@ -147,22 +148,22 @@ export class SixDimensionManager {
 
       switch (type) {
         case SixDimensionType.ATK:
-          stats.atk = value
+          stats.atk = value + (equipmentBonus?.atk || 0)
           break
         case SixDimensionType.DEF:
-          stats.def = value
+          stats.def = value + (equipmentBonus?.def || 0)
           break
         case SixDimensionType.HP:
-          stats.hp = value
+          stats.hp = value + (equipmentBonus?.hp || 0)
           break
         case SixDimensionType.CRIT_RATE:
-          stats.critRate = value
+          stats.critRate = value + (equipmentBonus?.critRate || 0)
           break
         case SixDimensionType.CRIT_DMG:
-          stats.critDmg = value
+          stats.critDmg = value + (equipmentBonus?.critDmg || 0)
           break
         case SixDimensionType.ATK_SPD:
-          stats.atkSpd = value
+          stats.atkSpd = value + (equipmentBonus?.atkSpd || 0)
           break
       }
     })
@@ -170,8 +171,8 @@ export class SixDimensionManager {
     return stats
   }
 
-  getPower(characterId: string): number {
-    const stats = this.getStats(characterId)
+  getPower(characterId: string, equipmentBonus?: Partial<EquipmentStats>): number {
+    const stats = this.getStats(characterId, equipmentBonus)
     return calculatePower(stats)
   }
 

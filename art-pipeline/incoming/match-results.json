@@ -1,0 +1,1525 @@
+{
+  "results": [
+    {
+      "newFile": "asset_000__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.8576828396267537,
+      "colorDist": 13.45362404707371,
+      "avgColor": {
+        "r": 143,
+        "g": 127,
+        "b": 90
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": false,
+        "isDark": true,
+        "hasHighEdge": true,
+        "hasTransparency": true,
+        "edgeIntensity": 58.2646484375,
+        "meanBrightness": 97.15863970588235
+      }
+    },
+    {
+      "newFile": "asset_001__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9553181024655121,
+      "colorDist": 7.874007874011811,
+      "avgColor": {
+        "r": 226,
+        "g": 219,
+        "b": 208
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.68131510416667,
+        "meanBrightness": 226.9752906976744
+      }
+    },
+    {
+      "newFile": "asset_002__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9802868795185352,
+      "colorDist": 3.7416573867739413,
+      "avgColor": {
+        "r": 228,
+        "g": 223,
+        "b": 216
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 112.77604166666667,
+        "meanBrightness": 229.2721656976744
+      }
+    },
+    {
+      "newFile": "asset_003__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9737974389216648,
+      "colorDist": 6.708203932499369,
+      "avgColor": {
+        "r": 225,
+        "g": 218,
+        "b": 211
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 110.9853515625,
+        "meanBrightness": 226.3343023255814
+      }
+    },
+    {
+      "newFile": "asset_004__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9609597936930625,
+      "colorDist": 9.273618495495704,
+      "avgColor": {
+        "r": 224,
+        "g": 217,
+        "b": 208
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 110.7333984375,
+        "meanBrightness": 224.83848110465115
+      }
+    },
+    {
+      "newFile": "asset_005__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9611219297142981,
+      "colorDist": 7,
+      "avgColor": {
+        "r": 232,
+        "g": 224,
+        "b": 214
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 107.94368489583333,
+        "meanBrightness": 232.24582122093022
+      }
+    },
+    {
+      "newFile": "asset_006__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9767672749260323,
+      "colorDist": 5.477225575051661,
+      "avgColor": {
+        "r": 230,
+        "g": 225,
+        "b": 216
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 110.04915364583333,
+        "meanBrightness": 230.45239825581396
+      }
+    },
+    {
+      "newFile": "asset_007__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9414915972411999,
+      "colorDist": 23.83275057562597,
+      "avgColor": {
+        "r": 213,
+        "g": 207,
+        "b": 194
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 106.69596354166667,
+        "meanBrightness": 214.24146075581396
+      }
+    },
+    {
+      "newFile": "asset_008__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.94552141283869,
+      "colorDist": 26.076809620810597,
+      "avgColor": {
+        "r": 213,
+        "g": 207,
+        "b": 198
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.53548177083333,
+        "meanBrightness": 214.31231831395348
+      }
+    },
+    {
+      "newFile": "asset_009__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9456151408550675,
+      "colorDist": 18.81488772222678,
+      "avgColor": {
+        "r": 211,
+        "g": 202,
+        "b": 193
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.4013671875,
+        "meanBrightness": 212.27925145348837
+      }
+    },
+    {
+      "newFile": "asset_010__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.953516517467409,
+      "colorDist": 13.74772708486752,
+      "avgColor": {
+        "r": 208,
+        "g": 199,
+        "b": 190
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.46940104166667,
+        "meanBrightness": 209.58884447674419
+      }
+    },
+    {
+      "newFile": "asset_011__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9067614570240431,
+      "colorDist": 67.97058187186572,
+      "avgColor": {
+        "r": 218,
+        "g": 206,
+        "b": 190
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 108.45768229166667,
+        "meanBrightness": 219.0047238372093
+      }
+    },
+    {
+      "newFile": "asset_012__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9412813239200897,
+      "colorDist": 29.88310559496787,
+      "avgColor": {
+        "r": 217,
+        "g": 210,
+        "b": 198
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.1552734375,
+        "meanBrightness": 218.0219840116279
+      }
+    },
+    {
+      "newFile": "asset_013__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9347630076223337,
+      "colorDist": 14.352700094407323,
+      "avgColor": {
+        "r": 223,
+        "g": 215,
+        "b": 203
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.7890625,
+        "meanBrightness": 223.94970703125
+      }
+    },
+    {
+      "newFile": "asset_014__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9521523092717744,
+      "colorDist": 17.549928774784245,
+      "avgColor": {
+        "r": 217,
+        "g": 212,
+        "b": 204
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.98795572916667,
+        "meanBrightness": 217.682861328125
+      }
+    },
+    {
+      "newFile": "asset_015__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9672354992381529,
+      "colorDist": 8.602325267042627,
+      "avgColor": {
+        "r": 222,
+        "g": 217,
+        "b": 210
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 111.95345052083333,
+        "meanBrightness": 222.969970703125
+      }
+    },
+    {
+      "newFile": "asset_016__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9486636383412597,
+      "colorDist": 5.744562646538029,
+      "avgColor": {
+        "r": 230,
+        "g": 222,
+        "b": 212
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 106.58658854166667,
+        "meanBrightness": 230.067626953125
+      }
+    },
+    {
+      "newFile": "asset_017__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9266972330760678,
+      "colorDist": 32.61901286060018,
+      "avgColor": {
+        "r": 219,
+        "g": 211,
+        "b": 200
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 103.69108072916667,
+        "meanBrightness": 220.01220703125
+      }
+    },
+    {
+      "newFile": "asset_018__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9540911044224041,
+      "colorDist": 12.083045973594572,
+      "avgColor": {
+        "r": 221,
+        "g": 215,
+        "b": 207
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 105.994140625,
+        "meanBrightness": 221.138671875
+      }
+    },
+    {
+      "newFile": "asset_019__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9454117105968873,
+      "colorDist": 2.23606797749979,
+      "avgColor": {
+        "r": 199,
+        "g": 182,
+        "b": 166
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 113.65852864583333,
+        "meanBrightness": 198.9747314453125
+      }
+    },
+    {
+      "newFile": "asset_020__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9596601400016622,
+      "colorDist": 22.825424421026653,
+      "avgColor": {
+        "r": 217,
+        "g": 206,
+        "b": 188
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 114.85188802083333,
+        "meanBrightness": 216.9278564453125
+      }
+    },
+    {
+      "newFile": "asset_021__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9499200604034893,
+      "colorDist": 16.522711641858304,
+      "avgColor": {
+        "r": 216,
+        "g": 199,
+        "b": 180
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 114.87760416666667,
+        "meanBrightness": 215.73028564453125
+      }
+    },
+    {
+      "newFile": "asset_022__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.983233700454516,
+      "colorDist": 4.123105625617661,
+      "avgColor": {
+        "r": 227,
+        "g": 222,
+        "b": 217
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 118.5927734375,
+        "meanBrightness": 226.4010009765625
+      }
+    },
+    {
+      "newFile": "asset_023__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9541254128350176,
+      "colorDist": 30.083217912982647,
+      "avgColor": {
+        "r": 224,
+        "g": 209,
+        "b": 190
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.56022135416667,
+        "meanBrightness": 223.46142578125
+      }
+    },
+    {
+      "newFile": "asset_024__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9690328218099932,
+      "colorDist": 19.1049731745428,
+      "avgColor": {
+        "r": 228,
+        "g": 214,
+        "b": 198
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 118.9599609375,
+        "meanBrightness": 228.15924072265625
+      }
+    },
+    {
+      "newFile": "asset_025__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9796076547392272,
+      "colorDist": 9.16515138991168,
+      "avgColor": {
+        "r": 227,
+        "g": 220,
+        "b": 206
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 118.27669270833333,
+        "meanBrightness": 227.25537109375
+      }
+    },
+    {
+      "newFile": "asset_026__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9842254989955528,
+      "colorDist": 5,
+      "avgColor": {
+        "r": 225,
+        "g": 227,
+        "b": 210
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 119.2470703125,
+        "meanBrightness": 224.68695068359375
+      }
+    },
+    {
+      "newFile": "asset_027__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9864476596087364,
+      "colorDist": 8.12403840463596,
+      "avgColor": {
+        "r": 229,
+        "g": 225,
+        "b": 221
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 119.4130859375,
+        "meanBrightness": 229.29046630859375
+      }
+    },
+    {
+      "newFile": "asset_028__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9811647441781044,
+      "colorDist": 8.660254037844387,
+      "avgColor": {
+        "r": 230,
+        "g": 223,
+        "b": 207
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 117.81673177083333,
+        "meanBrightness": 229.55523681640625
+      }
+    },
+    {
+      "newFile": "asset_029__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9607983900733945,
+      "colorDist": 15,
+      "avgColor": {
+        "r": 225,
+        "g": 215,
+        "b": 202
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 114.9775390625,
+        "meanBrightness": 224.57830810546875
+      }
+    },
+    {
+      "newFile": "asset_030__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9599967187428151,
+      "colorDist": 26.551836094703507,
+      "avgColor": {
+        "r": 209,
+        "g": 217,
+        "b": 194
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 117.203125,
+        "meanBrightness": 209.06072998046875
+      }
+    },
+    {
+      "newFile": "asset_031__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9784350818576176,
+      "colorDist": 8.12403840463596,
+      "avgColor": {
+        "r": 224,
+        "g": 217,
+        "b": 210
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 117.82096354166667,
+        "meanBrightness": 223.8455810546875
+      }
+    },
+    {
+      "newFile": "asset_032__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.975476384120148,
+      "colorDist": 9.433981132056603,
+      "avgColor": {
+        "r": 231,
+        "g": 226,
+        "b": 207
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.970703125,
+        "meanBrightness": 231.1593017578125
+      }
+    },
+    {
+      "newFile": "asset_033__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9740890832201322,
+      "colorDist": 6.6332495807108,
+      "avgColor": {
+        "r": 231,
+        "g": 222,
+        "b": 212
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.94759114583333,
+        "meanBrightness": 230.7418212890625
+      }
+    },
+    {
+      "newFile": "asset_034__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9736384426665654,
+      "colorDist": 9.16515138991168,
+      "avgColor": {
+        "r": 221,
+        "g": 226,
+        "b": 206
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 118.29915364583333,
+        "meanBrightness": 221.06396484375
+      }
+    },
+    {
+      "newFile": "asset_035__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9874109263524429,
+      "colorDist": 3,
+      "avgColor": {
+        "r": 226,
+        "g": 222,
+        "b": 216
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.84635416666667,
+        "meanBrightness": 225.627685546875
+      }
+    },
+    {
+      "newFile": "asset_036__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9777560305796289,
+      "colorDist": 9.9498743710662,
+      "avgColor": {
+        "r": 232,
+        "g": 225,
+        "b": 207
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.78385416666667,
+        "meanBrightness": 232.00189208984375
+      }
+    },
+    {
+      "newFile": "asset_037__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9733055117716645,
+      "colorDist": 9.9498743710662,
+      "avgColor": {
+        "r": 234,
+        "g": 227,
+        "b": 217
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 118.5546875,
+        "meanBrightness": 234.3177490234375
+      }
+    },
+    {
+      "newFile": "asset_038__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9932706918847097,
+      "colorDist": 1,
+      "avgColor": {
+        "r": 241,
+        "g": 238,
+        "b": 235
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 121.2734375,
+        "meanBrightness": 240.6201171875
+      }
+    },
+    {
+      "newFile": "asset_039__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.959772528746252,
+      "colorDist": 5.744562646538029,
+      "avgColor": {
+        "r": 207,
+        "g": 193,
+        "b": 183
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 118.05110677083333,
+        "meanBrightness": 206.689697265625
+      }
+    },
+    {
+      "newFile": "asset_040__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9394910175417299,
+      "colorDist": 17.11724276862369,
+      "avgColor": {
+        "r": 192,
+        "g": 170,
+        "b": 157
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 112.39518229166667,
+        "meanBrightness": 191.88720703125
+      }
+    },
+    {
+      "newFile": "asset_041__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9622672845734208,
+      "colorDist": 7.810249675906654,
+      "avgColor": {
+        "r": 209,
+        "g": 194,
+        "b": 182
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 117.375,
+        "meanBrightness": 209.20172119140625
+      }
+    },
+    {
+      "newFile": "asset_042__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.984539611652326,
+      "colorDist": 12.083045973594572,
+      "avgColor": {
+        "r": 236,
+        "g": 227,
+        "b": 218
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 120.1806640625,
+        "meanBrightness": 236.113037109375
+      }
+    },
+    {
+      "newFile": "asset_043__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9754461863767646,
+      "colorDist": 14.45683229480096,
+      "avgColor": {
+        "r": 217,
+        "g": 223,
+        "b": 202
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 117.47819010416667,
+        "meanBrightness": 217.6563720703125
+      }
+    },
+    {
+      "newFile": "asset_044__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.982613718435555,
+      "colorDist": 10.723805294763608,
+      "avgColor": {
+        "r": 230,
+        "g": 227,
+        "b": 223
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 119.806640625,
+        "meanBrightness": 230.242919921875
+      }
+    },
+    {
+      "newFile": "asset_045__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9638942632597345,
+      "colorDist": 13.674794331177344,
+      "avgColor": {
+        "r": 228,
+        "g": 221,
+        "b": 201
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 115.67936197916667,
+        "meanBrightness": 227.7852783203125
+      }
+    },
+    {
+      "newFile": "asset_046__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9463295887163765,
+      "colorDist": 28.39013913315678,
+      "avgColor": {
+        "r": 221,
+        "g": 208,
+        "b": 193
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 114.572265625,
+        "meanBrightness": 220.82293701171875
+      }
+    },
+    {
+      "newFile": "asset_047__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9822956156241792,
+      "colorDist": 8.831760866327848,
+      "avgColor": {
+        "r": 223,
+        "g": 219,
+        "b": 207
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.0869140625,
+        "meanBrightness": 222.51568603515625
+      }
+    },
+    {
+      "newFile": "asset_048__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.967390640042893,
+      "colorDist": 12.36931687685298,
+      "avgColor": {
+        "r": 231,
+        "g": 218,
+        "b": 205
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 117.42740885416667,
+        "meanBrightness": 231.09295654296875
+      }
+    },
+    {
+      "newFile": "asset_049__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9593094718675415,
+      "colorDist": 17.204650534085253,
+      "avgColor": {
+        "r": 233,
+        "g": 218,
+        "b": 200
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.43033854166667,
+        "meanBrightness": 232.3260498046875
+      }
+    },
+    {
+      "newFile": "asset_051__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9848555461265784,
+      "colorDist": 5.385164807134504,
+      "avgColor": {
+        "r": 236,
+        "g": 233,
+        "b": 228
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 119.916015625,
+        "meanBrightness": 236.50048828125
+      }
+    },
+    {
+      "newFile": "asset_052__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9559660000334135,
+      "colorDist": 25.37715508089904,
+      "avgColor": {
+        "r": 221,
+        "g": 205,
+        "b": 190
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 115.48111979166667,
+        "meanBrightness": 220.38995361328125
+      }
+    },
+    {
+      "newFile": "asset_053__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9838705144827884,
+      "colorDist": 11.180339887498949,
+      "avgColor": {
+        "r": 230,
+        "g": 216,
+        "b": 208
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 120.16634114583333,
+        "meanBrightness": 230.41827392578125
+      }
+    },
+    {
+      "newFile": "asset_054__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9601461423442378,
+      "colorDist": 19.519221295943137,
+      "avgColor": {
+        "r": 220,
+        "g": 214,
+        "b": 198
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 115.56705729166667,
+        "meanBrightness": 220.01873779296875
+      }
+    },
+    {
+      "newFile": "asset_055__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9648278906056269,
+      "colorDist": 20.92844953645635,
+      "avgColor": {
+        "r": 213,
+        "g": 202,
+        "b": 195
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 119.9306640625,
+        "meanBrightness": 213.32574462890625
+      }
+    },
+    {
+      "newFile": "asset_056__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.995095106238753,
+      "colorDist": 1.4142135623730951,
+      "avgColor": {
+        "r": 240,
+        "g": 238,
+        "b": 235
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 119.7734375,
+        "meanBrightness": 240.01849365234375
+      }
+    },
+    {
+      "newFile": "asset_057__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.8726492336356976,
+      "colorDist": 43.289721643826724,
+      "avgColor": {
+        "r": 151,
+        "g": 136,
+        "b": 120
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 110.41569010416667,
+        "meanBrightness": 151.997314453125
+      }
+    },
+    {
+      "newFile": "asset_058__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.8814497748379084,
+      "colorDist": 12.529964086141668,
+      "avgColor": {
+        "r": 148,
+        "g": 133,
+        "b": 116
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.19791666666667,
+        "meanBrightness": 149.58258056640625
+      }
+    },
+    {
+      "newFile": "asset_059__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9174324293011176,
+      "colorDist": 19.6468827043885,
+      "avgColor": {
+        "r": 151,
+        "g": 145,
+        "b": 146
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.85904947916667,
+        "meanBrightness": 152.46942138671875
+      }
+    },
+    {
+      "newFile": "asset_060__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9209139019369721,
+      "colorDist": 28.42534080710379,
+      "avgColor": {
+        "r": 186,
+        "g": 144,
+        "b": 126
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.50130208333333,
+        "meanBrightness": 186.231689453125
+      }
+    },
+    {
+      "newFile": "asset_061__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9225106291551466,
+      "colorDist": 4.242640687119285,
+      "avgColor": {
+        "r": 192,
+        "g": 165,
+        "b": 143
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.52701822916667,
+        "meanBrightness": 192.7490234375
+      }
+    },
+    {
+      "newFile": "asset_062__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9267950085967975,
+      "colorDist": 15.84297951775486,
+      "avgColor": {
+        "r": 193,
+        "g": 177,
+        "b": 153
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.59895833333333,
+        "meanBrightness": 193.09246826171875
+      }
+    },
+    {
+      "newFile": "asset_063__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.942541529231105,
+      "colorDist": 19.79898987322333,
+      "avgColor": {
+        "r": 190,
+        "g": 176,
+        "b": 158
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 112.97265625,
+        "meanBrightness": 191.0513916015625
+      }
+    },
+    {
+      "newFile": "asset_064__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9249896386760799,
+      "colorDist": 13.564659966250536,
+      "avgColor": {
+        "r": 186,
+        "g": 170,
+        "b": 152
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 110.66569010416667,
+        "meanBrightness": 186.18450927734375
+      }
+    },
+    {
+      "newFile": "asset_065__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9184531871727251,
+      "colorDist": 36.138621999185304,
+      "avgColor": {
+        "r": 209,
+        "g": 189,
+        "b": 164
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 109.28287760416667,
+        "meanBrightness": 209.0562744140625
+      }
+    },
+    {
+      "newFile": "asset_066__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.913838001041035,
+      "colorDist": 42.20189569201838,
+      "avgColor": {
+        "r": 218,
+        "g": 192,
+        "b": 163
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 106.66536458333333,
+        "meanBrightness": 217.89373779296875
+      }
+    },
+    {
+      "newFile": "asset_067__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.939512376615832,
+      "colorDist": 27.964262908219126,
+      "avgColor": {
+        "r": 212,
+        "g": 201,
+        "b": 185
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 111.75716145833333,
+        "meanBrightness": 212.83331298828125
+      }
+    },
+    {
+      "newFile": "asset_068__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "high_color_match",
+      "score": 0.9222483981884111,
+      "colorDist": 15.132745950421556,
+      "avgColor": {
+        "r": 183,
+        "g": 170,
+        "b": 152
+      },
+      "features": {
+        "isLight": false,
+        "isMedium": true,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 110.59407552083333,
+        "meanBrightness": 183.68267822265625
+      }
+    },
+    {
+      "newFile": "asset_050__128.png",
+      "matchedCategory": "..",
+      "matchedSubdir": "..",
+      "confidence": "moderate_color_match",
+      "score": 0.8258880544283704,
+      "colorDist": 11.832159566199232,
+      "avgColor": {
+        "r": 223,
+        "g": 214,
+        "b": 208
+      },
+      "features": {
+        "isLight": true,
+        "isMedium": false,
+        "isDark": false,
+        "hasHighEdge": true,
+        "hasTransparency": false,
+        "edgeIntensity": 116.13704427083333,
+        "meanBrightness": 222.4510498046875
+      }
+    }
+  ],
+  "categoryBreakdown": {
+    "..": 69
+  }
+}

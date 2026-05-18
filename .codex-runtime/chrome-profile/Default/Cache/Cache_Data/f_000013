@@ -1,0 +1,463 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/ui/components/online/OnlinePanel.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=39d6738e"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=39d6738e"; const useState = __vite__cjsImport3_react["useState"];
+import { useOnlineStore } from "/src/ui/stores/onlineStore.ts";
+import "/src/ui/components/online/OnlinePanel.css";
+const STATUS_LABELS = {
+  idle: "未连接",
+  connecting: "连接中",
+  connected: "已连接",
+  reconnecting: "重连中",
+  disconnected: "已断开"
+};
+export function OnlinePanel({ onClose, displaySpeed }) {
+  _s();
+  const {
+    mode,
+    connectionStatus,
+    serverUrl,
+    roomCode,
+    displayName,
+    error,
+    players,
+    speed,
+    inviteCode,
+    setServerUrl,
+    connectCreateRoom,
+    connectJoinInvite,
+    connectJoinRoom,
+    resumeLastRoom,
+    disconnect
+  } = useOnlineStore();
+  const [nameInput, setNameInput] = useState(displayName);
+  const [inviteInput, setInviteInput] = useState("");
+  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [serverInput, setServerInput] = useState(serverUrl);
+  const [roomInput, setRoomInput] = useState("");
+  const [copied, setCopied] = useState(false);
+  const isOnline = mode === "online";
+  const isConnecting = mode === "connecting";
+  const visibleSpeed = displaySpeed ?? speed;
+  const statusLabel = STATUS_LABELS[connectionStatus] ?? connectionStatus;
+  const copyInvite = async () => {
+    if (!inviteCode) return;
+    await navigator.clipboard?.writeText(inviteCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2e3);
+  };
+  const handleCreateRoom = async () => {
+    await connectCreateRoom(nameInput.trim() || "玩家");
+  };
+  const handleJoinInvite = async () => {
+    if (!inviteInput.trim()) return;
+    await connectJoinInvite(inviteInput.trim(), nameInput.trim() || "玩家");
+  };
+  const handleJoinRoom = async () => {
+    if (roomInput.trim().length < 1) return;
+    setServerUrl(serverInput);
+    await connectJoinRoom(roomInput, nameInput.trim() || "玩家");
+  };
+  const handleResumeRoom = async () => {
+    setServerUrl(serverInput);
+    await resumeLastRoom();
+  };
+  return /* @__PURE__ */ jsxDEV("aside", { className: "online-panel", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "online-panel__header", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: /* @__PURE__ */ jsxDEV("h2", { children: "联机房间" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 99,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 98,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("button", { className: "online-panel__icon-btn", onClick: onClose, title: "关闭联机面板", children: "×" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 101,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+      lineNumber: 97,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "online-panel__status", children: [
+      /* @__PURE__ */ jsxDEV("span", { className: `online-panel__dot online-panel__dot--${connectionStatus}` }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 105,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { children: statusLabel }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 106,
+        columnNumber: 9
+      }, this),
+      isOnline && /* @__PURE__ */ jsxDEV("strong", { children: [
+        "×",
+        visibleSpeed.multiplier.toFixed(2)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 107,
+        columnNumber: 22
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+      lineNumber: 104,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "online-panel__form", children: [
+      !isOnline && /* @__PURE__ */ jsxDEV(Fragment, { children: [
+        /* @__PURE__ */ jsxDEV("label", { children: [
+          "昵称",
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              value: nameInput,
+              onChange: (e) => setNameInput(e.target.value),
+              maxLength: 24,
+              placeholder: "输入你的昵称",
+              disabled: isConnecting
+            },
+            void 0,
+            false,
+            {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+              lineNumber: 115,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 113,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => void handleCreateRoom(),
+            disabled: isConnecting || !nameInput.trim(),
+            className: "online-panel__primary-btn",
+            children: isConnecting ? "正在创建..." : "创建房间"
+          },
+          void 0,
+          false,
+          {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 124,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("div", { className: "online-panel__divider", children: /* @__PURE__ */ jsxDEV("span", { children: "或加入已有房间" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 133,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 132,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("label", { children: [
+          "邀请口令",
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              value: inviteInput,
+              onChange: (e) => setInviteInput(e.target.value),
+              placeholder: "粘贴好友发来的邀请口令",
+              disabled: isConnecting
+            },
+            void 0,
+            false,
+            {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+              lineNumber: 138,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 136,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => void handleJoinInvite(),
+            disabled: isConnecting || !inviteInput.trim(),
+            className: "online-panel__primary-btn",
+            children: "加入邀请"
+          },
+          void 0,
+          false,
+          {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 145,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("div", { className: "online-panel__advanced-toggle", children: /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            className: "online-panel__link-btn",
+            onClick: () => setShowAdvanced(!showAdvanced),
+            children: showAdvanced ? "收起高级设置 ▲" : "高级设置 ▼"
+          },
+          void 0,
+          false,
+          {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 154,
+            columnNumber: 15
+          },
+          this
+        ) }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 153,
+          columnNumber: 13
+        }, this),
+        showAdvanced && /* @__PURE__ */ jsxDEV("div", { className: "online-panel__advanced", children: [
+          /* @__PURE__ */ jsxDEV("label", { children: [
+            "服务器地址",
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                value: serverInput,
+                onChange: (e) => setServerInput(e.target.value),
+                disabled: isConnecting,
+                placeholder: "ws://192.168.1.23:8787"
+              },
+              void 0,
+              false,
+              {
+                fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+                lineNumber: 166,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 164,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "online-panel__actions", children: /* @__PURE__ */ jsxDEV("button", { onClick: () => void handleResumeRoom(), children: "重连上次" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 174,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 173,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("label", { children: [
+            "房间码",
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                value: roomInput,
+                onChange: (e) => setRoomInput(e.target.value.toUpperCase()),
+                maxLength: 6,
+                placeholder: "房间码"
+              },
+              void 0,
+              false,
+              {
+                fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+                lineNumber: 180,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 178,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: () => void handleJoinRoom(),
+              disabled: roomInput.trim().length < 1,
+              children: "加入房间"
+            },
+            void 0,
+            false,
+            {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+              lineNumber: 187,
+              columnNumber: 17
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 163,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 112,
+        columnNumber: 9
+      }, this),
+      isOnline && inviteCode && /* @__PURE__ */ jsxDEV("div", { className: "online-panel__invite-card", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "online-panel__invite-label", children: "邀请口令（发给朋友即可加入）" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 200,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "online-panel__invite-row", children: [
+          /* @__PURE__ */ jsxDEV("strong", { className: "online-panel__invite-code", children: inviteCode }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 202,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              className: `online-panel__copy-btn ${copied ? "online-panel__copy-btn--copied" : ""}`,
+              onClick: () => void copyInvite(),
+              children: copied ? "已复制" : "复制"
+            },
+            void 0,
+            false,
+            {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+              lineNumber: 203,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 201,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 199,
+        columnNumber: 9
+      }, this),
+      isOnline && roomCode && /* @__PURE__ */ jsxDEV("div", { className: "online-panel__room-code", children: [
+        /* @__PURE__ */ jsxDEV("span", { children: "房间码" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 215,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("strong", { children: roomCode }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 216,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "online-panel__room-code-hint", children: "口令已包含此信息" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 217,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 214,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+      lineNumber: 110,
+      columnNumber: 7
+    }, this),
+    isOnline && /* @__PURE__ */ jsxDEV("div", { className: "online-panel__players", children: [
+      players.length === 0 && /* @__PURE__ */ jsxDEV("p", { className: "online-panel__no-players", children: "等待其他玩家加入..." }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 225,
+        columnNumber: 9
+      }, this),
+      players.map(
+        (player) => /* @__PURE__ */ jsxDEV("div", { className: "online-player-row", children: [
+          /* @__PURE__ */ jsxDEV("span", { children: player.displayName }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 229,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            "发展 ",
+            player.settlementDevelopment
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 230,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            "金币 ",
+            player.resources.gold ?? 0
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+            lineNumber: 231,
+            columnNumber: 15
+          }, this)
+        ] }, player.playerId, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+          lineNumber: 228,
+          columnNumber: 9
+        }, this)
+      ),
+      /* @__PURE__ */ jsxDEV("button", { className: "online-panel__disconnect", onClick: disconnect, children: "断开联机" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+        lineNumber: 234,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+      lineNumber: 223,
+      columnNumber: 7
+    }, this),
+    error && /* @__PURE__ */ jsxDEV("p", { className: "online-panel__error", children: error }, void 0, false, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+      lineNumber: 238,
+      columnNumber: 17
+    }, this)
+  ] }, void 0, true, {
+    fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx",
+    lineNumber: 96,
+    columnNumber: 5
+  }, this);
+}
+_s(OnlinePanel, "YjCmO1UCAdKPxGB1RLq5Vk+pKF0=", false, function() {
+  return [useOnlineStore];
+});
+_c = OnlinePanel;
+var _c;
+$RefreshReg$(_c, "OnlinePanel");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/GameDesign/Projects/idle-collective/src/ui/components/online/OnlinePanel.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBK0VVLFNBYUEsVUFiQTs7Ozs7Ozs7Ozs7Ozs7Ozs7QUEvRVYsU0FBU0EsZ0JBQWdCO0FBQ3pCLFNBQVNDLHNCQUFzQjtBQUUvQixPQUFPO0FBT1AsTUFBTUMsZ0JBQXdEO0FBQUEsRUFDNURDLE1BQU07QUFBQSxFQUNOQyxZQUFZO0FBQUEsRUFDWkMsV0FBVztBQUFBLEVBQ1hDLGNBQWM7QUFBQSxFQUNkQyxjQUFjO0FBQ2hCO0FBRU8sZ0JBQVNDLFlBQVksRUFBRUMsU0FBU0MsYUFBK0IsR0FBRztBQUFBQyxLQUFBO0FBQ3ZFLFFBQU07QUFBQSxJQUNKQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxJQUNBQztBQUFBQSxFQUNGLElBQUl6QixlQUFlO0FBQ25CLFFBQU0sQ0FBQzBCLFdBQVdDLFlBQVksSUFBSTVCLFNBQVNnQixXQUFXO0FBQ3RELFFBQU0sQ0FBQ2EsYUFBYUMsY0FBYyxJQUFJOUIsU0FBUyxFQUFFO0FBQ2pELFFBQU0sQ0FBQytCLGNBQWNDLGVBQWUsSUFBSWhDLFNBQVMsS0FBSztBQUN0RCxRQUFNLENBQUNpQyxhQUFhQyxjQUFjLElBQUlsQyxTQUFTYyxTQUFTO0FBQ3hELFFBQU0sQ0FBQ3FCLFdBQVdDLFlBQVksSUFBSXBDLFNBQVMsRUFBRTtBQUM3QyxRQUFNLENBQUNxQyxRQUFRQyxTQUFTLElBQUl0QyxTQUFTLEtBQUs7QUFFMUMsUUFBTXVDLFdBQVczQixTQUFTO0FBQzFCLFFBQU00QixlQUFlNUIsU0FBUztBQUM5QixRQUFNNkIsZUFBZS9CLGdCQUFnQlM7QUFDckMsUUFBTXVCLGNBQWN4QyxjQUFjVyxnQkFBZ0IsS0FBS0E7QUFFdkQsUUFBTThCLGFBQWEsWUFBWTtBQUM3QixRQUFJLENBQUN2QixXQUFZO0FBQ2pCLFVBQU13QixVQUFVQyxXQUFXQyxVQUFVMUIsVUFBVTtBQUMvQ2tCLGNBQVUsSUFBSTtBQUNkUyxlQUFXLE1BQU1ULFVBQVUsS0FBSyxHQUFHLEdBQUk7QUFBQSxFQUN6QztBQUVBLFFBQU1VLG1CQUFtQixZQUFZO0FBQ25DLFVBQU0xQixrQkFBa0JLLFVBQVVzQixLQUFLLEtBQUssSUFBSTtBQUFBLEVBQ2xEO0FBRUEsUUFBTUMsbUJBQW1CLFlBQVk7QUFDbkMsUUFBSSxDQUFDckIsWUFBWW9CLEtBQUssRUFBRztBQUN6QixVQUFNMUIsa0JBQWtCTSxZQUFZb0IsS0FBSyxHQUFHdEIsVUFBVXNCLEtBQUssS0FBSyxJQUFJO0FBQUEsRUFDdEU7QUFFQSxRQUFNRSxpQkFBaUIsWUFBWTtBQUNqQyxRQUFJaEIsVUFBVWMsS0FBSyxFQUFFRyxTQUFTLEVBQUc7QUFDakMvQixpQkFBYVksV0FBVztBQUN4QixVQUFNVCxnQkFBZ0JXLFdBQVdSLFVBQVVzQixLQUFLLEtBQUssSUFBSTtBQUFBLEVBQzNEO0FBRUEsUUFBTUksbUJBQW1CLFlBQVk7QUFDbkNoQyxpQkFBYVksV0FBVztBQUN4QixVQUFNUixlQUFlO0FBQUEsRUFDdkI7QUFFQSxTQUNFLHVCQUFDLFdBQU0sV0FBVSxnQkFDZjtBQUFBLDJCQUFDLFNBQUksV0FBVSx3QkFDYjtBQUFBLDZCQUFDLFNBQ0MsaUNBQUMsUUFBRyxvQkFBSjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQVEsS0FEVjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBRUE7QUFBQSxNQUNBLHVCQUFDLFlBQU8sV0FBVSwwQkFBeUIsU0FBU2hCLFNBQVMsT0FBTSxVQUFTLGlCQUE1RTtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQW1GO0FBQUEsU0FKckY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUtBO0FBQUEsSUFFQSx1QkFBQyxTQUFJLFdBQVUsd0JBQ2I7QUFBQSw2QkFBQyxVQUFLLFdBQVcsd0NBQXdDSSxnQkFBZ0IsTUFBekU7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUE0RTtBQUFBLE1BQzVFLHVCQUFDLFVBQU02Qix5QkFBUDtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQW1CO0FBQUEsTUFDbEJILFlBQVksdUJBQUMsWUFBTztBQUFBO0FBQUEsUUFBUUUsYUFBYWEsV0FBV0MsUUFBUSxDQUFDO0FBQUEsV0FBakQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUFtRDtBQUFBLFNBSGxFO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FJQTtBQUFBLElBRUEsdUJBQUMsU0FBSSxXQUFVLHNCQUNaO0FBQUEsT0FBQ2hCLFlBQ0EsbUNBQ0U7QUFBQSwrQkFBQyxXQUFLO0FBQUE7QUFBQSxVQUVKO0FBQUEsWUFBQztBQUFBO0FBQUEsY0FDQyxPQUFPWjtBQUFBQSxjQUNQLFVBQVUsQ0FBQzZCLE1BQU01QixhQUFhNEIsRUFBRUMsT0FBT0MsS0FBSztBQUFBLGNBQzVDLFdBQVc7QUFBQSxjQUNYLGFBQVk7QUFBQSxjQUNaLFVBQVVsQjtBQUFBQTtBQUFBQSxZQUxaO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxVQUt5QjtBQUFBLGFBUDNCO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFTQTtBQUFBLFFBRUE7QUFBQSxVQUFDO0FBQUE7QUFBQSxZQUNDLFNBQVMsTUFBTSxLQUFLUSxpQkFBaUI7QUFBQSxZQUNyQyxVQUFVUixnQkFBZ0IsQ0FBQ2IsVUFBVXNCLEtBQUs7QUFBQSxZQUMxQyxXQUFVO0FBQUEsWUFFVFQseUJBQWUsWUFBWTtBQUFBO0FBQUEsVUFMOUI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFFBTUE7QUFBQSxRQUVBLHVCQUFDLFNBQUksV0FBVSx5QkFDYixpQ0FBQyxVQUFLLHVCQUFOO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBYSxLQURmO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFFQTtBQUFBLFFBRUEsdUJBQUMsV0FBSztBQUFBO0FBQUEsVUFFSjtBQUFBLFlBQUM7QUFBQTtBQUFBLGNBQ0MsT0FBT1g7QUFBQUEsY0FDUCxVQUFVLENBQUMyQixNQUFNMUIsZUFBZTBCLEVBQUVDLE9BQU9DLEtBQUs7QUFBQSxjQUM5QyxhQUFZO0FBQUEsY0FDWixVQUFVbEI7QUFBQUE7QUFBQUEsWUFKWjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsVUFJeUI7QUFBQSxhQU4zQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBUUE7QUFBQSxRQUNBO0FBQUEsVUFBQztBQUFBO0FBQUEsWUFDQyxTQUFTLE1BQU0sS0FBS1UsaUJBQWlCO0FBQUEsWUFDckMsVUFBVVYsZ0JBQWdCLENBQUNYLFlBQVlvQixLQUFLO0FBQUEsWUFDNUMsV0FBVTtBQUFBLFlBQTJCO0FBQUE7QUFBQSxVQUh2QztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFNQTtBQUFBLFFBRUEsdUJBQUMsU0FBSSxXQUFVLGlDQUNiO0FBQUEsVUFBQztBQUFBO0FBQUEsWUFDQyxXQUFVO0FBQUEsWUFDVixTQUFTLE1BQU1qQixnQkFBZ0IsQ0FBQ0QsWUFBWTtBQUFBLFlBRTNDQSx5QkFBZSxhQUFhO0FBQUE7QUFBQSxVQUovQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFLQSxLQU5GO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFPQTtBQUFBLFFBRUNBLGdCQUNDLHVCQUFDLFNBQUksV0FBVSwwQkFDYjtBQUFBLGlDQUFDLFdBQUs7QUFBQTtBQUFBLFlBRUo7QUFBQSxjQUFDO0FBQUE7QUFBQSxnQkFDQyxPQUFPRTtBQUFBQSxnQkFDUCxVQUFVLENBQUN1QixNQUFNdEIsZUFBZXNCLEVBQUVDLE9BQU9DLEtBQUs7QUFBQSxnQkFDOUMsVUFBVWxCO0FBQUFBLGdCQUNWLGFBQVk7QUFBQTtBQUFBLGNBSmQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFlBSXNDO0FBQUEsZUFOeEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFRQTtBQUFBLFVBQ0EsdUJBQUMsU0FBSSxXQUFVLHlCQUNiLGlDQUFDLFlBQU8sU0FBUyxNQUFNLEtBQUthLGlCQUFpQixHQUFFLG9CQUEvQztBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBLEtBSEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFJQTtBQUFBLFVBQ0EsdUJBQUMsV0FBSztBQUFBO0FBQUEsWUFFSjtBQUFBLGNBQUM7QUFBQTtBQUFBLGdCQUNDLE9BQU9sQjtBQUFBQSxnQkFDUCxVQUFVLENBQUNxQixNQUFNcEIsYUFBYW9CLEVBQUVDLE9BQU9DLE1BQU1DLFlBQVksQ0FBQztBQUFBLGdCQUMxRCxXQUFXO0FBQUEsZ0JBQ1gsYUFBWTtBQUFBO0FBQUEsY0FKZDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUFJbUI7QUFBQSxlQU5yQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQVFBO0FBQUEsVUFDQTtBQUFBLFlBQUM7QUFBQTtBQUFBLGNBQ0MsU0FBUyxNQUFNLEtBQUtSLGVBQWU7QUFBQSxjQUNuQyxVQUFVaEIsVUFBVWMsS0FBSyxFQUFFRyxTQUFTO0FBQUEsY0FBRTtBQUFBO0FBQUEsWUFGeEM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBS0E7QUFBQSxhQTdCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBOEJBO0FBQUEsV0FqRko7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQW1GQTtBQUFBLE1BR0RiLFlBQVluQixjQUNYLHVCQUFDLFNBQUksV0FBVSw2QkFDYjtBQUFBLCtCQUFDLFVBQUssV0FBVSw4QkFBNkIsOEJBQTdDO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBMkQ7QUFBQSxRQUMzRCx1QkFBQyxTQUFJLFdBQVUsNEJBQ2I7QUFBQSxpQ0FBQyxZQUFPLFdBQVUsNkJBQTZCQSx3QkFBL0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBMEQ7QUFBQSxVQUMxRDtBQUFBLFlBQUM7QUFBQTtBQUFBLGNBQ0MsV0FBVywwQkFBMEJpQixTQUFTLG1DQUFtQyxFQUFFO0FBQUEsY0FDbkYsU0FBUyxNQUFNLEtBQUtNLFdBQVc7QUFBQSxjQUU5Qk4sbUJBQVMsUUFBUTtBQUFBO0FBQUEsWUFKcEI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBS0E7QUFBQSxhQVBGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFRQTtBQUFBLFdBVkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQVdBO0FBQUEsTUFHREUsWUFBWXhCLFlBQ1gsdUJBQUMsU0FBSSxXQUFVLDJCQUNiO0FBQUEsK0JBQUMsVUFBSyxtQkFBTjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQVM7QUFBQSxRQUNULHVCQUFDLFlBQVFBLHNCQUFUO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBa0I7QUFBQSxRQUNsQix1QkFBQyxVQUFLLFdBQVUsZ0NBQStCLHdCQUEvQztBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQXVEO0FBQUEsV0FIekQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUlBO0FBQUEsU0E1R0o7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQThHQTtBQUFBLElBRUN3QixZQUNDLHVCQUFDLFNBQUksV0FBVSx5QkFDWnJCO0FBQUFBLGNBQVFrQyxXQUFXLEtBQ2xCLHVCQUFDLE9BQUUsV0FBVSw0QkFBMkIsMkJBQXhDO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFBbUQ7QUFBQSxNQUVwRGxDLFFBQVEwQztBQUFBQSxRQUFJLENBQUNDLFdBQ1osdUJBQUMsU0FBSSxXQUFVLHFCQUNiO0FBQUEsaUNBQUMsVUFBTUEsaUJBQU83QyxlQUFkO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQTBCO0FBQUEsVUFDMUIsdUJBQUMsVUFBSztBQUFBO0FBQUEsWUFBSTZDLE9BQU9DO0FBQUFBLGVBQWpCO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQXVDO0FBQUEsVUFDdkMsdUJBQUMsVUFBSztBQUFBO0FBQUEsWUFBSUQsT0FBT0UsVUFBVUMsUUFBUTtBQUFBLGVBQW5DO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQXFDO0FBQUEsYUFIQ0gsT0FBT0ksVUFBL0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUlBO0FBQUEsTUFDRDtBQUFBLE1BQ0QsdUJBQUMsWUFBTyxXQUFVLDRCQUEyQixTQUFTdkMsWUFBWSxvQkFBbEU7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUFzRTtBQUFBLFNBWHhFO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FZQTtBQUFBLElBR0RULFNBQVMsdUJBQUMsT0FBRSxXQUFVLHVCQUF1QkEsbUJBQXBDO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FBMEM7QUFBQSxPQTlJdEQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQStJQTtBQUVKO0FBQUNOLEdBM01lSCxhQUFXO0FBQUEsVUFpQnJCUCxjQUFjO0FBQUE7QUFBQSxLQWpCSk87QUFBVyxJQUFBMEQ7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsidXNlU3RhdGUiLCJ1c2VPbmxpbmVTdG9yZSIsIlNUQVRVU19MQUJFTFMiLCJpZGxlIiwiY29ubmVjdGluZyIsImNvbm5lY3RlZCIsInJlY29ubmVjdGluZyIsImRpc2Nvbm5lY3RlZCIsIk9ubGluZVBhbmVsIiwib25DbG9zZSIsImRpc3BsYXlTcGVlZCIsIl9zIiwibW9kZSIsImNvbm5lY3Rpb25TdGF0dXMiLCJzZXJ2ZXJVcmwiLCJyb29tQ29kZSIsImRpc3BsYXlOYW1lIiwiZXJyb3IiLCJwbGF5ZXJzIiwic3BlZWQiLCJpbnZpdGVDb2RlIiwic2V0U2VydmVyVXJsIiwiY29ubmVjdENyZWF0ZVJvb20iLCJjb25uZWN0Sm9pbkludml0ZSIsImNvbm5lY3RKb2luUm9vbSIsInJlc3VtZUxhc3RSb29tIiwiZGlzY29ubmVjdCIsIm5hbWVJbnB1dCIsInNldE5hbWVJbnB1dCIsImludml0ZUlucHV0Iiwic2V0SW52aXRlSW5wdXQiLCJzaG93QWR2YW5jZWQiLCJzZXRTaG93QWR2YW5jZWQiLCJzZXJ2ZXJJbnB1dCIsInNldFNlcnZlcklucHV0Iiwicm9vbUlucHV0Iiwic2V0Um9vbUlucHV0IiwiY29waWVkIiwic2V0Q29waWVkIiwiaXNPbmxpbmUiLCJpc0Nvbm5lY3RpbmciLCJ2aXNpYmxlU3BlZWQiLCJzdGF0dXNMYWJlbCIsImNvcHlJbnZpdGUiLCJuYXZpZ2F0b3IiLCJjbGlwYm9hcmQiLCJ3cml0ZVRleHQiLCJzZXRUaW1lb3V0IiwiaGFuZGxlQ3JlYXRlUm9vbSIsInRyaW0iLCJoYW5kbGVKb2luSW52aXRlIiwiaGFuZGxlSm9pblJvb20iLCJsZW5ndGgiLCJoYW5kbGVSZXN1bWVSb29tIiwibXVsdGlwbGllciIsInRvRml4ZWQiLCJlIiwidGFyZ2V0IiwidmFsdWUiLCJ0b1VwcGVyQ2FzZSIsIm1hcCIsInBsYXllciIsInNldHRsZW1lbnREZXZlbG9wbWVudCIsInJlc291cmNlcyIsImdvbGQiLCJwbGF5ZXJJZCIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIk9ubGluZVBhbmVsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHsgdXNlT25saW5lU3RvcmUgfSBmcm9tICdAdWkvc3RvcmVzL29ubGluZVN0b3JlJ1xuaW1wb3J0IHR5cGUgeyBPbmxpbmVDb25uZWN0aW9uU3RhdHVzLCBPbmxpbmVTcGVlZFN0YXRlIH0gZnJvbSAnQGFwcC10eXBlcy9vbmxpbmUudHlwZXMnXG5pbXBvcnQgJy4vT25saW5lUGFuZWwuY3NzJ1xuXG5pbnRlcmZhY2UgT25saW5lUGFuZWxQcm9wcyB7XG4gIG9uQ2xvc2U6ICgpID0+IHZvaWRcbiAgZGlzcGxheVNwZWVkPzogT25saW5lU3BlZWRTdGF0ZVxufVxuXG5jb25zdCBTVEFUVVNfTEFCRUxTOiBSZWNvcmQ8T25saW5lQ29ubmVjdGlvblN0YXR1cywgc3RyaW5nPiA9IHtcbiAgaWRsZTogJ+acqui/nuaOpScsXG4gIGNvbm5lY3Rpbmc6ICfov57mjqXkuK0nLFxuICBjb25uZWN0ZWQ6ICflt7Lov57mjqUnLFxuICByZWNvbm5lY3Rpbmc6ICfph43ov57kuK0nLFxuICBkaXNjb25uZWN0ZWQ6ICflt7Lmlq3lvIAnLFxufVxuXG5leHBvcnQgZnVuY3Rpb24gT25saW5lUGFuZWwoeyBvbkNsb3NlLCBkaXNwbGF5U3BlZWQgfTogT25saW5lUGFuZWxQcm9wcykge1xuICBjb25zdCB7XG4gICAgbW9kZSxcbiAgICBjb25uZWN0aW9uU3RhdHVzLFxuICAgIHNlcnZlclVybCxcbiAgICByb29tQ29kZSxcbiAgICBkaXNwbGF5TmFtZSxcbiAgICBlcnJvcixcbiAgICBwbGF5ZXJzLFxuICAgIHNwZWVkLFxuICAgIGludml0ZUNvZGUsXG4gICAgc2V0U2VydmVyVXJsLFxuICAgIGNvbm5lY3RDcmVhdGVSb29tLFxuICAgIGNvbm5lY3RKb2luSW52aXRlLFxuICAgIGNvbm5lY3RKb2luUm9vbSxcbiAgICByZXN1bWVMYXN0Um9vbSxcbiAgICBkaXNjb25uZWN0LFxuICB9ID0gdXNlT25saW5lU3RvcmUoKVxuICBjb25zdCBbbmFtZUlucHV0LCBzZXROYW1lSW5wdXRdID0gdXNlU3RhdGUoZGlzcGxheU5hbWUpXG4gIGNvbnN0IFtpbnZpdGVJbnB1dCwgc2V0SW52aXRlSW5wdXRdID0gdXNlU3RhdGUoJycpXG4gIGNvbnN0IFtzaG93QWR2YW5jZWQsIHNldFNob3dBZHZhbmNlZF0gPSB1c2VTdGF0ZShmYWxzZSlcbiAgY29uc3QgW3NlcnZlcklucHV0LCBzZXRTZXJ2ZXJJbnB1dF0gPSB1c2VTdGF0ZShzZXJ2ZXJVcmwpXG4gIGNvbnN0IFtyb29tSW5wdXQsIHNldFJvb21JbnB1dF0gPSB1c2VTdGF0ZSgnJylcbiAgY29uc3QgW2NvcGllZCwgc2V0Q29waWVkXSA9IHVzZVN0YXRlKGZhbHNlKVxuXG4gIGNvbnN0IGlzT25saW5lID0gbW9kZSA9PT0gJ29ubGluZSdcbiAgY29uc3QgaXNDb25uZWN0aW5nID0gbW9kZSA9PT0gJ2Nvbm5lY3RpbmcnXG4gIGNvbnN0IHZpc2libGVTcGVlZCA9IGRpc3BsYXlTcGVlZCA/PyBzcGVlZFxuICBjb25zdCBzdGF0dXNMYWJlbCA9IFNUQVRVU19MQUJFTFNbY29ubmVjdGlvblN0YXR1c10gPz8gY29ubmVjdGlvblN0YXR1c1xuXG4gIGNvbnN0IGNvcHlJbnZpdGUgPSBhc3luYyAoKSA9PiB7XG4gICAgaWYgKCFpbnZpdGVDb2RlKSByZXR1cm5cbiAgICBhd2FpdCBuYXZpZ2F0b3IuY2xpcGJvYXJkPy53cml0ZVRleHQoaW52aXRlQ29kZSlcbiAgICBzZXRDb3BpZWQodHJ1ZSlcbiAgICBzZXRUaW1lb3V0KCgpID0+IHNldENvcGllZChmYWxzZSksIDIwMDApXG4gIH1cblxuICBjb25zdCBoYW5kbGVDcmVhdGVSb29tID0gYXN5bmMgKCkgPT4ge1xuICAgIGF3YWl0IGNvbm5lY3RDcmVhdGVSb29tKG5hbWVJbnB1dC50cmltKCkgfHwgJ+eOqeWuticpXG4gIH1cblxuICBjb25zdCBoYW5kbGVKb2luSW52aXRlID0gYXN5bmMgKCkgPT4ge1xuICAgIGlmICghaW52aXRlSW5wdXQudHJpbSgpKSByZXR1cm5cbiAgICBhd2FpdCBjb25uZWN0Sm9pbkludml0ZShpbnZpdGVJbnB1dC50cmltKCksIG5hbWVJbnB1dC50cmltKCkgfHwgJ+eOqeWuticpXG4gIH1cblxuICBjb25zdCBoYW5kbGVKb2luUm9vbSA9IGFzeW5jICgpID0+IHtcbiAgICBpZiAocm9vbUlucHV0LnRyaW0oKS5sZW5ndGggPCAxKSByZXR1cm5cbiAgICBzZXRTZXJ2ZXJVcmwoc2VydmVySW5wdXQpXG4gICAgYXdhaXQgY29ubmVjdEpvaW5Sb29tKHJvb21JbnB1dCwgbmFtZUlucHV0LnRyaW0oKSB8fCAn546p5a62JylcbiAgfVxuXG4gIGNvbnN0IGhhbmRsZVJlc3VtZVJvb20gPSBhc3luYyAoKSA9PiB7XG4gICAgc2V0U2VydmVyVXJsKHNlcnZlcklucHV0KVxuICAgIGF3YWl0IHJlc3VtZUxhc3RSb29tKClcbiAgfVxuXG4gIHJldHVybiAoXG4gICAgPGFzaWRlIGNsYXNzTmFtZT1cIm9ubGluZS1wYW5lbFwiPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2hlYWRlclwiPlxuICAgICAgICA8ZGl2PlxuICAgICAgICAgIDxoMj7ogZTmnLrmiL/pl7Q8L2gyPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2ljb24tYnRuXCIgb25DbGljaz17b25DbG9zZX0gdGl0bGU9XCLlhbPpl63ogZTmnLrpnaLmnb9cIj4mdGltZXM7PC9idXR0b24+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX3N0YXR1c1wiPlxuICAgICAgICA8c3BhbiBjbGFzc05hbWU9e2BvbmxpbmUtcGFuZWxfX2RvdCBvbmxpbmUtcGFuZWxfX2RvdC0tJHtjb25uZWN0aW9uU3RhdHVzfWB9IC8+XG4gICAgICAgIDxzcGFuPntzdGF0dXNMYWJlbH08L3NwYW4+XG4gICAgICAgIHtpc09ubGluZSAmJiA8c3Ryb25nPiZ0aW1lczt7dmlzaWJsZVNwZWVkLm11bHRpcGxpZXIudG9GaXhlZCgyKX08L3N0cm9uZz59XG4gICAgICA8L2Rpdj5cblxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2Zvcm1cIj5cbiAgICAgICAgeyFpc09ubGluZSAmJiAoXG4gICAgICAgICAgPD5cbiAgICAgICAgICAgIDxsYWJlbD5cbiAgICAgICAgICAgICAg5pi156ewXG4gICAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICAgIHZhbHVlPXtuYW1lSW5wdXR9XG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXROYW1lSW5wdXQoZS50YXJnZXQudmFsdWUpfVxuICAgICAgICAgICAgICAgIG1heExlbmd0aD17MjR9XG4gICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCLovpPlhaXkvaDnmoTmmLXnp7BcIlxuICAgICAgICAgICAgICAgIGRpc2FibGVkPXtpc0Nvbm5lY3Rpbmd9XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8L2xhYmVsPlxuXG4gICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHZvaWQgaGFuZGxlQ3JlYXRlUm9vbSgpfVxuICAgICAgICAgICAgICBkaXNhYmxlZD17aXNDb25uZWN0aW5nIHx8ICFuYW1lSW5wdXQudHJpbSgpfVxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX3ByaW1hcnktYnRuXCJcbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAge2lzQ29ubmVjdGluZyA/ICfmraPlnKjliJvlu7ouLi4nIDogJ+WIm+W7uuaIv+mXtCd9XG4gICAgICAgICAgICA8L2J1dHRvbj5cblxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2RpdmlkZXJcIj5cbiAgICAgICAgICAgICAgPHNwYW4+5oiW5Yqg5YWl5bey5pyJ5oi/6Ze0PC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDxsYWJlbD5cbiAgICAgICAgICAgICAg6YKA6K+35Y+j5LukXG4gICAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICAgIHZhbHVlPXtpbnZpdGVJbnB1dH1cbiAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldEludml0ZUlucHV0KGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIueymOi0tOWlveWPi+WPkeadpeeahOmCgOivt+WPo+S7pFwiXG4gICAgICAgICAgICAgICAgZGlzYWJsZWQ9e2lzQ29ubmVjdGluZ31cbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDwvbGFiZWw+XG4gICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHZvaWQgaGFuZGxlSm9pbkludml0ZSgpfVxuICAgICAgICAgICAgICBkaXNhYmxlZD17aXNDb25uZWN0aW5nIHx8ICFpbnZpdGVJbnB1dC50cmltKCl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cIm9ubGluZS1wYW5lbF9fcHJpbWFyeS1idG5cIlxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICDliqDlhaXpgoDor7dcbiAgICAgICAgICAgIDwvYnV0dG9uPlxuXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm9ubGluZS1wYW5lbF9fYWR2YW5jZWQtdG9nZ2xlXCI+XG4gICAgICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2xpbmstYnRuXCJcbiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRTaG93QWR2YW5jZWQoIXNob3dBZHZhbmNlZCl9XG4gICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICB7c2hvd0FkdmFuY2VkID8gJ+aUtui1t+mrmOe6p+iuvue9riDilrInIDogJ+mrmOe6p+iuvue9riDilrwnfVxuICAgICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICB7c2hvd0FkdmFuY2VkICYmIChcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2FkdmFuY2VkXCI+XG4gICAgICAgICAgICAgICAgPGxhYmVsPlxuICAgICAgICAgICAgICAgICAg5pyN5Yqh5Zmo5Zyw5Z2AXG4gICAgICAgICAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e3NlcnZlcklucHV0fVxuICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFNlcnZlcklucHV0KGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICAgICAgZGlzYWJsZWQ9e2lzQ29ubmVjdGluZ31cbiAgICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJ3czovLzE5Mi4xNjguMS4yMzo4Nzg3XCJcbiAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm9ubGluZS1wYW5lbF9fYWN0aW9uc1wiPlxuICAgICAgICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiB2b2lkIGhhbmRsZVJlc3VtZVJvb20oKX0+XG4gICAgICAgICAgICAgICAgICAgIOmHjei/nuS4iuasoVxuICAgICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGxhYmVsPlxuICAgICAgICAgICAgICAgICAg5oi/6Ze056CBXG4gICAgICAgICAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e3Jvb21JbnB1dH1cbiAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRSb29tSW5wdXQoZS50YXJnZXQudmFsdWUudG9VcHBlckNhc2UoKSl9XG4gICAgICAgICAgICAgICAgICAgIG1heExlbmd0aD17Nn1cbiAgICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCLmiL/pl7TnoIFcIlxuICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHZvaWQgaGFuZGxlSm9pblJvb20oKX1cbiAgICAgICAgICAgICAgICAgIGRpc2FibGVkPXtyb29tSW5wdXQudHJpbSgpLmxlbmd0aCA8IDF9XG4gICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAg5Yqg5YWl5oi/6Ze0XG4gICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgKX1cbiAgICAgICAgICA8Lz5cbiAgICAgICAgKX1cblxuICAgICAgICB7aXNPbmxpbmUgJiYgaW52aXRlQ29kZSAmJiAoXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2ludml0ZS1jYXJkXCI+XG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2ludml0ZS1sYWJlbFwiPumCgOivt+WPo+S7pO+8iOWPkee7meaci+WPi+WNs+WPr+WKoOWFpe+8iTwvc3Bhbj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwib25saW5lLXBhbmVsX19pbnZpdGUtcm93XCI+XG4gICAgICAgICAgICAgIDxzdHJvbmcgY2xhc3NOYW1lPVwib25saW5lLXBhbmVsX19pbnZpdGUtY29kZVwiPntpbnZpdGVDb2RlfTwvc3Ryb25nPlxuICAgICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgb25saW5lLXBhbmVsX19jb3B5LWJ0biAke2NvcGllZCA/ICdvbmxpbmUtcGFuZWxfX2NvcHktYnRuLS1jb3BpZWQnIDogJyd9YH1cbiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB2b2lkIGNvcHlJbnZpdGUoKX1cbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIHtjb3BpZWQgPyAn5bey5aSN5Yi2JyA6ICflpI3liLYnfVxuICAgICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICApfVxuXG4gICAgICAgIHtpc09ubGluZSAmJiByb29tQ29kZSAmJiAoXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX3Jvb20tY29kZVwiPlxuICAgICAgICAgICAgPHNwYW4+5oi/6Ze056CBPC9zcGFuPlxuICAgICAgICAgICAgPHN0cm9uZz57cm9vbUNvZGV9PC9zdHJvbmc+XG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX3Jvb20tY29kZS1oaW50XCI+5Y+j5Luk5bey5YyF5ZCr5q2k5L+h5oGvPC9zcGFuPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICApfVxuICAgICAgPC9kaXY+XG5cbiAgICAgIHtpc09ubGluZSAmJiAoXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwib25saW5lLXBhbmVsX19wbGF5ZXJzXCI+XG4gICAgICAgICAge3BsYXllcnMubGVuZ3RoID09PSAwICYmIChcbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cIm9ubGluZS1wYW5lbF9fbm8tcGxheWVyc1wiPuetieW+heWFtuS7lueOqeWutuWKoOWFpS4uLjwvcD5cbiAgICAgICAgICApfVxuICAgICAgICAgIHtwbGF5ZXJzLm1hcCgocGxheWVyKSA9PiAoXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm9ubGluZS1wbGF5ZXItcm93XCIga2V5PXtwbGF5ZXIucGxheWVySWR9PlxuICAgICAgICAgICAgICA8c3Bhbj57cGxheWVyLmRpc3BsYXlOYW1lfTwvc3Bhbj5cbiAgICAgICAgICAgICAgPHNwYW4+5Y+R5bGVIHtwbGF5ZXIuc2V0dGxlbWVudERldmVsb3BtZW50fTwvc3Bhbj5cbiAgICAgICAgICAgICAgPHNwYW4+6YeR5biBIHtwbGF5ZXIucmVzb3VyY2VzLmdvbGQgPz8gMH08L3NwYW4+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICApKX1cbiAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT1cIm9ubGluZS1wYW5lbF9fZGlzY29ubmVjdFwiIG9uQ2xpY2s9e2Rpc2Nvbm5lY3R9PuaWreW8gOiBlOacujwvYnV0dG9uPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICl9XG5cbiAgICAgIHtlcnJvciAmJiA8cCBjbGFzc05hbWU9XCJvbmxpbmUtcGFuZWxfX2Vycm9yXCI+e2Vycm9yfTwvcD59XG4gICAgPC9hc2lkZT5cbiAgKVxufVxuIl0sImZpbGUiOiJEOi9HYW1lRGVzaWduL1Byb2plY3RzL2lkbGUtY29sbGVjdGl2ZS9zcmMvdWkvY29tcG9uZW50cy9vbmxpbmUvT25saW5lUGFuZWwudHN4In0=

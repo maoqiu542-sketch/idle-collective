@@ -1,0 +1,351 @@
+.character-shop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.character-shop-panel {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shop-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.shop-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.gold-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gold-icon {
+  font-size: 24px;
+}
+
+.gold-display--art .gold-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  color: transparent;
+  background-image: var(--gold-icon-art);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.gold-amount {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.refresh-timer {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.shop-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.refresh-btn {
+  flex: 1;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.shop-characters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.empty-shop {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: #888;
+}
+
+.character-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  border: 2px solid;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.character-quality {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.character-avatar {
+  font-size: 48px;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.character-card--art .character-avatar {
+  width: 64px;
+  height: 64px;
+  margin: 12px auto;
+  font-size: 0;
+  color: transparent;
+  background-image: var(--shop-character-avatar);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.character-info {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.character-name {
+  margin: 0 0 4px 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.character-profession {
+  margin: 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.character-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.stat-label {
+  color: #888;
+  font-size: 12px;
+}
+
+.stat-value {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.character-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.skill-tag {
+  padding: 2px 8px;
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 4px;
+  font-size: 11px;
+  color: #a8b4ff;
+}
+
+.purchase-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.purchase-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.purchase-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.station-bonus-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.station-bonus-card {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.station-bonus-label {
+  display: block;
+  font-size: 12px;
+  color: #8d99ae;
+  margin-bottom: 6px;
+}
+
+.station-upgrade-preview {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(102, 126, 234, 0.12);
+  color: #dbe4ff;
+  line-height: 1.5;
+}
+
+.station-upgrade-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.shop-tip {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.shop-tip--warning {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+}
+
+.shop-tip p {
+  margin: 0 0 6px 0;
+  color: #c9c9d6;
+  font-size: 13px;
+}
+
+.shop-tip p:last-child {
+  margin-bottom: 0;
+}
+
+.shop-tip-steps {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #f5deb3;
+  font-size: 13px;
+}
+
+.shop-tip-cost {
+  margin-top: 10px;
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.build-guide-btn {
+  margin-top: 14px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4a90d9, #667eea);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.build-guide-btn:hover {
+  filter: brightness(1.08);
+}

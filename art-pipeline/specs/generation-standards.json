@@ -1,0 +1,124 @@
+{
+  "version": "1.0.0",
+  "categories": {
+    "terrain": {
+      "composition": "continuous edge-to-edge outdoor ground texture with no centered subject",
+      "must_include": [
+        "full bleed ground coverage",
+        "natural local variation",
+        "tile-friendly continuity",
+        "material-only read with no standalone object"
+      ],
+      "must_avoid": [
+        "frame",
+        "border",
+        "floating island",
+        "single scenic composition",
+        "horizon",
+        "cutaway",
+        "central medallion",
+        "water in non-water terrain"
+      ],
+      "acceptance_checks": [
+        "reads as outdoor terrain instead of an icon",
+        "no focal object or centered scene",
+        "can sit beside adjacent tiles without obvious seams"
+      ]
+    },
+    "resource_node": {
+      "composition": "single isolated subject on transparent background",
+      "must_include": [
+        "clear silhouette",
+        "single resource identity",
+        "safe margins",
+        "map-scale readability"
+      ],
+      "must_avoid": [
+        "multiple subjects",
+        "scene background",
+        "cropped subject",
+        "terrain backdrop"
+      ],
+      "acceptance_checks": [
+        "recognizable at 32px",
+        "resource type is unambiguous",
+        "transparent background stays clean"
+      ]
+    },
+    "building_map": {
+      "composition": "single map-scale building with stable top-down or three-quarter angle",
+      "must_include": [
+        "single building mass",
+        "consistent top-left light",
+        "transparent background",
+        "clear roofline silhouette"
+      ],
+      "must_avoid": [
+        "street scene",
+        "front elevation",
+        "people",
+        "environment backdrop"
+      ],
+      "acceptance_checks": [
+        "reads as one building",
+        "works as a map prop",
+        "shape survives 32px reduction"
+      ]
+    },
+    "ui_icon_fallback": {
+      "composition": "single centered UI symbol",
+      "must_include": [
+        "strong silhouette",
+        "large readable shapes",
+        "transparent background"
+      ],
+      "must_avoid": [
+        "scene illustration",
+        "text label",
+        "tiny decorative details"
+      ],
+      "acceptance_checks": [
+        "clear at 32px",
+        "one idea per icon",
+        "minimal noise around edges"
+      ]
+    },
+    "character_portrait": {
+      "composition": "bust portrait with face clearly visible",
+      "must_include": [
+        "profession-specific accessory or clothing cue",
+        "stable head crop",
+        "clean background"
+      ],
+      "must_avoid": [
+        "full body pose",
+        "multiple characters",
+        "face obstruction"
+      ],
+      "acceptance_checks": [
+        "profession identity is obvious",
+        "portrait crop works in UI",
+        "face remains readable at small size"
+      ]
+    },
+    "boss_portrait": {
+      "composition": "single threatening boss bust portrait",
+      "must_include": [
+        "menacing silhouette",
+        "strong face read",
+        "boss-specific visual identity"
+      ],
+      "must_avoid": [
+        "cute expression",
+        "crowd",
+        "full battle scene",
+        "soft mascot look"
+      ],
+      "acceptance_checks": [
+        "feels like a boss",
+        "still readable at 32px",
+        "not mistaken for a regular unit"
+      ]
+    }
+  }
+}

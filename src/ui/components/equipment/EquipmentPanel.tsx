@@ -1,8 +1,15 @@
 import { useState } from 'react'
 import { useGameStore } from '@ui/stores/gameStore'
+import { useCharacterStore } from '@ui/stores/characterStore'
 import { EquipmentSlot, EquipmentQuality, QUALITY_COLORS, EquipmentStats } from '@app-types/equipment.types'
 import { Character } from '@app-types/character.types'
 import './EquipmentPanel.css'
+
+const V1_EQUIPMENT_SLOTS: EquipmentSlot[] = [
+  EquipmentSlot.WEAPON,
+  EquipmentSlot.ARMOR,
+  EquipmentSlot.ACCESSORY,
+]
 
 const SLOT_NAMES: Record<EquipmentSlot, string> = {
   [EquipmentSlot.WEAPON]: '武器',
@@ -35,11 +42,12 @@ interface EquipmentPanelProps {
 
 export function EquipmentPanel({ character, onClose }: EquipmentPanelProps) {
   const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null)
-  const { equipments, equipItem, unequipItem, getEquipmentById } = useGameStore()
+  const { equipItem, unequipItem, getEquipmentById } = useGameStore()
+  const { equipments } = useCharacterStore()
 
   const characterEquipments = useGameStore(state => state.getCharacterEquipments(character.id))
 
-  const getEquippedItem = (slot: EquipmentSlot) => {
+  const getEquippedItem = (slot: EquipmentSlot): { quality: EquipmentQuality; name: string; level: number; stats: EquipmentStats } | undefined => {
     const equipmentId = character.equipmentSlots[slot]
     return equipmentId ? getEquipmentById(equipmentId) : undefined
   }
@@ -98,7 +106,7 @@ export function EquipmentPanel({ character, onClose }: EquipmentPanelProps) {
 
       <div className="panel-content">
         <div className="equipment-slots">
-          {Object.values(EquipmentSlot).map(slot => {
+          {V1_EQUIPMENT_SLOTS.map(slot => {
             const equipped = getEquippedItem(slot)
             const isSelected = selectedSlot === slot
 

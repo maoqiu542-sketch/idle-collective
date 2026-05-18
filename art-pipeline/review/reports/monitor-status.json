@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-03-30T16:31:40.323Z",
+  "category": "terrain",
+  "comfyui": {
+    "ok": true,
+    "runningCount": 0,
+    "pendingCount": 0,
+    "runningAsset": null,
+    "pendingAssets": []
+  },
+  "imports": {
+    "ok": true,
+    "importedCount": 2,
+    "stdout": "[art:import] terrain_grass_e imported cand02, cand03\n[art:import] imported 2 generated files from D:\\teae\\openclaw\\ComfyUI\\output",
+    "stderr": ""
+  },
+  "reviewQueue": {
+    "ok": true,
+    "pendingCount": 20,
+    "pendingAssets": [
+      {
+        "asset_id": "terrain_grass",
+        "candidate_variant": "cand03",
+        "updated_at": "2026-03-30T16:21:39.499Z"
+      },
+      {
+        "asset_id": "terrain_grass_b",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T16:21:39.507Z"
+      },
+      {
+        "asset_id": "terrain_grass_c",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T16:21:39.511Z"
+      },
+      {
+        "asset_id": "terrain_grass_d",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T16:21:39.515Z"
+      },
+      {
+        "asset_id": "terrain_grass_e",
+        "candidate_variant": "cand02",
+        "updated_at": "2026-03-30T16:31:40.203Z"
+      },
+      {
+        "asset_id": "terrain_forest",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T14:57:47.675Z"
+      },
+      {
+        "asset_id": "terrain_forest_b",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T14:57:47.681Z"
+      },
+      {
+        "asset_id": "terrain_forest_c",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T14:57:47.683Z"
+      },
+      {
+        "asset_id": "terrain_mountain",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:01:32.882Z"
+      },
+      {
+        "asset_id": "terrain_mountain_b",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:01:32.890Z"
+      },
+      {
+        "asset_id": "terrain_mountain_c",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:01:32.893Z"
+      },
+      {
+        "asset_id": "terrain_water",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.655Z"
+      },
+      {
+        "asset_id": "terrain_water_b",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.660Z"
+      },
+      {
+        "asset_id": "terrain_water_c",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.661Z"
+      },
+      {
+        "asset_id": "terrain_sand",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.663Z"
+      },
+      {
+        "asset_id": "terrain_sand_b",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.665Z"
+      },
+      {
+        "asset_id": "terrain_sand_c",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.667Z"
+      },
+      {
+        "asset_id": "terrain_snow",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.668Z"
+      },
+      {
+        "asset_id": "terrain_snow_b",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.670Z"
+      },
+      {
+        "asset_id": "terrain_snow_c",
+        "candidate_variant": "cand01",
+        "updated_at": "2026-03-30T15:11:33.671Z"
+      }
+    ]
+  },
+  "dashboard": {
+    "ok": true,
+    "updated": true
+  },
+  "nextAction": "manual_review_ready",
+  "durationMs": 187
+}

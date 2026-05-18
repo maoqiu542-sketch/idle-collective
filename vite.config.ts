@@ -10,6 +10,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@core': path.resolve(__dirname, './src/core'),
       '@domain': path.resolve(__dirname, './src/domain'),
+      '@net': path.resolve(__dirname, './src/net'),
       '@data': path.resolve(__dirname, './src/data'),
       '@ui': path.resolve(__dirname, './src/ui'),
       '@utils': path.resolve(__dirname, './src/utils'),

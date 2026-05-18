@@ -1,0 +1,364 @@
+{
+  "url": "http://127.0.0.1:3000/",
+  "screenshots": [
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\01-initial.png",
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\panel-__.png",
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\panel-__.png",
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\panel-__.png",
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\panel-__.png",
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\panel-Boss.png",
+    "D:\\GameDesign\\Projects\\idle-collective\\.codex-runtime\\playtest\\after-20s.png"
+  ],
+  "panels": {
+    "??": {
+      "clicked": false,
+      "text": "Idle Collective\n180\n木材\n120\n石材\n90\n食物\n260\n金币\n0\n核心零件\n⏰\n00:00:00\n加速 x1.00\n🐾\n⚔️\nBOSS来袭\n哥布林首领\n位置：(0, 0) | 视野：47x13 | 拖拽移动 | 滚轮滚动\n石\n石\n金\n木\n金\n木\n人\n空闲\n人\n空闲\n人\n空闲\n发展阶段\n聚落初创\n0\n/ 100\n15\n下一阶段\n生存成型\n还需 15\n厨房、研究台、基础科技\n🎯\n当前目标\n0/6\n下一步\n点击资源点手动采集一次\n地图上的树木、石头、作物和矿点都能直接点击，前期可以主动补资源。\n👥\n角色\n3\n⚡\n0\n工作\n💤\n3\n空闲\n农夫1\n😴\n猎人2\n😴\n战士3\n😴\n角色\n招募\n建造\n科技\nBoss\n!\n宜居度：0\n发展度：0\n发展来源：研 0 / 建 0 / 核 0 / 战 0\n贸易：关闭\n候选成员：0\n手动优先级\n生存稳态\n扩张建造\n科研冲刺\n备战 Boss\n收起面板\n角色 / 技能\t\n耕种\n\t\n🏹\n狩猎\n\t\n采集\n\t\n战斗\n\t\n🛠️\n工程\n\t\n建造\n\t\n🍲\n烹饪\n\t\n🩺\n医疗\n\t\n研究\n\n\n农夫1\nLv.10\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n猎人2\nLv.10\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n战士3\nLv.10\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n🛠"
+    },
+    "Boss": {
+      "clicked": {
+        "x": 709,
+        "y": 451,
+        "text": "Idle Collective\n180\n木材\n120\n石材\n90\n食物\n260\n金币\n0\n核心零件\n⏰\n00:00:00\n加速 x1.00\n🐾\n⚔️\nBOSS"
+      },
+      "text": "Idle Collective\n180\n木材\n120\n石材\n90\n食物\n260\n金币\n0\n核心零件\n⏰\n00:00:00\n加速 x1.01\n🐾\n⚔️\nBOSS来袭\n哥布林首领\n位置：(0, 0) | 视野：47x13 | 拖拽移动 | 滚轮滚动\n石\n石\n金\n木\n金\n木\n人\n空闲\n人\n空闲\n人\n空闲\n发展阶段\n聚落初创\n0\n/ 100\n15\n下一阶段\n生存成型\n还需 15\n厨房、研究台、基础科技\n🎯\n当前目标\n0/6\n下一步\n点击资源点手动采集一次\n地图上的树木、石头、作物和矿点都能直接点击，前期可以主动补资源。\n👥\n角色\n3\n⚡\n0\n工作\n💤\n3\n空闲\n农夫1\n😴\n猎人2\n😴\n战士3\n😴\n角色\n招募\n建造\n科技\nBoss\n!\n宜居度：0\n发展度：0\n发展来源：研 0 / 建 0 / 核 0 / 战 0\n贸易：关闭\n候选成员：0\n手动优先级\n生存稳态\n扩张建造\n科研冲刺\n备战 Boss\n收起面板\n角色 / 技能\t\n耕种\n\t\n🏹\n狩猎\n\t\n采集\n\t\n战斗\n\t\n🛠️\n工程\n\t\n建造\n\t\n🍲\n烹饪\n\t\n🩺\n医疗\n\t\n研究\n\n\n农夫1\nLv.10\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n猎人2\nLv.10\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n战士3\nLv.10\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n🛠"
+    }
+  },
+  "errors": [
+    {
+      "type": "warning",
+      "text": "[2026-05-18T14:09:25.447Z] [WARN] [gameStore] Game already initializing or initialized, skipping"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "aiLogs": [],
+  "initialText": "Idle Collective\n180\n木材\n120\n石材\n90\n食物\n260\n金币\n0\n核心零件\n⏰\n00:00:00\n加速 x1.00\n🐾\n⚔️\nBOSS来袭\n哥布林首领\n位置：(0, 0) | 视野：47x13 | 拖拽移动 | 滚轮滚动\n石\n石\n金\n木\n金\n木\n人\n空闲\n人\n空闲\n人\n空闲\n发展阶段\n聚落初创\n0\n/ 100\n15\n下一阶段\n生存成型\n还需 15\n厨房、研究台、基础科技\n🎯\n当前目标\n0/6\n下一步\n点击资源点手动采集一次\n地图上的树木、石头、作物和矿点都能直接点击，前期可以主动补资源。\n👥\n角色\n3\n⚡\n0\n工作\n💤\n3\n空闲\n农夫1\n😴\n猎人2\n😴\n战士3\n😴\n角色\n招募\n建造\n科技\nBoss\n!\n宜居度：0\n发展度：0\n发展来源：研 0 / 建 0 / 核 0 / 战 0\n贸易：关闭\n候选成员：0\n手动优先级\n生存稳态\n扩张建造\n科研冲刺\n备战 Boss\n收起面板\n角色 / 技能\t\n耕种\n\t\n🏹\n狩猎\n\t\n采集\n\t\n战斗\n\t\n🛠️\n工程\n\t\n建造\n\t\n🍲\n烹饪\n\t\n🩺\n医疗\n\t\n研究\n\n\n农夫1\nLv.10\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n猎人2\nLv.10\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n战士3\nLv.10\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n🛠",
+  "buttons": [
+    {
+      "text": "加速 x1.00",
+      "disabled": false
+    },
+    {
+      "text": "🐾",
+      "disabled": false
+    },
+    {
+      "text": "⚔️\nBOSS来袭\n哥布林首领",
+      "disabled": false
+    },
+    {
+      "text": "角色",
+      "disabled": false
+    },
+    {
+      "text": "招募",
+      "disabled": false
+    },
+    {
+      "text": "建造",
+      "disabled": false
+    },
+    {
+      "text": "科技",
+      "disabled": false
+    },
+    {
+      "text": "Boss\n!",
+      "disabled": false
+    },
+    {
+      "text": "手动优先级",
+      "disabled": false
+    },
+    {
+      "text": "生存稳态",
+      "disabled": false
+    },
+    {
+      "text": "扩张建造",
+      "disabled": false
+    },
+    {
+      "text": "科研冲刺",
+      "disabled": false
+    },
+    {
+      "text": "备战 Boss",
+      "disabled": false
+    },
+    {
+      "text": "收起面板",
+      "disabled": false
+    },
+    {
+      "text": "5\n★2",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★2",
+      "disabled": false
+    },
+    {
+      "text": "5\n★2",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★2",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "5\n★1",
+      "disabled": false
+    },
+    {
+      "text": "🛠",
+      "disabled": false
+    }
+  ],
+  "finalText": "Idle Collective\n180\n木材\n120\n石材\n90\n食物\n260\n金币\n0\n核心零件\n⏰\n00:00:00\n加速 x1.00\n🐾\n⚔️\nBOSS来袭\n哥布林首领\n位置：(0, 0) | 视野：47x13 | 拖拽移动 | 滚轮滚动\n石\n石\n金\n木\n金\n木\n人\n空闲\n人\n空闲\n人\n空闲\n发展阶段\n聚落初创\n0\n/ 100\n15\n下一阶段\n生存成型\n还需 15\n厨房、研究台、基础科技\n🎯\n当前目标\n0/6\n下一步\n点击资源点手动采集一次\n地图上的树木、石头、作物和矿点都能直接点击，前期可以主动补资源。\n👥\n角色\n3\n⚡\n0\n工作\n💤\n3\n空闲\n农夫1\n😴\n猎人2\n😴\n战士3\n😴\n角色\n招募\n建造\n科技\nBoss\n!\n宜居度：0\n发展度：0\n发展来源：研 0 / 建 0 / 核 0 / 战 0\n贸易：关闭\n候选成员：0\n手动优先级\n生存稳态\n扩张建造\n科研冲刺\n备战 Boss\n收起面板\n角色 / 技能\t\n耕种\n\t\n🏹\n狩猎\n\t\n采集\n\t\n战斗\n\t\n🛠️\n工程\n\t\n建造\n\t\n🍲\n烹饪\n\t\n🩺\n医疗\n\t\n研究\n\n\n农夫1\nLv.10\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n猎人2\nLv.10\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\n\n战士3\nLv.10\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★2\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n\t\n5\n★1\n🛠",
+  "localStorageKeys": [],
+  "consoleSummary": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.445Z] [INFO] [gameStore] Initializing game..."
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.446Z] [INFO] [Game] All services initialized"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.446Z] [INFO] [Game] Initializing game..."
+    },
+    {
+      "type": "warning",
+      "text": "[2026-05-18T14:09:25.447Z] [WARN] [gameStore] Game already initializing or initialized, skipping"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.485Z] [INFO] [ProductionBuildingManager] Loaded 11 production building configs"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.485Z] [INFO] [EquipmentManager] Loaded 25 equipment configs"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.485Z] [INFO] [BossManager] Loaded 5 boss configs"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.485Z] [INFO] [TechnologyManager] Loaded 6 tech configs"
+    },
+    {
+      "type": "log",
+      "text": "[MapSystem] 地形分布统计:"
+    },
+    {
+      "type": "log",
+      "text": "  grass: 1901 (76.0%)"
+    },
+    {
+      "type": "log",
+      "text": "  forest: 254 (10.2%)"
+    },
+    {
+      "type": "log",
+      "text": "  mountain: 119 (4.8%)"
+    },
+    {
+      "type": "log",
+      "text": "  water: 137 (5.5%)"
+    },
+    {
+      "type": "log",
+      "text": "  sand: 48 (1.9%)"
+    },
+    {
+      "type": "log",
+      "text": "  snow: 41 (1.6%)"
+    },
+    {
+      "type": "log",
+      "text": "[MapSystem] 资源点分布统计:"
+    },
+    {
+      "type": "log",
+      "text": "  wood: 15个资源点 (0.6%)"
+    },
+    {
+      "type": "log",
+      "text": "  stone: 3个资源点 (0.1%)"
+    },
+    {
+      "type": "log",
+      "text": "  food: 8个资源点 (0.3%)"
+    },
+    {
+      "type": "log",
+      "text": "  gold: 3个资源点 (0.1%)"
+    },
+    {
+      "type": "log",
+      "text": "  core_parts: 0个资源点 (0.0%)"
+    },
+    {
+      "type": "log",
+      "text": "  总资源点: 29个"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.491Z] [INFO] [Game] Created 3 initial characters"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.491Z] [INFO] [EquipmentManager] Shop refreshed with 8 items"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.491Z] [INFO] [CharacterShopManager] Character shop initialized"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.492Z] [INFO] [TechnologyManager] Technology system initialized"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.492Z] [INFO] [BossManager] Spawned boss 哥布林首领 (level 1)"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.492Z] [INFO] [Game] Game initialized successfully"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.493Z] [INFO] [gameStore] init: autoSaveFlag=null, autoSaveData=null"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.493Z] [INFO] [gameStore] updateShopCharacters called, game: true"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.493Z] [INFO] [gameStore] characterShopManager: true"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.493Z] [INFO] [gameStore] shopCharacters from manager: 0 Array(0)"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.493Z] [INFO] [characterStore] shopCharacters updated: 0"
+    },
+    {
+      "type": "info",
+      "text": "[2026-05-18T14:09:25.493Z] [INFO] [gameStore] Game initialized"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ export enum ResourceType {
   STONE = 'stone',
   FOOD = 'food',
   GOLD = 'gold',
-  LEATHER = 'leather',
+  CORE_PARTS = 'core_parts',
 }
 
 /** 资源节点 */

@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-04-02T14:33:53.557Z",
+  "summary": {
+    "assetCount": 61,
+    "errorCount": 0,
+    "warningCount": 8
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "asset_id": "ui_resource_wood",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_character_default",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_profession_gatherer",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_profession_builder",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_profession_farmer",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_profession_warrior",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_profession_researcher",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    },
+    {
+      "asset_id": "ui_building_default",
+      "message": "Opaque ratio is low; asset may be unreadable at 32px."
+    }
+  ]
+}

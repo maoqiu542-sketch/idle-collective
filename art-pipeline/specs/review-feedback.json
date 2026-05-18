@@ -1,0 +1,170 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-04-17T12:20:22.605Z",
+  "categories": {
+    "terrain": {
+      "observed_failures": {
+        "palette_drift": 82,
+        "duplicate_candidate": 46,
+        "low_readability_32px": 16,
+        "low_variation": 52
+      },
+      "enforced_additions": {
+        "must_include": [
+          "stay inside approved palette family",
+          "more local variation between candidates",
+          "large readable primary shapes"
+        ],
+        "must_avoid": [
+          "off-palette accents",
+          "near-identical candidate structure",
+          "micro details that disappear at 32px"
+        ],
+        "acceptance_checks": [
+          "overall color family must match style profile",
+          "candidate must add useful variation within category",
+          "asset remains recognizable at 32px preview"
+        ],
+        "notes": [
+          "Color drift appeared repeatedly and now tightens palette guidance.",
+          "Too many near-duplicate candidates were produced.",
+          "Small-size readability failed repeatedly and is now an enforced rule."
+        ]
+      }
+    },
+    "resource_node": {
+      "observed_failures": {
+        "palette_drift": 2
+      },
+      "enforced_additions": {
+        "must_include": [
+          "stay inside approved palette family"
+        ],
+        "must_avoid": [
+          "off-palette accents"
+        ],
+        "acceptance_checks": [
+          "overall color family must match style profile"
+        ],
+        "notes": [
+          "Color drift appeared repeatedly and now tightens palette guidance."
+        ]
+      }
+    },
+    "building_map": {
+      "observed_failures": {
+        "palette_drift": 22
+      },
+      "enforced_additions": {
+        "must_include": [
+          "stay inside approved palette family"
+        ],
+        "must_avoid": [
+          "off-palette accents"
+        ],
+        "acceptance_checks": [
+          "overall color family must match style profile"
+        ],
+        "notes": [
+          "Color drift appeared repeatedly and now tightens palette guidance."
+        ]
+      }
+    },
+    "ui_icon_fallback": {
+      "observed_failures": {
+        "palette_drift": 117,
+        "weak_silhouette": 124,
+        "low_readability_32px": 1
+      },
+      "enforced_additions": {
+        "must_include": [
+          "stay inside approved palette family",
+          "clear outer silhouette"
+        ],
+        "must_avoid": [
+          "off-palette accents",
+          "mushy outline"
+        ],
+        "acceptance_checks": [
+          "overall color family must match style profile",
+          "shape must remain readable when reduced"
+        ],
+        "notes": [
+          "Color drift appeared repeatedly and now tightens palette guidance.",
+          "Silhouette clarity failed repeatedly."
+        ]
+      }
+    },
+    "character_portrait": {
+      "observed_failures": {
+        "palette_drift": 26,
+        "portrait_crop_or_scale": 36,
+        "edge_dirty": 32,
+        "subject_out_of_frame": 32,
+        "subject_touching_edge": 32
+      },
+      "enforced_additions": {
+        "must_include": [
+          "stay inside approved palette family",
+          "stable face crop",
+          "clear face size in frame",
+          "safe margin around the main subject"
+        ],
+        "must_avoid": [
+          "off-palette accents",
+          "tiny face",
+          "off-center bust crop",
+          "cropped subject touching frame edge"
+        ],
+        "acceptance_checks": [
+          "overall color family must match style profile",
+          "face must remain legible in portrait UI sizes",
+          "main subject must fit inside the export frame"
+        ],
+        "notes": [
+          "Color drift appeared repeatedly and now tightens palette guidance.",
+          "Portrait crop and scale failed repeatedly.",
+          "Subjects repeatedly touched the export edge and became hard to read."
+        ]
+      }
+    },
+    "boss_portrait": {
+      "observed_failures": {
+        "palette_drift": 43,
+        "low_readability_32px": 46,
+        "edge_dirty": 15,
+        "subject_out_of_frame": 15,
+        "subject_touching_edge": 15,
+        "portrait_crop_or_scale": 15
+      },
+      "enforced_additions": {
+        "must_include": [
+          "stay inside approved palette family",
+          "large readable primary shapes",
+          "safe margin around the main subject",
+          "stable face crop",
+          "clear face size in frame"
+        ],
+        "must_avoid": [
+          "off-palette accents",
+          "micro details that disappear at 32px",
+          "cropped subject touching frame edge",
+          "tiny face",
+          "off-center bust crop"
+        ],
+        "acceptance_checks": [
+          "overall color family must match style profile",
+          "asset remains recognizable at 32px preview",
+          "main subject must fit inside the export frame",
+          "face must remain legible in portrait UI sizes"
+        ],
+        "notes": [
+          "Color drift appeared repeatedly and now tightens palette guidance.",
+          "Small-size readability failed repeatedly and is now an enforced rule.",
+          "Subjects repeatedly touched the export edge and became hard to read.",
+          "Portrait crop and scale failed repeatedly."
+        ]
+      }
+    }
+  }
+}

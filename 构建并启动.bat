@@ -1,39 +1,37 @@
 @echo off
 chcp 65001 >nul
-title Idle Collective - 生产环境启动
+title Idle Collective - Build and Run
 
 echo.
-echo  ╔═══════════════════════════════════════════════╗
-echo  ║                                               ║
-echo  ║       🎮 Idle Collective - 生产模式 🎮        ║
-echo  ║                                               ║
-echo  ╚═══════════════════════════════════════════════╝
+echo  =====================================================
+echo.
+echo       Idle Collective - Production Build
+echo.
+echo  =====================================================
 echo.
 
 cd /d "%~dp0"
 
-echo  正在构建游戏...
+echo  Building game...
 echo.
 
 call npm run build
 
 if %errorlevel% neq 0 (
     echo.
-    echo  [错误] 构建失败
+    echo  [ERROR] Build failed
     pause
     exit /b 1
 )
 
 echo.
-echo  [√] 构建完成
-echo.
-echo  正在启动游戏...
+echo  [OK] Build completed
 echo.
 
-call npm start
+REM Check if it's a development build or production
+echo  Starting game...
+echo.
 
-if %errorlevel% neq 0 (
-    echo.
-    echo  [错误] 启动失败
-    pause
-)
+call npm run dev:electron
+
+pause

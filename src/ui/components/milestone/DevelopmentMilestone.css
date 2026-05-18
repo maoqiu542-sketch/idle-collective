@@ -1,0 +1,129 @@
+.dev-milestone {
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 13px;
+}
+
+.dev-milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.dev-milestone-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dev-milestone-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dev-milestone-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4fc3f7;
+}
+
+.dev-milestone-score {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.dev-milestone-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dev-milestone-max {
+  font-size: 12px;
+  color: #666;
+}
+
+.dev-milestone-bar-track {
+  position: relative;
+  height: 6px;
+  background: #2a2a3e;
+  border-radius: 3px;
+  margin: 8px 0 12px;
+  overflow: visible;
+}
+
+.dev-milestone-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4fc3f7, #81d4fa);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.dev-milestone-marker {
+  position: absolute;
+  top: -14px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #666;
+  background: #1a1a2e;
+  padding: 0 4px;
+}
+
+.dev-milestone-next {
+  background: rgba(79, 195, 247, 0.08);
+  border: 1px solid rgba(79, 195, 247, 0.2);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.dev-milestone-next-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.dev-milestone-next-label {
+  font-size: 11px;
+  color: #4fc3f7;
+}
+
+.dev-milestone-next-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #bbb;
+  flex: 1;
+}
+
+.dev-milestone-next-need {
+  font-size: 11px;
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.dev-milestone-next-unlocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.dev-milestone-unlock-tag {
+  font-size: 11px;
+  color: #999;
+  background: #2a2a3e;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.dev-milestone-complete {
+  font-size: 12px;
+  color: #4caf50;
+  text-align: center;
+  padding: 8px;
+}

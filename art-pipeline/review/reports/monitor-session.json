@@ -1,0 +1,157 @@
+{
+  "version": "1.0.0",
+  "startedAt": "2026-04-02T14:26:38.675Z",
+  "lastTickAt": "2026-04-17T12:20:23.963Z",
+  "ticksRun": 216,
+  "elapsedMs": 1288425262,
+  "minimumDurationHours": 8,
+  "completed": false,
+  "nextAction": "semantic_review_required",
+  "targetAssetCount": 61,
+  "approvedAssetCount": 44,
+  "autoScreenPassedCount": 44,
+  "semanticApprovedCount": 0,
+  "finalPendingCount": 0,
+  "finalApprovedCount": 0,
+  "pendingReviewCount": 0,
+  "livePromotionMode": "manual_only",
+  "blockedAssets": [],
+  "categories": [
+    {
+      "category": "terrain",
+      "total": 20,
+      "approvedCount": 10,
+      "pendingReviewCount": 0,
+      "blockedCount": 0
+    },
+    {
+      "category": "resource_node",
+      "total": 4,
+      "approvedCount": 4,
+      "pendingReviewCount": 0,
+      "blockedCount": 0
+    },
+    {
+      "category": "building_map",
+      "total": 10,
+      "approvedCount": 10,
+      "pendingReviewCount": 0,
+      "blockedCount": 0
+    },
+    {
+      "category": "ui_icon_fallback",
+      "total": 15,
+      "approvedCount": 9,
+      "pendingReviewCount": 0,
+      "blockedCount": 0
+    },
+    {
+      "category": "character_portrait",
+      "total": 7,
+      "approvedCount": 7,
+      "pendingReviewCount": 0,
+      "blockedCount": 0
+    },
+    {
+      "category": "boss_portrait",
+      "total": 5,
+      "approvedCount": 4,
+      "pendingReviewCount": 0,
+      "blockedCount": 0
+    }
+  ],
+  "comfyui": {
+    "ok": true,
+    "runningCount": 0,
+    "pendingCount": 0,
+    "runningAsset": null,
+    "pendingAssets": []
+  },
+  "comfyuiRecovery": null,
+  "generationResults": [
+    {
+      "asset_id": "terrain_forest_b",
+      "strategy": "local_baseline_reset",
+      "ok": true,
+      "note": "Adaptive retry using baseline_reset; tags=palette_drift,duplicate_candidate,low_variation"
+    },
+    {
+      "asset_id": "ui_character_default",
+      "strategy": "local_fallback_local",
+      "ok": true,
+      "note": "Adaptive retry using fallback_local; tags=palette_drift,weak_silhouette"
+    },
+    {
+      "asset_id": "boss_portrait_04",
+      "strategy": "local_fallback_local",
+      "ok": true,
+      "note": "Adaptive retry using fallback_local; tags=palette_drift,low_readability_32px"
+    },
+    {
+      "asset_id": "terrain_mountain",
+      "strategy": "local_baseline_reset",
+      "ok": true,
+      "note": "Adaptive retry using baseline_reset; tags=palette_drift,duplicate_candidate"
+    }
+  ],
+  "steps": {
+    "import": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:import] imported 0 generated files from D:\\teae\\openclaw\\ComfyUI\\output\n",
+      "stderr": ""
+    },
+    "aiReview": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:ai-review] reject terrain_forest_b cand30 score=65\n[art:ai-review] reject terrain_mountain cand30 score=77\n[art:ai-review] reject ui_character_default cand12 score=78\n[art:ai-review] reject boss_portrait_04 cand21 score=75\n[art:ai-review] reviewed 4 assets\n",
+      "stderr": ""
+    },
+    "reviewFeedback": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:review-feedback] updated review-feedback.json\n",
+      "stderr": ""
+    },
+    "liveExport": {
+      "ok": true,
+      "status": 0,
+      "skipped": true,
+      "stdout": "",
+      "stderr": "",
+      "reason": "live export is locked behind final human approval"
+    },
+    "liveManifest": {
+      "ok": true,
+      "status": 0,
+      "skipped": true,
+      "stdout": "",
+      "stderr": "",
+      "reason": "live manifest is locked behind final human approval"
+    },
+    "stagedExport": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:export] skipped terrain_grass (staged, no source)\n[art:export] skipped terrain_grass_b (staged, no source)\n[art:export] skipped terrain_grass_c (staged, no source)\n[art:export] skipped terrain_grass_d (staged, no source)\n[art:export] skipped terrain_grass_e (staged, no source)\n[art:export] skipped terrain_forest (staged, no source)\n[art:export] skipped terrain_forest_b (staged, no source)\n[art:export] exported terrain_forest_c (staged)\n[art:export] skipped terrain_mountain (staged, no source)\n[art:export] exported terrain_mountain_b (staged)\n[art:export] exported terrain_mountain_c (staged)\n[art:export] exported terrain_water (staged)\n[art:export] skipped terrain_water_b (staged, no source)\n[art:export] skipped terrain_water_c (staged, no source)\n[art:export] skipped terrain_sand (staged, no source)\n[art:export] skipped terrain_sand_b (staged, no source)\n[art:export] exported terrain_sand_c (staged)\n[art:export] skipped terrain_snow (staged, no source)\n[art:export] skipped terrain_snow_b (staged, no source)\n[art:export] skipped terrain_snow_c (staged, no source)\n[art:export] exported resource_tree (staged)\n[art:export] exported resource_rock (staged)\n[art:export] exported resource_crop (staged)\n[art:export] exported resource_ore (staged)\n[art:export] exported building_lumber_mill (staged)\n[art:export] exported building_quarry (staged)\n[art:export] exported building_farm (staged)\n[art:export] exported building_warehouse (staged)\n[art:export] exported building_kitchen (staged)\n[art:export] exported building_house (staged)\n[art:export] exported building_trade_station (staged)\n[art:export] exported building_barracks (staged)\n[art:export] exported building_recruitment_station (staged)\n[art:export] exported building_research_desk (staged)\n[art:export] skipped ui_resource_wood (staged, no source)\n[art:export] skipped ui_resource_stone (staged, no source)\n[art:export] skipped ui_resource_food (staged, no source)\n[art:export] skipped ui_resource_gold (staged, no source)\n[art:export] exported ui_resource_core_parts (staged)\n[art:export] skipped ui_character_default (staged, no source)\n[art:export] skipped ui_boss_default (staged, no source)\n[art:export] exported ui_profession_gatherer (staged)\n[art:export] exported ui_profession_builder (staged)\n[art:export] exported ui_profession_farmer (staged)\n[art:export] exported ui_profession_warrior (staged)\n[art:export] exported ui_profession_researcher (staged)\n[art:export] exported ui_building_default (staged)\n[art:export] exported ui_resource_default (staged)\n[art:export] exported ui_terrain_default (staged)\n[art:export] exported character_portrait_farmer (staged)\n[art:export] exported character_portrait_hunter (staged)\n[art:export] exported character_portrait_warrior (staged)\n[art:export] exported character_portrait_engineer (staged)\n[art:export] exported character_portrait_cook (staged)\n[art:export] exported character_portrait_doctor (staged)\n[art:export] exported character_portrait_scholar (staged)\n[art:export] exported boss_portrait_01 (staged)\n[art:export] exported boss_portrait_02 (staged)\n[art:export] exported boss_portrait_03 (staged)\n[art:export] skipped boss_portrait_04 (staged, no source)\n[art:export] exported boss_portrait_05 (staged)\n",
+      "stderr": ""
+    },
+    "stagedManifest": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:staged-manifest] wrote public\\game-assets\\manifests\\staged-game-assets-manifest.json\n",
+      "stderr": ""
+    },
+    "reviewQueue": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:review-queue] wrote art-pipeline\\review\\reports\\review-queue.json\n",
+      "stderr": ""
+    },
+    "dashboard": {
+      "ok": true,
+      "status": 0,
+      "stdout": "[art:review-dashboard] wrote art-pipeline\\review\\reports\\review-dashboard.html\n",
+      "stderr": ""
+    }
+  }
+}

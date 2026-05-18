@@ -1,0 +1,104 @@
+{
+  "version": "1.0.0",
+  "mapping": {
+    "terrain": {
+      "grass": [
+        "terrain_grass",
+        "terrain_grass_b",
+        "terrain_grass_c",
+        "terrain_grass_d",
+        "terrain_grass_e"
+      ],
+      "forest": [
+        "terrain_forest",
+        "terrain_forest_b",
+        "terrain_forest_c"
+      ],
+      "mountain": [
+        "terrain_mountain",
+        "terrain_mountain_b",
+        "terrain_mountain_c"
+      ],
+      "water": [
+        "terrain_water",
+        "terrain_water_b",
+        "terrain_water_c"
+      ],
+      "sand": [
+        "terrain_sand",
+        "terrain_sand_b",
+        "terrain_sand_c"
+      ],
+      "snow": [
+        "terrain_snow",
+        "terrain_snow_b",
+        "terrain_snow_c"
+      ]
+    },
+    "resourceNodes": {
+      "wood": "resource_tree",
+      "stone": "resource_rock",
+      "food": "resource_crop",
+      "gold": "resource_ore"
+    },
+    "resourceUi": {
+      "wood": "ui_resource_wood",
+      "stone": "ui_resource_stone",
+      "food": "ui_resource_food",
+      "gold": "ui_resource_gold",
+      "core_parts": "ui_resource_core_parts"
+    },
+    "buildings": {
+      "lumber_mill": "building_lumber_mill",
+      "quarry": "building_quarry",
+      "farm": "building_farm",
+      "warehouse": "building_warehouse",
+      "kitchen": "building_kitchen",
+      "house": "building_house",
+      "trade_station": "building_trade_station",
+      "barracks": "building_house_v2",
+      "recruitment_station": "building_recruitment_station",
+      "research_desk": "building_kitchen"
+    },
+    "professions": {
+      "gatherer": "ui_profession_gatherer",
+      "builder": "ui_profession_builder",
+      "farmer": "ui_profession_farmer",
+      "warrior": "ui_profession_warrior",
+      "hunter": "ui_profession_gatherer",
+      "engineer": "ui_profession_builder",
+      "scholar": "ui_profession_researcher",
+      "researcher": "ui_profession_researcher",
+      "cook": "ui_profession_farmer",
+      "chef": "ui_profession_farmer",
+      "doctor": "ui_profession_researcher"
+    },
+    "characterPortraits": {
+      "gatherer": "character_portrait_hunter",
+      "builder": "character_portrait_engineer",
+      "farmer": "character_portrait_farmer",
+      "warrior": "character_portrait_warrior",
+      "hunter": "character_portrait_hunter",
+      "engineer": "character_portrait_engineer",
+      "scholar": "character_portrait_scholar",
+      "researcher": "character_portrait_scholar",
+      "cook": "character_portrait_cook",
+      "chef": "character_portrait_cook",
+      "doctor": "character_portrait_doctor"
+    },
+    "bossPortraits": {
+      "boss_01": "boss_portrait_01",
+      "boss_02": "boss_portrait_02",
+      "boss_03": "boss_portrait_03",
+      "boss_04": "boss_portrait_04",
+      "boss_05": "boss_portrait_05"
+    },
+    "ui": {
+      "character_default": "ui_character_default",
+      "boss_default": "ui_boss_default",
+      "building_default": "ui_building_default",
+      "resource_default": "ui_resource_default",
+      "terrain_default": "ui_terrain_default"
+    }
+  }
+}

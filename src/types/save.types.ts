@@ -6,7 +6,8 @@
 import { Character } from './character.types'
 import { ProductionBuilding } from './production-building.types'
 import { Equipment } from './equipment.types'
-import { ResourceType } from './map.types'
+import { ResourceType, Tile } from './map.types'
+import { TradeLastResult, TradeReserve } from './settlement.types'
 
 /** 存档元数据 */
 export interface SaveMetadata {
@@ -16,12 +17,14 @@ export interface SaveMetadata {
   updatedAt: number
   playTime: number
   version: string
+  saveVersion?: string
   screenshot?: string
 }
 
 /** 存档数据 */
 export interface SaveData {
   metadata: SaveMetadata
+  saveVersion: string
   game: {
     tick: number
     gameTime: number
@@ -32,6 +35,19 @@ export interface SaveData {
   equipments: Equipment[]
   resources: [ResourceType, number][]
   settings: GameSettings
+  trade?: {
+    enabled: boolean
+    reserve: TradeReserve
+    lastResult: TradeLastResult | null
+    goldRemainder?: number
+    progressMs?: number
+  }
+  mapData?: {
+    width: number
+    height: number
+    tiles: Tile[][]
+    seed?: number
+  }
 }
 
 /** 游戏设置 */

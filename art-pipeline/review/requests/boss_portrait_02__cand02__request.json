@@ -1,0 +1,207 @@
+{
+  "asset_id": "boss_portrait_02",
+  "category": "boss_portrait",
+  "variant": "cand02",
+  "workflow": "portrait_workflow",
+  "workflow_template_path": "D:\\GameDesign\\Projects\\idle-collective\\art-pipeline\\workflows\\portrait_workflow.json",
+  "seed": 6002,
+  "prompt_template": "storybook game boss portrait, volcano daughter inspired softness, hulking stone demon with cracked basalt horns and glowing core, intimidating bust portrait, readable silhouette at 64px, warm pastel palette, transparent background, game portrait asset",
+  "prompt": "asset goal: Boss portrait 02. category: boss_portrait. subject: storybook game boss portrait, volcano daughter inspired softness, hulking stone demon with cracked basalt horns and glowing core, intimidating bust portrait, readable silhouette at 64px, warm pastel palette, transparent background, game portrait asset. composition: single threatening boss bust portrait. must include: menacing silhouette, strong face read, boss-specific visual identity, stay inside approved palette family, large readable primary shapes, safe margin around the main subject, stable face crop, clear face size in frame. general rules: respect the assigned palette and style profile, avoid decorative borders and text, optimize for in-game readability at target size, keep composition simple enough for downstream review. feedback adjustments: Color drift appeared repeatedly and now tightens palette guidance., Small-size readability failed repeatedly and is now an enforced rule., Subjects repeatedly touched the export edge and became hard to read., Portrait crop and scale failed repeatedly.",
+  "negative_prompt": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, full battle scene, crowd, tiny head, landscape background, cropped horns, cropped jaw, text label, must avoid: cute expression, crowd, full battle scene, soft mascot look, off-palette accents, micro details that disappear at 32px, cropped subject touching frame edge, tiny face, off-center bust crop",
+  "strategy": "comfyui_generated",
+  "note": "",
+  "generation_brief": {
+    "asset_id": "boss_portrait_02",
+    "display_name": "Boss portrait 02",
+    "category": "boss_portrait",
+    "target_key": "boss_02",
+    "workflow": "portrait_workflow",
+    "source_resolution": {
+      "width": 256,
+      "height": 256
+    },
+    "export_presets": [
+      {
+        "name": "32",
+        "width": 32,
+        "height": 32,
+        "fit": "contain"
+      },
+      {
+        "name": "64",
+        "width": 64,
+        "height": 64,
+        "fit": "contain"
+      },
+      {
+        "name": "128",
+        "width": 128,
+        "height": 128,
+        "fit": "contain"
+      }
+    ],
+    "style_profile": {
+      "id": "idle_collective_pastel_map_v1",
+      "palette": [
+        "#E8B4B8",
+        "#A8D8B9",
+        "#F4D03F",
+        "#F5E6D3",
+        "#9B8AA5",
+        "#7CBA5F"
+      ],
+      "checkpoint": "AWPainting_v1.3.safetensors",
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    "standard": {
+      "output_goal": "single shippable game asset candidate",
+      "general_rules": [
+        "respect the assigned palette and style profile",
+        "avoid decorative borders and text",
+        "optimize for in-game readability at target size",
+        "keep composition simple enough for downstream review"
+      ],
+      "composition": "single threatening boss bust portrait",
+      "must_include": [
+        "menacing silhouette",
+        "strong face read",
+        "boss-specific visual identity",
+        "stay inside approved palette family",
+        "large readable primary shapes",
+        "safe margin around the main subject",
+        "stable face crop",
+        "clear face size in frame"
+      ],
+      "must_avoid": [
+        "cute expression",
+        "crowd",
+        "full battle scene",
+        "soft mascot look",
+        "off-palette accents",
+        "micro details that disappear at 32px",
+        "cropped subject touching frame edge",
+        "tiny face",
+        "off-center bust crop"
+      ],
+      "acceptance_checks": [
+        "feels like a boss",
+        "still readable at 32px",
+        "not mistaken for a regular unit",
+        "overall color family must match style profile",
+        "asset remains recognizable at 32px preview",
+        "main subject must fit inside the export frame",
+        "face must remain legible in portrait UI sizes"
+      ],
+      "feedback_notes": [
+        "Color drift appeared repeatedly and now tightens palette guidance.",
+        "Small-size readability failed repeatedly and is now an enforced rule.",
+        "Subjects repeatedly touched the export edge and became hard to read.",
+        "Portrait crop and scale failed repeatedly."
+      ]
+    },
+    "acceptance_summary": [
+      "feels like a boss",
+      "still readable at 32px",
+      "not mistaken for a regular unit",
+      "overall color family must match style profile",
+      "asset remains recognizable at 32px preview",
+      "main subject must fit inside the export frame",
+      "face must remain legible in portrait UI sizes"
+    ],
+    "feedback_notes": [
+      "Color drift appeared repeatedly and now tightens palette guidance.",
+      "Small-size readability failed repeatedly and is now an enforced rule.",
+      "Subjects repeatedly touched the export edge and became hard to read.",
+      "Portrait crop and scale failed repeatedly."
+    ]
+  },
+  "request": {
+    "prompt": {
+      "1": {
+        "class_type": "CheckpointLoaderSimple",
+        "inputs": {
+          "ckpt_name": "AWPainting_v1.3.safetensors"
+        }
+      },
+      "2": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "asset goal: Boss portrait 02. category: boss_portrait. subject: storybook game boss portrait, volcano daughter inspired softness, hulking stone demon with cracked basalt horns and glowing core, intimidating bust portrait, readable silhouette at 64px, warm pastel palette, transparent background, game portrait asset. composition: single threatening boss bust portrait. must include: menacing silhouette, strong face read, boss-specific visual identity, stay inside approved palette family, large readable primary shapes, safe margin around the main subject, stable face crop, clear face size in frame. general rules: respect the assigned palette and style profile, avoid decorative borders and text, optimize for in-game readability at target size, keep composition simple enough for downstream review. feedback adjustments: Color drift appeared repeatedly and now tightens palette guidance., Small-size readability failed repeatedly and is now an enforced rule., Subjects repeatedly touched the export edge and became hard to read., Portrait crop and scale failed repeatedly.",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "3": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, full battle scene, crowd, tiny head, landscape background, cropped horns, cropped jaw, text label, must avoid: cute expression, crowd, full battle scene, soft mascot look, off-palette accents, micro details that disappear at 32px, cropped subject touching frame edge, tiny face, off-center bust crop",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "4": {
+        "class_type": "EmptyLatentImage",
+        "inputs": {
+          "width": 256,
+          "height": 256,
+          "batch_size": 1
+        }
+      },
+      "5": {
+        "class_type": "KSampler",
+        "inputs": {
+          "seed": 6002,
+          "steps": 35,
+          "cfg": 5.5,
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "denoise": 1,
+          "model": [
+            "1",
+            0
+          ],
+          "positive": [
+            "2",
+            0
+          ],
+          "negative": [
+            "3",
+            0
+          ],
+          "latent_image": [
+            "4",
+            0
+          ]
+        }
+      },
+      "6": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "5",
+            0
+          ],
+          "vae": [
+            "1",
+            2
+          ]
+        }
+      },
+      "7": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "6",
+            0
+          ],
+          "filename_prefix": "boss_portrait_02__cand02__v001"
+        }
+      }
+    }
+  }
+}

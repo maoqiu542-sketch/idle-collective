@@ -1,0 +1,306 @@
+.online-panel {
+  position: fixed;
+  top: 72px;
+  right: 18px;
+  z-index: 1200;
+  width: min(360px, calc(100vw - 32px));
+  padding: 14px;
+  border: 1px solid rgba(130, 170, 220, 0.35);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.96);
+  color: #e5edf7;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+}
+
+.online-panel__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.online-panel h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.online-panel p {
+  margin: 4px 0 0;
+  color: #9fb1c9;
+  font-size: 12px;
+}
+
+.online-panel__icon-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5edf7;
+}
+
+.online-panel__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.online-panel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+
+.online-panel__dot--connected {
+  background: #4ade80;
+}
+
+.online-panel__dot--connecting,
+.online-panel__dot--reconnecting {
+  background: #facc15;
+}
+
+.online-panel__form,
+.online-panel__players {
+  display: grid;
+  gap: 10px;
+}
+
+.online-panel__room-code {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 12px;
+  padding: 10px;
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  border-radius: 6px;
+  background: rgba(250, 204, 21, 0.08);
+}
+
+.online-panel__room-code span {
+  grid-column: 1 / -1;
+  color: #f8d66d;
+  font-size: 12px;
+}
+
+.online-panel__room-code strong {
+  color: #fff7cc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.online-panel__room-code button {
+  min-width: 64px;
+}
+
+.online-panel__meta-card {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(112, 184, 255, 0.28);
+  border-radius: 6px;
+  background: rgba(56, 129, 216, 0.1);
+}
+
+.online-panel__meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.online-panel__meta-row span {
+  color: #b9c6d8;
+  font-size: 12px;
+}
+
+.online-panel__mono {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0;
+}
+
+.online-panel__mono--small {
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.online-panel label {
+  display: grid;
+  gap: 5px;
+  color: #b9c6d8;
+  font-size: 12px;
+}
+
+.online-panel input {
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  padding: 0 9px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #f8fafc;
+}
+
+.online-panel button {
+  min-height: 34px;
+  border: 1px solid rgba(112, 184, 255, 0.4);
+  border-radius: 6px;
+  background: rgba(56, 129, 216, 0.24);
+  color: #f8fafc;
+  cursor: pointer;
+}
+
+.online-panel button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.online-panel__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.online-player-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 12px;
+}
+
+.online-panel__disconnect {
+  border-color: rgba(248, 113, 113, 0.45) !important;
+  background: rgba(127, 29, 29, 0.35) !important;
+}
+
+.online-panel__privacy {
+  margin-top: 12px !important;
+  line-height: 1.5;
+}
+
+.online-panel__error {
+  color: #fca5a5 !important;
+}
+
+.online-panel__primary-btn {
+  background: rgba(59, 130, 246, 0.3) !important;
+  border-color: rgba(96, 165, 250, 0.5) !important;
+  font-weight: 600;
+}
+
+.online-panel__divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;
+}
+
+.online-panel__divider::before,
+.online-panel__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.online-panel__divider span {
+  color: #7d8fa8;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.online-panel__advanced-toggle {
+  text-align: center;
+}
+
+.online-panel__link-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #7d8fa8 !important;
+  font-size: 12px;
+  padding: 4px 8px;
+  min-height: auto !important;
+}
+
+.online-panel__link-btn:hover {
+  color: #b9c6d8 !important;
+}
+
+.online-panel__advanced {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.online-panel__invite-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  border-radius: 8px;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.online-panel__invite-label {
+  color: #86efac;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.online-panel__invite-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.online-panel__invite-code {
+  flex: 1;
+  color: #bbf7d0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  word-break: break-all;
+}
+
+.online-panel__copy-btn {
+  min-width: 72px;
+  min-height: 34px;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  border-radius: 6px;
+  background: rgba(34, 197, 94, 0.2);
+  color: #bbf7d0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.online-panel__copy-btn--copied {
+  background: rgba(34, 197, 94, 0.4);
+  border-color: rgba(74, 222, 128, 0.6);
+}
+
+.online-panel__room-code-hint {
+  color: #7d8fa8;
+  font-size: 11px;
+}
+
+.online-panel__no-players {
+  color: #7d8fa8;
+  font-size: 13px;
+  text-align: center;
+  padding: 8px 0;
+  margin: 0;
+}

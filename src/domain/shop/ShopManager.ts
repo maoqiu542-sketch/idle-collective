@@ -1,9 +1,11 @@
 import { EventBus } from '@core/EventBus'
 import { EquipmentManager } from '@domain/equipment/EquipmentManager'
 import { Equipment } from '@app-types/equipment.types'
+import { EQUIPMENT_INSTANT_REFRESH_COST } from '@domain/settlement/EconomyBalance'
 
 const SHOP_REFRESH_INTERVAL = 24 * 60 * 60 * 1000
-const INSTANT_REFRESH_COST = 100
+const INSTANT_REFRESH_COST = EQUIPMENT_INSTANT_REFRESH_COST
+const INSTANT_REFRESH_COOLDOWN = 10 * 1000
 const SHOP_SLOTS = 6
 
 export interface ShopItem {
@@ -13,13 +15,14 @@ export interface ShopItem {
   purchased: boolean
 }
 
-export { ShopItem as ShopItemType }
+export type { ShopItem as ShopItemType }
 
 export class ShopManager {
   private equipmentManager: EquipmentManager
   private eventBus: EventBus
   private shopItems: ShopItem[] = []
   private lastRefreshTime: number = 0
+  private lastInstantRefreshTime: number = 0
   private getGold: () => number
   private deductGold: (amount: number) => boolean
 
@@ -96,6 +99,14 @@ export class ShopManager {
   }
 
   instantRefresh(): { success: boolean; message?: string } {
+    const now = Date.now()
+    const timeSinceLastRefresh = now - this.lastInstantRefreshTime
+    
+    if (timeSinceLastRefresh < INSTANT_REFRESH_COOLDOWN) {
+      const remainingSeconds = Math.ceil((INSTANT_REFRESH_COOLDOWN - timeSinceLastRefresh) / 1000)
+      return { success: false, message: `刷新冷却中，请等待${remainingSeconds}秒` }
+    }
+
     const currentGold = this.getGold()
     if (currentGold < INSTANT_REFRESH_COST) {
       return { success: false, message: `金币不足！需要${INSTANT_REFRESH_COST}金币刷新` }
@@ -105,8 +116,13 @@ export class ShopManager {
       return { success: false, message: '金币扣除失败' }
     }
 
+    this.lastInstantRefreshTime = now
     this.refreshShop()
     return { success: true }
+  }
+
+  getInstantRefreshCooldown(): number {
+    return Math.max(0, INSTANT_REFRESH_COOLDOWN - (Date.now() - this.lastInstantRefreshTime))
   }
 
   getShopItems(): ShopItem[] {

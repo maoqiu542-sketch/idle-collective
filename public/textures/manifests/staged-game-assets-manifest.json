@@ -1,0 +1,1174 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-04-20T05:23:40.676Z",
+  "assets": {
+    "terrain_forest_c": {
+      "category": "terrain",
+      "targetKey": "forest",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand29",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/terrain/terrain_forest_c/terrain_forest_c__32.png",
+        "64": "/textures/terrain/terrain_forest_c/terrain_forest_c__64.png",
+        "128": "/textures/terrain/terrain_forest_c/terrain_forest_c__128.png"
+      }
+    },
+    "terrain_mountain_b": {
+      "category": "terrain",
+      "targetKey": "mountain",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand29",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/terrain/terrain_mountain_b/terrain_mountain_b__32.png",
+        "64": "/textures/terrain/terrain_mountain_b/terrain_mountain_b__64.png",
+        "128": "/textures/terrain/terrain_mountain_b/terrain_mountain_b__128.png"
+      }
+    },
+    "terrain_mountain_c": {
+      "category": "terrain",
+      "targetKey": "mountain",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand29",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/terrain/terrain_mountain_c/terrain_mountain_c__32.png",
+        "64": "/textures/terrain/terrain_mountain_c/terrain_mountain_c__64.png",
+        "128": "/textures/terrain/terrain_mountain_c/terrain_mountain_c__128.png"
+      }
+    },
+    "terrain_water": {
+      "category": "terrain",
+      "targetKey": "water",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand28",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/terrain/terrain_water/terrain_water__32.png",
+        "64": "/textures/terrain/terrain_water/terrain_water__64.png",
+        "128": "/textures/terrain/terrain_water/terrain_water__128.png"
+      }
+    },
+    "terrain_sand_c": {
+      "category": "terrain",
+      "targetKey": "sand",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_prompt_tuned",
+      "approvedVariant": "cand04",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/terrain/terrain_sand_c/terrain_sand_c__32.png",
+        "64": "/textures/terrain/terrain_sand_c/terrain_sand_c__64.png",
+        "128": "/textures/terrain/terrain_sand_c/terrain_sand_c__128.png"
+      }
+    },
+    "resource_tree": {
+      "category": "resource_node",
+      "targetKey": "wood",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand27",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/resource_node/resource_tree/resource_tree__32.png",
+        "64": "/textures/resource_node/resource_tree/resource_tree__64.png",
+        "128": "/textures/resource_node/resource_tree/resource_tree__128.png"
+      }
+    },
+    "resource_rock": {
+      "category": "resource_node",
+      "targetKey": "stone",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand08",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/resource_node/resource_rock/resource_rock__32.png",
+        "64": "/textures/resource_node/resource_rock/resource_rock__64.png",
+        "128": "/textures/resource_node/resource_rock/resource_rock__128.png"
+      }
+    },
+    "resource_crop": {
+      "category": "resource_node",
+      "targetKey": "food",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand27",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/resource_node/resource_crop/resource_crop__32.png",
+        "64": "/textures/resource_node/resource_crop/resource_crop__64.png",
+        "128": "/textures/resource_node/resource_crop/resource_crop__128.png"
+      }
+    },
+    "resource_ore": {
+      "category": "resource_node",
+      "targetKey": "gold",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/resource_node/resource_ore/resource_ore__32.png",
+        "64": "/textures/resource_node/resource_ore/resource_ore__64.png",
+        "128": "/textures/resource_node/resource_ore/resource_ore__128.png"
+      }
+    },
+    "building_lumber_mill": {
+      "category": "building_map",
+      "targetKey": "lumber_mill",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand27",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_lumber_mill/building_lumber_mill__32.png",
+        "64": "/textures/building_map/building_lumber_mill/building_lumber_mill__64.png",
+        "128": "/textures/building_map/building_lumber_mill/building_lumber_mill__128.png"
+      }
+    },
+    "building_quarry": {
+      "category": "building_map",
+      "targetKey": "quarry",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand27",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_quarry/building_quarry__32.png",
+        "64": "/textures/building_map/building_quarry/building_quarry__64.png",
+        "128": "/textures/building_map/building_quarry/building_quarry__128.png"
+      }
+    },
+    "building_farm": {
+      "category": "building_map",
+      "targetKey": "farm",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_farm/building_farm__32.png",
+        "64": "/textures/building_map/building_farm/building_farm__64.png",
+        "128": "/textures/building_map/building_farm/building_farm__128.png"
+      }
+    },
+    "building_warehouse": {
+      "category": "building_map",
+      "targetKey": "warehouse",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_warehouse/building_warehouse__32.png",
+        "64": "/textures/building_map/building_warehouse/building_warehouse__64.png",
+        "128": "/textures/building_map/building_warehouse/building_warehouse__128.png"
+      }
+    },
+    "building_kitchen": {
+      "category": "building_map",
+      "targetKey": "kitchen",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_kitchen/building_kitchen__32.png",
+        "64": "/textures/building_map/building_kitchen/building_kitchen__64.png",
+        "128": "/textures/building_map/building_kitchen/building_kitchen__128.png"
+      }
+    },
+    "building_house": {
+      "category": "building_map",
+      "targetKey": "house",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_house/building_house__32.png",
+        "64": "/textures/building_map/building_house/building_house__64.png",
+        "128": "/textures/building_map/building_house/building_house__128.png"
+      }
+    },
+    "building_trade_station": {
+      "category": "building_map",
+      "targetKey": "trade_station",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_trade_station/building_trade_station__32.png",
+        "64": "/textures/building_map/building_trade_station/building_trade_station__64.png",
+        "128": "/textures/building_map/building_trade_station/building_trade_station__128.png"
+      }
+    },
+    "building_barracks": {
+      "category": "building_map",
+      "targetKey": "barracks",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_barracks/building_barracks__32.png",
+        "64": "/textures/building_map/building_barracks/building_barracks__64.png",
+        "128": "/textures/building_map/building_barracks/building_barracks__128.png"
+      }
+    },
+    "building_recruitment_station": {
+      "category": "building_map",
+      "targetKey": "recruitment_station",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_recruitment_station/building_recruitment_station__32.png",
+        "64": "/textures/building_map/building_recruitment_station/building_recruitment_station__64.png",
+        "128": "/textures/building_map/building_recruitment_station/building_recruitment_station__128.png"
+      }
+    },
+    "building_research_desk": {
+      "category": "building_map",
+      "targetKey": "research_desk",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_baseline_reset",
+      "approvedVariant": "cand26",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/building_map/building_research_desk/building_research_desk__32.png",
+        "64": "/textures/building_map/building_research_desk/building_research_desk__64.png",
+        "128": "/textures/building_map/building_research_desk/building_research_desk__128.png"
+      }
+    },
+    "ui_resource_core_parts": {
+      "category": "ui_icon_fallback",
+      "targetKey": "core_parts",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand10",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_resource_core_parts/ui_resource_core_parts__32.png",
+        "64": "/textures/ui_icon_fallback/ui_resource_core_parts/ui_resource_core_parts__64.png",
+        "128": "/textures/ui_icon_fallback/ui_resource_core_parts/ui_resource_core_parts__128.png"
+      }
+    },
+    "ui_profession_gatherer": {
+      "category": "ui_icon_fallback",
+      "targetKey": "gatherer",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand09",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_profession_gatherer/ui_profession_gatherer__32.png",
+        "64": "/textures/ui_icon_fallback/ui_profession_gatherer/ui_profession_gatherer__64.png",
+        "128": "/textures/ui_icon_fallback/ui_profession_gatherer/ui_profession_gatherer__128.png"
+      }
+    },
+    "ui_profession_builder": {
+      "category": "ui_icon_fallback",
+      "targetKey": "builder",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand09",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_profession_builder/ui_profession_builder__32.png",
+        "64": "/textures/ui_icon_fallback/ui_profession_builder/ui_profession_builder__64.png",
+        "128": "/textures/ui_icon_fallback/ui_profession_builder/ui_profession_builder__128.png"
+      }
+    },
+    "ui_profession_farmer": {
+      "category": "ui_icon_fallback",
+      "targetKey": "farmer",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand11",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_profession_farmer/ui_profession_farmer__32.png",
+        "64": "/textures/ui_icon_fallback/ui_profession_farmer/ui_profession_farmer__64.png",
+        "128": "/textures/ui_icon_fallback/ui_profession_farmer/ui_profession_farmer__128.png"
+      }
+    },
+    "ui_profession_warrior": {
+      "category": "ui_icon_fallback",
+      "targetKey": "warrior",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand10",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_profession_warrior/ui_profession_warrior__32.png",
+        "64": "/textures/ui_icon_fallback/ui_profession_warrior/ui_profession_warrior__64.png",
+        "128": "/textures/ui_icon_fallback/ui_profession_warrior/ui_profession_warrior__128.png"
+      }
+    },
+    "ui_profession_researcher": {
+      "category": "ui_icon_fallback",
+      "targetKey": "researcher",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand11",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_profession_researcher/ui_profession_researcher__32.png",
+        "64": "/textures/ui_icon_fallback/ui_profession_researcher/ui_profession_researcher__64.png",
+        "128": "/textures/ui_icon_fallback/ui_profession_researcher/ui_profession_researcher__128.png"
+      }
+    },
+    "ui_building_default": {
+      "category": "ui_icon_fallback",
+      "targetKey": "building_default",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand08",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_building_default/ui_building_default__32.png",
+        "64": "/textures/ui_icon_fallback/ui_building_default/ui_building_default__64.png",
+        "128": "/textures/ui_icon_fallback/ui_building_default/ui_building_default__128.png"
+      }
+    },
+    "ui_resource_default": {
+      "category": "ui_icon_fallback",
+      "targetKey": "resource_default",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand09",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_resource_default/ui_resource_default__32.png",
+        "64": "/textures/ui_icon_fallback/ui_resource_default/ui_resource_default__64.png",
+        "128": "/textures/ui_icon_fallback/ui_resource_default/ui_resource_default__128.png"
+      }
+    },
+    "ui_terrain_default": {
+      "category": "ui_icon_fallback",
+      "targetKey": "terrain_default",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand08",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_terrain_default/ui_terrain_default__32.png",
+        "64": "/textures/ui_icon_fallback/ui_terrain_default/ui_terrain_default__64.png",
+        "128": "/textures/ui_icon_fallback/ui_terrain_default/ui_terrain_default__128.png"
+      }
+    },
+    "character_portrait_farmer": {
+      "category": "character_portrait",
+      "targetKey": "farmer",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand07",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_farmer/character_portrait_farmer__32.png",
+        "64": "/textures/character_portrait/character_portrait_farmer/character_portrait_farmer__64.png",
+        "128": "/textures/character_portrait/character_portrait_farmer/character_portrait_farmer__128.png"
+      }
+    },
+    "character_portrait_hunter": {
+      "category": "character_portrait",
+      "targetKey": "hunter",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand09",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_hunter/character_portrait_hunter__32.png",
+        "64": "/textures/character_portrait/character_portrait_hunter/character_portrait_hunter__64.png",
+        "128": "/textures/character_portrait/character_portrait_hunter/character_portrait_hunter__128.png"
+      }
+    },
+    "character_portrait_warrior": {
+      "category": "character_portrait",
+      "targetKey": "warrior",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand07",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_warrior/character_portrait_warrior__32.png",
+        "64": "/textures/character_portrait/character_portrait_warrior/character_portrait_warrior__64.png",
+        "128": "/textures/character_portrait/character_portrait_warrior/character_portrait_warrior__128.png"
+      }
+    },
+    "character_portrait_engineer": {
+      "category": "character_portrait",
+      "targetKey": "engineer",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand07",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_engineer/character_portrait_engineer__32.png",
+        "64": "/textures/character_portrait/character_portrait_engineer/character_portrait_engineer__64.png",
+        "128": "/textures/character_portrait/character_portrait_engineer/character_portrait_engineer__128.png"
+      }
+    },
+    "character_portrait_cook": {
+      "category": "character_portrait",
+      "targetKey": "cook",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand07",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_cook/character_portrait_cook__32.png",
+        "64": "/textures/character_portrait/character_portrait_cook/character_portrait_cook__64.png",
+        "128": "/textures/character_portrait/character_portrait_cook/character_portrait_cook__128.png"
+      }
+    },
+    "character_portrait_doctor": {
+      "category": "character_portrait",
+      "targetKey": "doctor",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand07",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_doctor/character_portrait_doctor__32.png",
+        "64": "/textures/character_portrait/character_portrait_doctor/character_portrait_doctor__64.png",
+        "128": "/textures/character_portrait/character_portrait_doctor/character_portrait_doctor__128.png"
+      }
+    },
+    "character_portrait_scholar": {
+      "category": "character_portrait",
+      "targetKey": "scholar",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand07",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/character_portrait/character_portrait_scholar/character_portrait_scholar__32.png",
+        "64": "/textures/character_portrait/character_portrait_scholar/character_portrait_scholar__64.png",
+        "128": "/textures/character_portrait/character_portrait_scholar/character_portrait_scholar__128.png"
+      }
+    },
+    "boss_portrait_01": {
+      "category": "boss_portrait",
+      "targetKey": "boss_01",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand10",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/boss_portrait/boss_portrait_01/boss_portrait_01__32.png",
+        "64": "/textures/boss_portrait/boss_portrait_01/boss_portrait_01__64.png",
+        "128": "/textures/boss_portrait/boss_portrait_01/boss_portrait_01__128.png"
+      }
+    },
+    "boss_portrait_02": {
+      "category": "boss_portrait",
+      "targetKey": "boss_02",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand10",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/boss_portrait/boss_portrait_02/boss_portrait_02__32.png",
+        "64": "/textures/boss_portrait/boss_portrait_02/boss_portrait_02__64.png",
+        "128": "/textures/boss_portrait/boss_portrait_02/boss_portrait_02__128.png"
+      }
+    },
+    "boss_portrait_03": {
+      "category": "boss_portrait",
+      "targetKey": "boss_03",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand08",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/boss_portrait/boss_portrait_03/boss_portrait_03__32.png",
+        "64": "/textures/boss_portrait/boss_portrait_03/boss_portrait_03__64.png",
+        "128": "/textures/boss_portrait/boss_portrait_03/boss_portrait_03__128.png"
+      }
+    },
+    "boss_portrait_05": {
+      "category": "boss_portrait",
+      "targetKey": "boss_05",
+      "version": "v001",
+      "status": "auto_screen_passed",
+      "sourceKind": "local_fallback_local",
+      "approvedVariant": "cand08",
+      "reviewStatus": "auto_screen_passed",
+      "aiDecision": "approve",
+      "reviewMethod": "heuristic_screen",
+      "semanticChecked": false,
+      "finalReviewStatus": "semantic_review_required",
+      "files": {
+        "32": "/textures/boss_portrait/boss_portrait_05/boss_portrait_05__32.png",
+        "64": "/textures/boss_portrait/boss_portrait_05/boss_portrait_05__64.png",
+        "128": "/textures/boss_portrait/boss_portrait_05/boss_portrait_05__128.png"
+      }
+    },
+    "terrain_grass": {
+      "category": "terrain",
+      "targetKey": "grass",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_grass/terrain_grass__32.png",
+        "64": "/textures/terrain/terrain_grass/terrain_grass__64.png",
+        "128": "/textures/terrain/terrain_grass/terrain_grass__128.png"
+      }
+    },
+    "terrain_grass_b": {
+      "category": "terrain",
+      "targetKey": "grass",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_grass_b/terrain_grass_b__32.png",
+        "64": "/textures/terrain/terrain_grass_b/terrain_grass_b__64.png",
+        "128": "/textures/terrain/terrain_grass_b/terrain_grass_b__128.png"
+      }
+    },
+    "terrain_grass_c": {
+      "category": "terrain",
+      "targetKey": "grass",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_grass_c/terrain_grass_c__32.png",
+        "64": "/textures/terrain/terrain_grass_c/terrain_grass_c__64.png",
+        "128": "/textures/terrain/terrain_grass_c/terrain_grass_c__128.png"
+      }
+    },
+    "terrain_forest": {
+      "category": "terrain",
+      "targetKey": "forest",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_forest/terrain_forest__32.png",
+        "64": "/textures/terrain/terrain_forest/terrain_forest__64.png",
+        "128": "/textures/terrain/terrain_forest/terrain_forest__128.png"
+      }
+    },
+    "terrain_forest_b": {
+      "category": "terrain",
+      "targetKey": "forest",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_forest_b/terrain_forest_b__32.png",
+        "64": "/textures/terrain/terrain_forest_b/terrain_forest_b__64.png",
+        "128": "/textures/terrain/terrain_forest_b/terrain_forest_b__128.png"
+      }
+    },
+    "terrain_mountain": {
+      "category": "terrain",
+      "targetKey": "mountain",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_mountain/terrain_mountain__32.png",
+        "64": "/textures/terrain/terrain_mountain/terrain_mountain__64.png",
+        "128": "/textures/terrain/terrain_mountain/terrain_mountain__128.png"
+      }
+    },
+    "terrain_water_b": {
+      "category": "terrain",
+      "targetKey": "water",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_water_b/terrain_water_b__32.png",
+        "64": "/textures/terrain/terrain_water_b/terrain_water_b__64.png",
+        "128": "/textures/terrain/terrain_water_b/terrain_water_b__128.png"
+      }
+    },
+    "terrain_water_c": {
+      "category": "terrain",
+      "targetKey": "water",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_water_c/terrain_water_c__32.png",
+        "64": "/textures/terrain/terrain_water_c/terrain_water_c__64.png",
+        "128": "/textures/terrain/terrain_water_c/terrain_water_c__128.png"
+      }
+    },
+    "terrain_sand": {
+      "category": "terrain",
+      "targetKey": "sand",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_sand/terrain_sand__32.png",
+        "64": "/textures/terrain/terrain_sand/terrain_sand__64.png",
+        "128": "/textures/terrain/terrain_sand/terrain_sand__128.png"
+      }
+    },
+    "terrain_sand_b": {
+      "category": "terrain",
+      "targetKey": "sand",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_sand_b/terrain_sand_b__32.png",
+        "64": "/textures/terrain/terrain_sand_b/terrain_sand_b__64.png",
+        "128": "/textures/terrain/terrain_sand_b/terrain_sand_b__128.png"
+      }
+    },
+    "terrain_snow": {
+      "category": "terrain",
+      "targetKey": "snow",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_snow/terrain_snow__32.png",
+        "64": "/textures/terrain/terrain_snow/terrain_snow__64.png",
+        "128": "/textures/terrain/terrain_snow/terrain_snow__128.png"
+      }
+    },
+    "terrain_snow_b": {
+      "category": "terrain",
+      "targetKey": "snow",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_snow_b/terrain_snow_b__32.png",
+        "64": "/textures/terrain/terrain_snow_b/terrain_snow_b__64.png",
+        "128": "/textures/terrain/terrain_snow_b/terrain_snow_b__128.png"
+      }
+    },
+    "terrain_snow_c": {
+      "category": "terrain",
+      "targetKey": "snow",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/terrain/terrain_snow_c/terrain_snow_c__32.png",
+        "64": "/textures/terrain/terrain_snow_c/terrain_snow_c__64.png",
+        "128": "/textures/terrain/terrain_snow_c/terrain_snow_c__128.png"
+      }
+    },
+    "ui_resource_wood": {
+      "category": "ui_icon_fallback",
+      "targetKey": "wood",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_resource_wood/ui_resource_wood__32.png",
+        "64": "/textures/ui_icon_fallback/ui_resource_wood/ui_resource_wood__64.png",
+        "128": "/textures/ui_icon_fallback/ui_resource_wood/ui_resource_wood__128.png"
+      }
+    },
+    "ui_resource_stone": {
+      "category": "ui_icon_fallback",
+      "targetKey": "stone",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_resource_stone/ui_resource_stone__32.png",
+        "64": "/textures/ui_icon_fallback/ui_resource_stone/ui_resource_stone__64.png",
+        "128": "/textures/ui_icon_fallback/ui_resource_stone/ui_resource_stone__128.png"
+      }
+    },
+    "ui_resource_food": {
+      "category": "ui_icon_fallback",
+      "targetKey": "food",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_resource_food/ui_resource_food__32.png",
+        "64": "/textures/ui_icon_fallback/ui_resource_food/ui_resource_food__64.png",
+        "128": "/textures/ui_icon_fallback/ui_resource_food/ui_resource_food__128.png"
+      }
+    },
+    "ui_resource_gold": {
+      "category": "ui_icon_fallback",
+      "targetKey": "gold",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_resource_gold/ui_resource_gold__32.png",
+        "64": "/textures/ui_icon_fallback/ui_resource_gold/ui_resource_gold__64.png",
+        "128": "/textures/ui_icon_fallback/ui_resource_gold/ui_resource_gold__128.png"
+      }
+    },
+    "ui_character_default": {
+      "category": "ui_icon_fallback",
+      "targetKey": "character_default",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_character_default/ui_character_default__32.png",
+        "64": "/textures/ui_icon_fallback/ui_character_default/ui_character_default__64.png",
+        "128": "/textures/ui_icon_fallback/ui_character_default/ui_character_default__128.png"
+      }
+    },
+    "ui_boss_default": {
+      "category": "ui_icon_fallback",
+      "targetKey": "boss_default",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/ui_icon_fallback/ui_boss_default/ui_boss_default__32.png",
+        "64": "/textures/ui_icon_fallback/ui_boss_default/ui_boss_default__64.png",
+        "128": "/textures/ui_icon_fallback/ui_boss_default/ui_boss_default__128.png"
+      }
+    },
+    "boss_portrait_04": {
+      "category": "boss_portrait",
+      "targetKey": "boss_04",
+      "version": "v001",
+      "status": "placeholder",
+      "sourceKind": "placeholder",
+      "approvedVariant": "placeholder",
+      "reviewStatus": "pending",
+      "aiDecision": "pending",
+      "reviewMethod": "none",
+      "semanticChecked": false,
+      "finalReviewStatus": "pending",
+      "files": {
+        "32": "/textures/boss_portrait/boss_portrait_04/boss_portrait_04__32.png",
+        "64": "/textures/boss_portrait/boss_portrait_04/boss_portrait_04__64.png",
+        "128": "/textures/boss_portrait/boss_portrait_04/boss_portrait_04__128.png"
+      }
+    }
+  },
+  "mapping": {
+    "terrain": {
+      "grass": [
+        "terrain_grass",
+        "terrain_grass_b",
+        "terrain_grass_c"
+      ],
+      "forest": [
+        "terrain_forest",
+        "terrain_forest_b",
+        "terrain_forest_c"
+      ],
+      "mountain": [
+        "terrain_mountain",
+        "terrain_mountain_b",
+        "terrain_mountain_c"
+      ],
+      "water": [
+        "terrain_water",
+        "terrain_water_b",
+        "terrain_water_c"
+      ],
+      "sand": [
+        "terrain_sand",
+        "terrain_sand_b",
+        "terrain_sand_c"
+      ],
+      "snow": [
+        "terrain_snow",
+        "terrain_snow_b",
+        "terrain_snow_c"
+      ]
+    },
+    "resourceNodes": {
+      "wood": "resource_tree",
+      "stone": "resource_rock",
+      "food": "resource_crop",
+      "gold": "resource_ore"
+    },
+    "resourceUi": {
+      "wood": "ui_resource_wood",
+      "stone": "ui_resource_stone",
+      "food": "ui_resource_food",
+      "gold": "ui_resource_gold",
+      "core_parts": "ui_resource_core_parts"
+    },
+    "buildings": {
+      "lumber_mill": "building_lumber_mill",
+      "quarry": "building_quarry",
+      "farm": "building_farm",
+      "warehouse": "building_warehouse",
+      "kitchen": "building_kitchen",
+      "house": "building_house",
+      "trade_station": "building_trade_station",
+      "barracks": "building_barracks",
+      "recruitment_station": "building_recruitment_station",
+      "research_desk": "building_research_desk"
+    },
+    "professions": {
+      "gatherer": "ui_profession_gatherer",
+      "builder": "ui_profession_builder",
+      "farmer": "ui_profession_farmer",
+      "warrior": "ui_profession_warrior",
+      "hunter": "ui_profession_gatherer",
+      "engineer": "ui_profession_builder",
+      "scholar": "ui_profession_researcher",
+      "researcher": "ui_profession_researcher",
+      "cook": "ui_profession_farmer",
+      "chef": "ui_profession_farmer",
+      "doctor": "ui_profession_researcher"
+    },
+    "characterPortraits": {
+      "gatherer": "character_portrait_hunter",
+      "builder": "character_portrait_engineer",
+      "farmer": "character_portrait_farmer",
+      "warrior": "character_portrait_warrior",
+      "hunter": "character_portrait_hunter",
+      "engineer": "character_portrait_engineer",
+      "scholar": "character_portrait_scholar",
+      "researcher": "character_portrait_scholar",
+      "cook": "character_portrait_cook",
+      "chef": "character_portrait_cook",
+      "doctor": "character_portrait_doctor"
+    },
+    "bossPortraits": {
+      "boss_01": "boss_portrait_01",
+      "boss_02": "boss_portrait_02",
+      "boss_03": "boss_portrait_03",
+      "boss_04": "boss_portrait_04",
+      "boss_05": "boss_portrait_05"
+    },
+    "ui": {
+      "character_default": "ui_character_default",
+      "boss_default": "ui_boss_default",
+      "building_default": "ui_building_default",
+      "resource_default": "ui_resource_default",
+      "terrain_default": "ui_terrain_default"
+    }
+  },
+  "fallbacks": {
+    "terrain": "terrain_grass",
+    "resource": "resource_tree",
+    "building": "building_house",
+    "character": "character_portrait_farmer",
+    "boss": "boss_portrait_01"
+  }
+}

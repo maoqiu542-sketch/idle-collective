@@ -1,0 +1,96 @@
+{
+  "asset_id": "terrain_grass",
+  "category": "terrain",
+  "variant": "cand02",
+  "workflow": "terrain_workflow",
+  "seed": 1001,
+  "prompt_template": "natural grass texture only, continuous dry meadow grass with tiny flower specks and uneven turf texture across the frame, pure outdoor grass surface, seamless edge-to-edge ground fill, aerial texture swatch, flat terrain material, broad uneven grass cover, micro variation across the whole frame, subtle soil variation, short wild grass and sparse clover, no border, no frame, no vignette, no centered subject, no focal point, no island, no patch, no disk, no ring, no medallion, no circular composition, no radial composition, no starburst, no flower shape, no landscape, no scene, no sky, no horizon, no hills, no mountains, no valley, no water, no river, no stream, no pond, no lake, no creek, no blue patches, no coastline, no shoreline, soft painterly shading, warm pastel palette, texture asset",
+  "request": {
+    "prompt": {
+      "1": {
+        "class_type": "CheckpointLoaderSimple",
+        "inputs": {
+          "ckpt_name": "AWPainting_v1.3.safetensors"
+        }
+      },
+      "2": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "natural grass texture only, continuous dry meadow grass with tiny flower specks and uneven turf texture across the frame, pure outdoor grass surface, seamless edge-to-edge ground fill, aerial texture swatch, flat terrain material, broad uneven grass cover, micro variation across the whole frame, subtle soil variation, short wild grass and sparse clover, no border, no frame, no vignette, no centered subject, no focal point, no island, no patch, no disk, no ring, no medallion, no circular composition, no radial composition, no starburst, no flower shape, no landscape, no scene, no sky, no horizon, no hills, no mountains, no valley, no water, no river, no stream, no pond, no lake, no creek, no blue patches, no coastline, no shoreline, soft painterly shading, warm pastel palette, texture asset",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "3": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, border, frame, decorative frame, ornamental border, tile border, edge trim, corners, center medallion, symmetry, radial symmetry, geometric pattern, floor tile, pavement, stone floor, board game board, courtyard, plaza, town square, vignette, spotlight, centered island, floating island, isolated patch, circular patch, round patch, disk, orb, medallion, single object, single subject, cutout, poster, water, river, stream, pond, lake, creek, blue patch, blue pool, water channel, wetland, flower-like center, star-shaped pattern, spiral pattern, ring pattern, halo, circle, radial seam, radiating seam, building, house, architecture, walls, roads, paths, stairs, indoor floor, dungeon tile, checkerboard, framed platform, square panels, fountain, garden wall, city block, room layout",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "4": {
+        "class_type": "EmptyLatentImage",
+        "inputs": {
+          "width": 256,
+          "height": 256,
+          "batch_size": 1
+        }
+      },
+      "5": {
+        "class_type": "KSampler",
+        "inputs": {
+          "seed": 1001,
+          "steps": 35,
+          "cfg": 5.5,
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "denoise": 1,
+          "model": [
+            "1",
+            0
+          ],
+          "positive": [
+            "2",
+            0
+          ],
+          "negative": [
+            "3",
+            0
+          ],
+          "latent_image": [
+            "4",
+            0
+          ]
+        }
+      },
+      "6": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "5",
+            0
+          ],
+          "vae": [
+            "1",
+            2
+          ]
+        }
+      },
+      "7": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "6",
+            0
+          ],
+          "filename_prefix": "terrain_grass__cand02__v001"
+        }
+      }
+    }
+  }
+}

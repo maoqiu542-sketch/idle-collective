@@ -8,8 +8,8 @@
 const fs = require('fs')
 const path = require('path')
 
-const CSV_DIR = path.join(__dirname, '../config/csv')
-const JSON_DIR = path.join(__dirname, '../config')
+const CSV_DIR = path.join(__dirname, '../public/data/source/csv')
+const JSON_DIR = path.join(__dirname, '../public/data')
 
 function parseCSV(content) {
   const lines = content.trim().split('\n')

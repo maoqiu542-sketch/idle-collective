@@ -1,0 +1,106 @@
+.guide-panel {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  width: 230px;
+  background: linear-gradient(135deg, rgba(139, 90, 43, 0.95), rgba(101, 67, 33, 0.95));
+  border: 2px solid #8b5a2b;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  font-family: 'Georgia', serif;
+}
+
+.guide-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: 7px;
+}
+
+.guide-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.guide-icon {
+  font-size: 14px;
+}
+
+.guide-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #f5deb3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  flex: 1;
+}
+
+.guide-progress {
+  font-size: 10px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.guide-progress-bar {
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.guide-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #daa520, #ffd700);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.guide-goals {
+  display: none;
+}
+
+.guide-current-step {
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  color: #f5deb3;
+  position: relative;
+  z-index: 1;
+}
+
+.guide-current-step.completed {
+  background: rgba(107, 142, 35, 0.3);
+  color: #a5d6a7;
+}
+
+.guide-step-label {
+  font-size: 10px;
+  color: #ffd700;
+  margin-bottom: 4px;
+}
+
+.guide-step-title {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.guide-step-hint {
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(245, 222, 179, 0.88);
+}

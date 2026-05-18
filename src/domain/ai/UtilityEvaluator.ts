@@ -1,3 +1,8 @@
+/**
+ * @deprecated Not connected to the main AI pipeline (AISystem.ts).
+ * AISystem handles utility evaluation internally via calculateUtility.
+ * Kept for reference; do not import into new code.
+ */
 import { Character } from '@app-types/character.types'
 import { Task, TaskType, TaskPriority } from '@app-types/priority.types'
 import { Logger } from '@utils/logger'

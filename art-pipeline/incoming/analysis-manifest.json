@@ -1,0 +1,762 @@
+{
+  "generatedAt": "2026-05-06T12:10:30.947Z",
+  "totalFiles": 107,
+  "dimensionGroups": {
+    "1254x1254": 88,
+    "1536x1024": 1,
+    "2172x724": 12,
+    "2508x627": 6
+  },
+  "uniqueFingerprints": 87,
+  "files": [
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_28 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 3027,
+      "fingerprint": "26483c516b4d4426"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_37 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 3027,
+      "fingerprint": "26483c516b4d4426"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_38 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 3027,
+      "fingerprint": "26483c516b4d4426"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_45 (2) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2117,
+      "fingerprint": "2139efaa92225e30"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_45 (2) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2117,
+      "fingerprint": "2139efaa92225e30"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_45 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2117,
+      "fingerprint": "2139efaa92225e30"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_46 (3) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2293,
+      "fingerprint": "018d1ce3565e327a"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_46 (3) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2293,
+      "fingerprint": "018d1ce3565e327a"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_46 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2293,
+      "fingerprint": "018d1ce3565e327a"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_48 (4) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1868,
+      "fingerprint": "285f84731afad35e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_48 (4) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1868,
+      "fingerprint": "285f84731afad35e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_48 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1868,
+      "fingerprint": "285f84731afad35e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_50 (5) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2096,
+      "fingerprint": "67ef336b3909f4d4"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_50 (5) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2096,
+      "fingerprint": "67ef336b3909f4d4"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_50 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2096,
+      "fingerprint": "67ef336b3909f4d4"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_51 (6) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2222,
+      "fingerprint": "23eed484b55cdeeb"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_51 (6) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2222,
+      "fingerprint": "23eed484b55cdeeb"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_51 (6).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2222,
+      "fingerprint": "23eed484b55cdeeb"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_52 (7) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2135,
+      "fingerprint": "35219e98ac33abd0"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_52 (7) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2135,
+      "fingerprint": "35219e98ac33abd0"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_52 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2135,
+      "fingerprint": "35219e98ac33abd0"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_52 (8) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1904,
+      "fingerprint": "81fb657cde9bc07f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_52 (8) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1904,
+      "fingerprint": "81fb657cde9bc07f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_52 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1904,
+      "fingerprint": "81fb657cde9bc07f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_54 (9) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2332,
+      "fingerprint": "f31e5872242ce01e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_54 (9) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2332,
+      "fingerprint": "f31e5872242ce01e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_54 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2332,
+      "fingerprint": "f31e5872242ce01e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_56 (10) (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2304,
+      "fingerprint": "ad65ee7083542f20"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_56 (10) (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2304,
+      "fingerprint": "ad65ee7083542f20"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_45_56 (10).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2304,
+      "fingerprint": "ad65ee7083542f20"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_14 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1697,
+      "fingerprint": "6aa032723d37d013"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_18 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1685,
+      "fingerprint": "9d4d1fe2f1200840"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_18 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1646,
+      "fingerprint": "14f8f8842081403f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_18 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1488,
+      "fingerprint": "e8eb4478a6925a30"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_18 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1578,
+      "fingerprint": "deb621fdbd2aadee"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_18 (6).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1768,
+      "fingerprint": "afbd8e7564aa08e5"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_18 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1467,
+      "fingerprint": "1bd42e0ce987c24c"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_19 (10).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1656,
+      "fingerprint": "d81f90e005eb57a5"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_19 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1647,
+      "fingerprint": "3da97c1bfb2ebe45"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_19 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1383,
+      "fingerprint": "2e6000e6924655f4"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_29 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1469,
+      "fingerprint": "c12ebf46e7808fcf"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_29 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1060,
+      "fingerprint": "cab43f0634a14caa"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_32 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1418,
+      "fingerprint": "d69891d08647178d"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_34 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1302,
+      "fingerprint": "e12d4bc1b2dba7ee"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_35 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1241,
+      "fingerprint": "18216e8065492b79"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_46_53.png",
+      "width": 1536,
+      "height": 1024,
+      "sizeKB": 3614,
+      "fingerprint": "ea76748016bca38c"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_03 (1).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1435,
+      "fingerprint": "1d162e1e34aeb1a0"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_03 (2).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1201,
+      "fingerprint": "4207b1b0faa850bd"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_04 (3).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1331,
+      "fingerprint": "cda134c06e252bdd"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_07 (4).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1387,
+      "fingerprint": "43f81827987390d0"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_08 (5).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1372,
+      "fingerprint": "65c24f6b4fec8c30"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_10 (6).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1286,
+      "fingerprint": "1f1767937ed994a6"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_11 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1080,
+      "fingerprint": "0c725a2e7f51bfb9"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_12 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1045,
+      "fingerprint": "e6517a55f00cf0eb"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_14 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1299,
+      "fingerprint": "c1c0a5e74bf9c47f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_16 (10).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1308,
+      "fingerprint": "5de185660b5bcbb6"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_22 (1).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1522,
+      "fingerprint": "5de31205f1196050"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_22 (2).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1514,
+      "fingerprint": "bb57e52bd5cbede1"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_24 (3).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1550,
+      "fingerprint": "c5f2638c619295dc"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_26 (4).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1564,
+      "fingerprint": "92eb0474be7e771d"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_27 (5).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1614,
+      "fingerprint": "73c09639b1264c34"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_28 (6).png",
+      "width": 2172,
+      "height": 724,
+      "sizeKB": 1534,
+      "fingerprint": "8b2530ef4134e9e1"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_29 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1227,
+      "fingerprint": "c8bc9ed3df8e40d2"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_31 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1167,
+      "fingerprint": "549b69ec82ea7577"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_32 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1257,
+      "fingerprint": "0ea1ee723f2f7caf"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_36 (10).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1174,
+      "fingerprint": "cdaeb178a277496d"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_40 (1).png",
+      "width": 2508,
+      "height": 627,
+      "sizeKB": 1447,
+      "fingerprint": "1369c4f172f69829"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_40 (2).png",
+      "width": 2508,
+      "height": 627,
+      "sizeKB": 1391,
+      "fingerprint": "287593f99efbebba"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_41 (3).png",
+      "width": 2508,
+      "height": 627,
+      "sizeKB": 1325,
+      "fingerprint": "ced0743a2cf18dcd"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_44 (4).png",
+      "width": 2508,
+      "height": 627,
+      "sizeKB": 1358,
+      "fingerprint": "27952f58d3c9a5ff"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_48 (5).png",
+      "width": 2508,
+      "height": 627,
+      "sizeKB": 1572,
+      "fingerprint": "7b987122ece5859d"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_51 (6).png",
+      "width": 2508,
+      "height": 627,
+      "sizeKB": 1476,
+      "fingerprint": "09776535f38e2698"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_52 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1110,
+      "fingerprint": "386e99008661d64b"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_54 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1129,
+      "fingerprint": "8df175d4944f07e7"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_55 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1256,
+      "fingerprint": "a63498db6ea4ac86"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_47_57 (10).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1129,
+      "fingerprint": "cfd97b3c8f05a4de"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_03 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 966,
+      "fingerprint": "2a7728ba7f1bff04"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_03 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1247,
+      "fingerprint": "6566ecc4261a0ca4"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_05 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1490,
+      "fingerprint": "73fbfb93f6193ae6"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_06 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1364,
+      "fingerprint": "3935a46365442b87"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_07 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1130,
+      "fingerprint": "b98cf41b1743d218"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_08 (6).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1171,
+      "fingerprint": "e4a2b785fa0b2af6"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_09 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1050,
+      "fingerprint": "c3566846fce7debf"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_10 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1313,
+      "fingerprint": "c443c5f0a8c39c3d"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_11 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1391,
+      "fingerprint": "1ccff0979a71b059"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_20 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1224,
+      "fingerprint": "6b0790839bbcef05"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_20 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1226,
+      "fingerprint": "dd2d767b8c3217d6"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_23 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1306,
+      "fingerprint": "8a17787014226b52"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_24 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1285,
+      "fingerprint": "d8f66195fb92710f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_28 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1032,
+      "fingerprint": "63216f385abd4885"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_36 (6).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1351,
+      "fingerprint": "8cd4ca1b4b800f16"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_40 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1048,
+      "fingerprint": "d4d9b9200bc4d296"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_44 (8).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1447,
+      "fingerprint": "d0e735bfef3904ab"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_49 (9).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1303,
+      "fingerprint": "6934f9badfc37af0"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_54 (10).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 979,
+      "fingerprint": "d482b01b5ae6a251"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_59 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1939,
+      "fingerprint": "5af35df490caebdc"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_48_59 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2092,
+      "fingerprint": "5988931510fcd1c5"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_09 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1933,
+      "fingerprint": "aa1746e2666a2410"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_18 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1963,
+      "fingerprint": "c20d9411316bda4d"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_23 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2017,
+      "fingerprint": "8901b766c13f1849"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_33 (1).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2021,
+      "fingerprint": "43130510efffec89"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_33 (2).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1750,
+      "fingerprint": "c9235bd8ab9b3f27"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_35 (3).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1893,
+      "fingerprint": "52e7c78e9e30638f"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_39 (4).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2156,
+      "fingerprint": "3e0fae37f9cda2c6"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_42 (5).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 2043,
+      "fingerprint": "46f4627bf6660d9e"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_43 (6).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1856,
+      "fingerprint": "f6d04966e8946768"
+    },
+    {
+      "originalName": "ChatGPT Image 2026年5月6日 19_49_46 (7).png",
+      "width": 1254,
+      "height": 1254,
+      "sizeKB": 1881,
+      "fingerprint": "02e7696566e95b9e"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "updatedAt": "2026-04-17T12:20:23.980Z",
+  "status": "sleeping_until_next_tick",
+  "intervalMinutes": 30,
+  "lastRunOk": true,
+  "durationMs": 36889,
+  "nextRunAt": "2026-04-17T12:50:23.979Z"
+}

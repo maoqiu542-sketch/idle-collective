@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import { Boss } from '@app-types/combat.types'
 import { Character } from '@app-types/character.types'
 import './CombatPanel.css'
@@ -28,10 +28,11 @@ interface Combatant {
 interface CombatPanelProps {
   boss: Boss
   characters: Character[]
+  combatTrainingMultiplier?: number
   onCombatEnd: (victory: boolean) => void
 }
 
-export function CombatPanel({ boss, characters, onCombatEnd }: CombatPanelProps) {
+export function CombatPanel({ boss, characters, combatTrainingMultiplier = 1, onCombatEnd }: CombatPanelProps) {
   const [currentTurnIndex, setCurrentTurnIndex] = useState(0)
   const [logs, setLogs] = useState<CombatLog[]>([])
   const [isEnded, setIsEnded] = useState(false)
@@ -50,8 +51,8 @@ export function CombatPanel({ boss, characters, onCombatEnd }: CombatPanelProps)
       type: 'character' as const,
       hp: c.stats.health,
       maxHp: c.stats.maxHealth,
-      atk: c.sixDimensions?.atk || 10,
-      def: c.sixDimensions?.def || 5,
+      atk: Math.round((c.sixDimensions?.atk || 10) * combatTrainingMultiplier),
+      def: Math.round((c.sixDimensions?.def || 5) * combatTrainingMultiplier),
       speed: c.sixDimensions?.atkSpd || 1,
       critRate: c.sixDimensions?.critRate || 5,
       critDmg: c.sixDimensions?.critDmg || 150,
@@ -73,7 +74,7 @@ export function CombatPanel({ boss, characters, onCombatEnd }: CombatPanelProps)
     }
 
     return [...chars, bossCombatant].sort((a, b) => b.speed - a.speed)
-  }, [boss, characters])
+  }, [boss, characters, combatTrainingMultiplier])
 
   const actionOrder = useMemo(() => {
     return combatants.map(c => ({
@@ -84,14 +85,14 @@ export function CombatPanel({ boss, characters, onCombatEnd }: CombatPanelProps)
     }))
   }, [combatants])
 
-  const getAliveCombatants = (type?: 'character' | 'boss') => {
+  const getAliveCombatants = useCallback((type?: 'character' | 'boss') => {
     return combatants.filter(c => {
       const hp = combatantHps.get(c.id) || 0
       const isAlive = hp > 0
       if (type) return isAlive && c.type === type
       return isAlive
     })
-  }
+  }, [combatants, combatantHps])
 
   const calculateDamage = (attacker: Combatant, defender: Combatant): { damage: number; isCritical: boolean } => {
     const isCritical = Math.random() * 100 < attacker.critRate
@@ -171,7 +172,7 @@ export function CombatPanel({ boss, characters, onCombatEnd }: CombatPanelProps)
     }, 800)
 
     return () => clearInterval(interval)
-  }, [combatantHps, combatants, boss, isEnded, currentTurnIndex])
+  }, [combatantHps, combatants, boss, isEnded, currentTurnIndex, getAliveCombatants])
 
   useEffect(() => {
     if (isEnded) {

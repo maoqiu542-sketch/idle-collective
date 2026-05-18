@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://idle-collective.local/art-pipeline/asset-catalog.schema.json",
+  "title": "Asset Catalog",
+  "type": "object",
+  "required": ["version", "assets"],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "category",
+          "style_profile",
+          "prompt_template",
+          "negative_prompt",
+          "seed_policy",
+          "source_resolution",
+          "export_presets",
+          "approved_variant",
+          "version",
+          "status"
+        ],
+        "properties": {
+          "asset_id": { "type": "string" },
+          "category": { "type": "string" },
+          "display_name": { "type": "string" },
+          "recipe_id": { "type": "string" },
+          "style_profile": { "type": "string" },
+          "prompt_template": { "type": "string" },
+          "negative_prompt": { "type": "string" },
+          "seed_policy": {
+            "type": "object",
+            "required": ["pool", "mode"],
+            "properties": {
+              "pool": { "type": "string" },
+              "mode": { "type": "string" }
+            }
+          },
+          "source_resolution": {
+            "type": "object",
+            "required": ["width", "height"],
+            "properties": {
+              "width": { "type": "integer", "minimum": 1 },
+              "height": { "type": "integer", "minimum": 1 }
+            }
+          },
+          "export_presets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "width", "height", "fit"],
+              "properties": {
+                "name": { "type": "string" },
+                "width": { "type": "integer", "minimum": 1 },
+                "height": { "type": "integer", "minimum": 1 },
+                "fit": { "type": "string" }
+              }
+            }
+          },
+          "approved_variant": {
+            "type": ["string", "null"]
+          },
+          "version": { "type": "string" },
+          "status": { "type": "string" },
+          "source_kind": { "type": "string" },
+          "target_key": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

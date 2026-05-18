@@ -7,21 +7,46 @@ import {
 import { EventBus } from '@core/EventBus'
 import { Logger } from '@utils/logger'
 
+type ProductionMultiplierResolver = (
+  building: ProductionBuilding,
+  config: ProductionBuildingConfig
+) => number
+
 export class ProductionBuildingManager {
   private eventBus: EventBus
   private logger: Logger
   private buildings: Map<string, ProductionBuilding> = new Map()
   private configs: Map<string, ProductionBuildingConfig> = new Map()
+  private checkTechUnlocked: (techId: string) => boolean
+  private getProductionMultiplier: ProductionMultiplierResolver
 
-  constructor(eventBus: EventBus) {
+  constructor(
+    eventBus: EventBus,
+    checkTechUnlocked?: (techId: string) => boolean,
+    getProductionMultiplier: ProductionMultiplierResolver = () => 1
+  ) {
     this.eventBus = eventBus
     this.logger = new Logger('ProductionBuildingManager')
+    this.checkTechUnlocked = checkTechUnlocked || (() => true)
+    this.getProductionMultiplier = getProductionMultiplier
   }
 
   loadConfigs(configs: ProductionBuildingConfig[]): void {
     for (const config of configs) {
+      if (config.buildTime > 0 && config.buildTime < 1000) {
+        config.buildTime *= 1000
+      }
+      if (config.production && !config.productionInterval) {
+        config.productionInterval = config.production.interval || 60000
+        config.outputResource = config.production.type || config.outputResource
+        config.outputAmount = config.production.amount || config.outputAmount
+      }
+      if (config.productionInterval !== undefined && config.productionInterval > 0 && config.productionInterval < 1000) {
+        config.productionInterval *= 1000
+      }
       this.configs.set(config.id, config)
     }
+
     this.logger.info(`Loaded ${configs.length} production building configs`)
   }
 
@@ -36,8 +61,12 @@ export class ProductionBuildingManager {
       return null
     }
 
-    const id = customId || `building_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    if (config.requiresTech && !this.checkTechUnlocked(config.requiresTech)) {
+      this.logger.warn(`Building ${configId} requires tech: ${config.requiresTech}`)
+      return null
+    }
 
+    const id = customId || `building_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`
     const building: ProductionBuilding = {
       id,
       configId,
@@ -58,7 +87,6 @@ export class ProductionBuildingManager {
     }
 
     this.buildings.set(id, building)
-
     this.eventBus.emit('building:created', {
       buildingId: id,
       type: building.type,
@@ -75,8 +103,6 @@ export class ProductionBuildingManager {
 
     building.status = BuildingStatus.BUILDING
     building.state.buildProgress = 0
-
-    this.logger.debug(`Started construction of building ${buildingId}`)
     return true
   }
 
@@ -87,19 +113,29 @@ export class ProductionBuildingManager {
     const config = this.configs.get(building.configId)
     if (!config) return false
 
+    if (!building.state.hasWorker || !building.state.workerId) {
+      return false
+    }
+
     building.state.buildProgress += progress
 
     if (building.state.buildProgress >= config.buildTime) {
       building.status = BuildingStatus.OPERATIONAL
       building.state.buildProgress = config.buildTime
       building.state.isActive = true
+      building.builtAt = Date.now()
+
+      if (building.type === ProductionBuildingType.RECRUITMENT_STATION && building.state.workerId) {
+        const previousWorkerId = building.state.workerId
+        building.state.hasWorker = false
+        building.state.workerId = null
+        this.eventBus.emit('building:worker-removed', { buildingId, workerId: previousWorkerId })
+      }
 
       this.eventBus.emit('building:completed', {
         buildingId,
         type: building.type
       })
-
-      this.logger.info(`Building ${buildingId} construction completed`)
     }
 
     return true
@@ -107,17 +143,14 @@ export class ProductionBuildingManager {
 
   assignWorker(buildingId: string, workerId: string): boolean {
     const building = this.buildings.get(buildingId)
-    if (!building || building.status !== BuildingStatus.OPERATIONAL) return false
+    if (!building) return false
+    if (building.status !== BuildingStatus.OPERATIONAL && building.status !== BuildingStatus.BUILDING) {
+      return false
+    }
 
     building.state.hasWorker = true
     building.state.workerId = workerId
-
-    this.eventBus.emit('building:worker-assigned', {
-      buildingId,
-      workerId
-    })
-
-    this.logger.debug(`Assigned worker ${workerId} to building ${buildingId}`)
+    this.eventBus.emit('building:worker-assigned', { buildingId, workerId })
     return true
   }
 
@@ -130,13 +163,9 @@ export class ProductionBuildingManager {
     building.state.workerId = null
 
     if (previousWorkerId) {
-      this.eventBus.emit('building:worker-removed', {
-        buildingId,
-        workerId: previousWorkerId
-      })
+      this.eventBus.emit('building:worker-removed', { buildingId, workerId: previousWorkerId })
     }
 
-    this.logger.debug(`Removed worker from building ${buildingId}`)
     return true
   }
 
@@ -145,38 +174,40 @@ export class ProductionBuildingManager {
       const config = this.configs.get(building.configId)
       if (!config) continue
 
-      // Handle construction progress
       if (building.status === BuildingStatus.BUILDING) {
         this.updateConstruction(building.id, deltaTime)
         continue
       }
 
-      // Handle production for operational buildings
-      if (building.status !== BuildingStatus.OPERATIONAL) continue
-      if (!building.state.isActive) continue
+      if (building.status !== BuildingStatus.OPERATIONAL || !building.state.isActive) {
+        continue
+      }
 
-      const efficiency = building.state.hasWorker ? 1.0 : 0.5
-      const progressIncrement = (deltaTime / config.productionInterval) * efficiency
+      if (!config.outputResource || !config.outputAmount) {
+        continue
+      }
 
-      building.state.productionProgress += progressIncrement
+      const interval = config.productionInterval || 60000
+      const efficiency = building.state.hasWorker ? 1.35 : 0.75
+      building.state.productionProgress += (deltaTime / interval) * efficiency
 
-      if (building.state.productionProgress >= 1.0) {
+      while (building.state.productionProgress >= 1) {
         this.produceOutput(building, config)
-        building.state.productionProgress = 0
+        building.state.productionProgress -= 1
       }
     }
   }
 
   private produceOutput(building: ProductionBuilding, config: ProductionBuildingConfig): void {
-    const outputAmount = config.outputAmount * building.level
-
+    const multiplier = Math.max(0.1, this.getProductionMultiplier(building, config))
+    const outputAmount = Math.max(1, Math.round((config.outputAmount || 1) * building.level * multiplier))
     building.state.currentProduction += outputAmount
 
     this.eventBus.emit('building:produced', {
       buildingId: building.id,
       resource: config.outputResource as any,
       amount: outputAmount,
-      efficiency: building.state.hasWorker ? 1.0 : 0.5
+      efficiency: building.state.hasWorker ? 1 : 0.5
     })
   }
 
@@ -186,8 +217,6 @@ export class ProductionBuildingManager {
 
     const amount = building.state.currentProduction
     building.state.currentProduction = 0
-
-    this.logger.debug(`Collected ${amount} from building ${buildingId}`)
     return amount
   }
 
@@ -196,14 +225,16 @@ export class ProductionBuildingManager {
     if (!building || building.status !== BuildingStatus.OPERATIONAL) return false
 
     building.level += 1
-
     this.eventBus.emit('building:upgraded', {
       buildingId,
       newLevel: building.level
     })
 
-    this.logger.info(`Upgraded building ${buildingId} to level ${building.level}`)
     return true
+  }
+
+  getConfig(configId: string): ProductionBuildingConfig | undefined {
+    return this.configs.get(configId)
   }
 
   getBuilding(buildingId: string): ProductionBuilding | undefined {
@@ -215,13 +246,11 @@ export class ProductionBuildingManager {
   }
 
   getBuildingsByType(type: ProductionBuildingType): ProductionBuilding[] {
-    return Array.from(this.buildings.values()).filter(b => b.type === type)
+    return Array.from(this.buildings.values()).filter(building => building.type === type)
   }
 
   getOperationalBuildings(): ProductionBuilding[] {
-    return Array.from(this.buildings.values()).filter(
-      b => b.status === BuildingStatus.OPERATIONAL
-    )
+    return Array.from(this.buildings.values()).filter(building => building.status === BuildingStatus.OPERATIONAL)
   }
 
   deleteBuilding(buildingId: string): boolean {
@@ -229,13 +258,7 @@ export class ProductionBuildingManager {
     if (!building) return false
 
     this.buildings.delete(buildingId)
-
-    this.eventBus.emit('building:destroyed', {
-      buildingId,
-      type: building.type
-    })
-
-    this.logger.info(`Deleted building ${buildingId}`)
+    this.eventBus.emit('building:destroyed', { buildingId, type: building.type })
     return true
   }
 
@@ -250,7 +273,27 @@ export class ProductionBuildingManager {
   }
 
   getProductionProgress(buildingId: string): number {
-    const building = this.buildings.get(buildingId)
-    return building?.state.productionProgress || 0
+    return this.buildings.get(buildingId)?.state.productionProgress || 0
+  }
+
+  serialize(): ProductionBuilding[] {
+    return this.getAllBuildings().map(building => ({
+      ...building,
+      position: { ...building.position },
+      state: { ...building.state },
+    }))
+  }
+
+  deserialize(buildings: ProductionBuilding[]): void {
+    this.buildings = new Map(
+      buildings.map(building => [
+        building.id,
+        {
+          ...building,
+          position: { ...building.position },
+          state: { ...building.state },
+        }
+      ])
+    )
   }
 }

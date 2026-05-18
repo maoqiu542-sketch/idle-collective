@@ -1,0 +1,19 @@
+{
+  "workflow_id": "building_workflow",
+  "category": "building_map",
+  "description": "ComfyUI prompt template for map buildings with consistent light direction and top-down readability.",
+  "template_version": "1.0.0",
+  "api": {
+    "checkpoint": "{{checkpoint}}",
+    "positive_prompt": "{{prompt}}",
+    "negative_prompt": "{{negative_prompt}}",
+    "width": "{{width}}",
+    "height": "{{height}}",
+    "steps": "{{steps}}",
+    "cfg": "{{cfg}}",
+    "sampler": "{{sampler}}",
+    "scheduler": "{{scheduler}}",
+    "seed": "{{seed}}",
+    "batch_size": 1
+  }
+}

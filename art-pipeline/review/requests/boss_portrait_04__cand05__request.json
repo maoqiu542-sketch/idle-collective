@@ -1,0 +1,99 @@
+{
+  "asset_id": "boss_portrait_04",
+  "category": "boss_portrait",
+  "variant": "cand05",
+  "workflow": "portrait_workflow",
+  "seed": 6007,
+  "prompt_template": "storybook game boss portrait, volcano daughter inspired softness, blazing infernal lord with ember mane and molten eyes, intimidating bust portrait, readable silhouette at 64px, warm pastel palette, transparent background, game portrait asset, boss portrait, threatening face crop, single subject, large readable shapes, simplified silhouette, stay within assigned palette",
+  "negative_prompt": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, full battle scene, crowd, tiny head, landscape background, cropped horns, cropped jaw, text label, full scene, crowd, background environment, fine clutter, micro details, visual noise, off-palette colors, neon accents",
+  "strategy": "comfyui_template_swap",
+  "note": "Adaptive retry using template_swap; tags",
+  "request": {
+    "prompt": {
+      "1": {
+        "class_type": "CheckpointLoaderSimple",
+        "inputs": {
+          "ckpt_name": "AWPainting_v1.3.safetensors"
+        }
+      },
+      "2": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "storybook game boss portrait, volcano daughter inspired softness, blazing infernal lord with ember mane and molten eyes, intimidating bust portrait, readable silhouette at 64px, warm pastel palette, transparent background, game portrait asset, boss portrait, threatening face crop, single subject, large readable shapes, simplified silhouette, stay within assigned palette",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "3": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "text": "low quality, blurry, muddy silhouette, text, watermark, photo realistic, 3d render, harsh shadow, overdetailed noise, busy background, cropped subject, tilted camera, dark desaturated palette, jagged edges, full battle scene, crowd, tiny head, landscape background, cropped horns, cropped jaw, text label, full scene, crowd, background environment, fine clutter, micro details, visual noise, off-palette colors, neon accents",
+          "clip": [
+            "1",
+            1
+          ]
+        }
+      },
+      "4": {
+        "class_type": "EmptyLatentImage",
+        "inputs": {
+          "width": 256,
+          "height": 256,
+          "batch_size": 1
+        }
+      },
+      "5": {
+        "class_type": "KSampler",
+        "inputs": {
+          "seed": 6007,
+          "steps": 35,
+          "cfg": 5.5,
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "denoise": 1,
+          "model": [
+            "1",
+            0
+          ],
+          "positive": [
+            "2",
+            0
+          ],
+          "negative": [
+            "3",
+            0
+          ],
+          "latent_image": [
+            "4",
+            0
+          ]
+        }
+      },
+      "6": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "5",
+            0
+          ],
+          "vae": [
+            "1",
+            2
+          ]
+        }
+      },
+      "7": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "6",
+            0
+          ],
+          "filename_prefix": "boss_portrait_04__cand05__v001"
+        }
+      }
+    }
+  }
+}

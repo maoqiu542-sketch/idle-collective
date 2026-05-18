@@ -1,0 +1,426 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/ui/components/technology/TechnologyPanel.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=39d6738e"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=39d6738e"; const useMemo = __vite__cjsImport3_react["useMemo"]; const useState = __vite__cjsImport3_react["useState"];
+import { useGameStore } from "/src/ui/stores/gameStore.ts?t=1779113656768";
+import { useTechStore } from "/src/ui/stores/techStore.ts";
+import { TechBranch, TechStatus } from "/src/types/technology.types.ts";
+import "/src/ui/components/technology/TechnologyPanel.css";
+const BRANCH_INFO = {
+  [TechBranch.BUILDING]: { name: "生存科技", icon: "🏠", color: "#4caf50" },
+  [TechBranch.PRODUCTION]: { name: "生产科技", icon: "⚒️", color: "#2196f3" },
+  [TechBranch.COMBAT]: { name: "战备科技", icon: "🛡️", color: "#f44336" },
+  [TechBranch.CIVILIAN]: { name: "民生科技", icon: "✨", color: "#ff9800" }
+};
+const V1_BRANCHES = [TechBranch.BUILDING, TechBranch.PRODUCTION, TechBranch.COMBAT];
+export function TechnologyPanel({ onClose }) {
+  _s();
+  const { game } = useGameStore();
+  const { techPoints, completedTechs } = useTechStore();
+  const [selectedBranch, setSelectedBranch] = useState(TechBranch.BUILDING);
+  const techManager = game?.getTechnologyManager();
+  const techConfigs = techManager?.getAllTechConfigs() || [];
+  const branchTechs = techConfigs.filter((tech) => tech.branch === selectedBranch);
+  const settlementState = game?.getSettlementState();
+  const researchDeskState = settlementState?.researchDeskState;
+  const nextResearchPreview = useMemo(() => {
+    if (!researchDeskState || researchDeskState.totalLevel <= 0) {
+      return null;
+    }
+    return {
+      outputMultiplier: Math.min(1.6, 1 + (researchDeskState.totalLevel + 1) * 0.12),
+      workerCapacity: researchDeskState.workerCapacity + 1
+    };
+  }, [researchDeskState]);
+  const getTechStatus = (techId) => {
+    if (completedTechs.includes(techId)) return TechStatus.COMPLETED;
+    return techManager?.getTechProgress(techId)?.status || TechStatus.LOCKED;
+  };
+  const canResearch = (techId) => {
+    if (!techManager) return false;
+    return techManager.canResearch(techId).canUnlock;
+  };
+  const hasResearchDesk = (researchDeskState?.totalLevel || 0) > 0;
+  const handleResearch = (techId) => {
+    if (!techManager) return;
+    const result = techManager.startResearch(techId);
+    if (!result.success) {
+      alert(result.message || "研究失败");
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "technology-overlay", onClick: onClose, children: /* @__PURE__ */ jsxDEV("div", { className: "technology-panel", onClick: (event) => event.stopPropagation(), children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "panel-header", children: [
+      /* @__PURE__ */ jsxDEV("h2", { children: "科技研究" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 85,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("button", { className: "close-btn", onClick: onClose, children: "×" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 86,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 84,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "tech-points", children: [
+      /* @__PURE__ */ jsxDEV("span", { className: "points-icon", children: "⚙️" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 92,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { className: "points-amount", children: Math.floor(techPoints) }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 93,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { className: "points-label", children: "科技点" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 94,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 91,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "research-bonus-panel", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "research-bonus-card", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "research-bonus-label", children: "研究台总等级" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 99,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("strong", { children: researchDeskState?.totalLevel || 0 }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 100,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 98,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "research-bonus-card", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "research-bonus-label", children: "研究倍率" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 103,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("strong", { children: [
+          "x",
+          (researchDeskState?.outputMultiplier || 1).toFixed(2)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 104,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 102,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "research-bonus-card", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "research-bonus-label", children: "自动研究席位" }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 107,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("strong", { children: [
+          researchDeskState?.assignedWorkers || 0,
+          "/",
+          researchDeskState?.workerCapacity || 0
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 108,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 106,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 97,
+      columnNumber: 9
+    }, this),
+    researchDeskState && researchDeskState.totalLevel > 0 && nextResearchPreview && /* @__PURE__ */ jsxDEV("div", { className: "research-upgrade-preview", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "research-upgrade-title", children: "下一等级研究台预期收益" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 114,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        "研究倍率：x",
+        researchDeskState.outputMultiplier.toFixed(2),
+        " → x",
+        nextResearchPreview.outputMultiplier.toFixed(2)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 115,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        "自动研究席位：",
+        researchDeskState.workerCapacity,
+        " → ",
+        nextResearchPreview.workerCapacity
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 116,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 113,
+      columnNumber: 9
+    }, this),
+    (!researchDeskState || researchDeskState.totalLevel === 0) && /* @__PURE__ */ jsxDEV("div", { className: "research-upgrade-preview", children: "建造研究台后，研究员会自动产出科技点；升级研究台会提高研究倍率并增加自动研究席位。" }, void 0, false, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 121,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "tech-points-help", children: /* @__PURE__ */ jsxDEV("details", { children: [
+      /* @__PURE__ */ jsxDEV("summary", { children: "科技点来源" }, void 0, false, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 128,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "help-content", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "help-item", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "help-icon", children: "🔬" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 131,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "help-text", children: "研究台和研究员会持续产出科技点。" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 132,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 130,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "help-item", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "help-icon", children: "👹" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 135,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "help-text", children: "击败 Boss 可以获得额外科技点。" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 136,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 134,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 129,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 127,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 126,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "branch-tabs", children: V1_BRANCHES.map((branch) => {
+      const info = BRANCH_INFO[branch];
+      return /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          className: `branch-tab ${selectedBranch === branch ? "active" : ""}`,
+          onClick: () => setSelectedBranch(branch),
+          style: { borderColor: selectedBranch === branch ? info.color : "transparent" },
+          children: [
+            /* @__PURE__ */ jsxDEV("span", { className: "branch-icon", children: info.icon }, void 0, false, {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+              lineNumber: 152,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "branch-name", children: info.name }, void 0, false, {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+              lineNumber: 153,
+              columnNumber: 17
+            }, this)
+          ]
+        },
+        branch,
+        true,
+        {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 146,
+          columnNumber: 15
+        },
+        this
+      );
+    }) }, void 0, false, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 142,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "tech-list", children: branchTechs.map((tech) => {
+      const status = getTechStatus(tech.id);
+      const canStart = canResearch(tech.id);
+      return /* @__PURE__ */ jsxDEV("div", { className: `tech-card ${status}`, style: { borderColor: BRANCH_INFO[tech.branch].color }, children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "tech-header", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "tech-level", children: [
+            "Lv.",
+            tech.level
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 167,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "tech-status", children: [
+            status === TechStatus.COMPLETED && "已完成",
+            status === TechStatus.AVAILABLE && "可研究",
+            status === TechStatus.LOCKED && "未解锁",
+            status === TechStatus.RESEARCHING && "研究中"
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 168,
+            columnNumber: 19
+          }, this)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 166,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("h3", { className: "tech-name", children: tech.name }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 176,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "tech-description", children: tech.description }, void 0, false, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 177,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "tech-cost", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "cost-label", children: "消耗" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 180,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "cost-value", children: [
+            "⚙️ ",
+            tech.essenceCost
+          ] }, void 0, true, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 181,
+            columnNumber: 19
+          }, this)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 179,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "tech-unlocks", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "unlocks-label", children: "解锁内容" }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 185,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "unlocks-list", children: tech.unlocks.map(
+            (unlock) => /* @__PURE__ */ jsxDEV("span", { className: "unlock-tag", children: unlock }, unlock, false, {
+              fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+              lineNumber: 188,
+              columnNumber: 21
+            }, this)
+          ) }, void 0, false, {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 186,
+            columnNumber: 19
+          }, this)
+        ] }, void 0, true, {
+          fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+          lineNumber: 184,
+          columnNumber: 17
+        }, this),
+        status !== TechStatus.COMPLETED && /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            className: "research-btn",
+            onClick: () => handleResearch(tech.id),
+            disabled: !canStart || techPoints < tech.essenceCost,
+            style: { backgroundColor: BRANCH_INFO[tech.branch].color },
+            children: !hasResearchDesk ? "需要研究台" : status === TechStatus.LOCKED ? "需要前置科技" : "开始研究"
+          },
+          void 0,
+          false,
+          {
+            fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+            lineNumber: 194,
+            columnNumber: 17
+          },
+          this
+        )
+      ] }, tech.id, true, {
+        fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+        lineNumber: 165,
+        columnNumber: 15
+      }, this);
+    }) }, void 0, false, {
+      fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+      lineNumber: 159,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, true, {
+    fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+    lineNumber: 83,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx",
+    lineNumber: 82,
+    columnNumber: 5
+  }, this);
+}
+_s(TechnologyPanel, "6/H/6yyFQ3VtNZLBOahr7o6LeSI=", false, function() {
+  return [useGameStore, useTechStore];
+});
+_c = TechnologyPanel;
+var _c;
+$RefreshReg$(_c, "TechnologyPanel");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/GameDesign/Projects/idle-collective/src/ui/components/technology/TechnologyPanel.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBaUVVOzs7Ozs7Ozs7Ozs7Ozs7OztBQWpFVixTQUFTQSxTQUFTQyxnQkFBZ0I7QUFDbEMsU0FBU0Msb0JBQW9CO0FBQzdCLFNBQVNDLG9CQUFvQjtBQUM3QixTQUFTQyxZQUFZQyxrQkFBa0I7QUFDdkMsT0FBTztBQUVQLE1BQU1DLGNBQWlGO0FBQUEsRUFDckYsQ0FBQ0YsV0FBV0csUUFBUSxHQUFHLEVBQUVDLE1BQU0sUUFBUUMsTUFBTSxNQUFNQyxPQUFPLFVBQVU7QUFBQSxFQUNwRSxDQUFDTixXQUFXTyxVQUFVLEdBQUcsRUFBRUgsTUFBTSxRQUFRQyxNQUFNLE1BQU1DLE9BQU8sVUFBVTtBQUFBLEVBQ3RFLENBQUNOLFdBQVdRLE1BQU0sR0FBRyxFQUFFSixNQUFNLFFBQVFDLE1BQU0sT0FBT0MsT0FBTyxVQUFVO0FBQUEsRUFDbkUsQ0FBQ04sV0FBV1MsUUFBUSxHQUFHLEVBQUVMLE1BQU0sUUFBUUMsTUFBTSxLQUFLQyxPQUFPLFVBQVU7QUFDckU7QUFFQSxNQUFNSSxjQUE0QixDQUFDVixXQUFXRyxVQUFVSCxXQUFXTyxZQUFZUCxXQUFXUSxNQUFNO0FBTXpGLGdCQUFTRyxnQkFBZ0IsRUFBRUMsUUFBOEIsR0FBRztBQUFBQyxLQUFBO0FBQ2pFLFFBQU0sRUFBRUMsS0FBSyxJQUFJaEIsYUFBYTtBQUM5QixRQUFNLEVBQUVpQixZQUFZQyxlQUFlLElBQUlqQixhQUFhO0FBQ3BELFFBQU0sQ0FBQ2tCLGdCQUFnQkMsaUJBQWlCLElBQUlyQixTQUFxQkcsV0FBV0csUUFBUTtBQUVwRixRQUFNZ0IsY0FBY0wsTUFBTU0scUJBQXFCO0FBQy9DLFFBQU1DLGNBQWNGLGFBQWFHLGtCQUFrQixLQUFLO0FBQ3hELFFBQU1DLGNBQWNGLFlBQVlHLE9BQU8sQ0FBQUMsU0FBUUEsS0FBS0MsV0FBV1QsY0FBYztBQUM3RSxRQUFNVSxrQkFBa0JiLE1BQU1jLG1CQUFtQjtBQUNqRCxRQUFNQyxvQkFBb0JGLGlCQUFpQkU7QUFFM0MsUUFBTUMsc0JBQXNCbEMsUUFBUSxNQUFNO0FBQ3hDLFFBQUksQ0FBQ2lDLHFCQUFxQkEsa0JBQWtCRSxjQUFjLEdBQUc7QUFDM0QsYUFBTztBQUFBLElBQ1Q7QUFFQSxXQUFPO0FBQUEsTUFDTEMsa0JBQWtCQyxLQUFLQyxJQUFJLEtBQUssS0FBS0wsa0JBQWtCRSxhQUFhLEtBQUssSUFBSTtBQUFBLE1BQzdFSSxnQkFBZ0JOLGtCQUFrQk0saUJBQWlCO0FBQUEsSUFDckQ7QUFBQSxFQUNGLEdBQUcsQ0FBQ04saUJBQWlCLENBQUM7QUFFdEIsUUFBTU8sZ0JBQWdCQSxDQUFDQyxXQUErQjtBQUNwRCxRQUFJckIsZUFBZXNCLFNBQVNELE1BQU0sRUFBRyxRQUFPcEMsV0FBV3NDO0FBQ3ZELFdBQU9wQixhQUFhcUIsZ0JBQWdCSCxNQUFNLEdBQUdJLFVBQVV4QyxXQUFXeUM7QUFBQUEsRUFDcEU7QUFFQSxRQUFNQyxjQUFjQSxDQUFDTixXQUE0QjtBQUMvQyxRQUFJLENBQUNsQixZQUFhLFFBQU87QUFDekIsV0FBT0EsWUFBWXdCLFlBQVlOLE1BQU0sRUFBRU87QUFBQUEsRUFDekM7QUFFQSxRQUFNQyxtQkFBbUJoQixtQkFBbUJFLGNBQWMsS0FBSztBQUUvRCxRQUFNZSxpQkFBaUJBLENBQUNULFdBQW1CO0FBQ3pDLFFBQUksQ0FBQ2xCLFlBQWE7QUFDbEIsVUFBTTRCLFNBQVM1QixZQUFZNkIsY0FBY1gsTUFBTTtBQUMvQyxRQUFJLENBQUNVLE9BQU9FLFNBQVM7QUFDbkJDLFlBQU1ILE9BQU9JLFdBQVcsTUFBTTtBQUFBLElBQ2hDO0FBQUEsRUFDRjtBQUVBLFNBQ0UsdUJBQUMsU0FBSSxXQUFVLHNCQUFxQixTQUFTdkMsU0FDM0MsaUNBQUMsU0FBSSxXQUFVLG9CQUFtQixTQUFTLENBQUN3QyxVQUFVQSxNQUFNQyxnQkFBZ0IsR0FDMUU7QUFBQSwyQkFBQyxTQUFJLFdBQVUsZ0JBQ2I7QUFBQSw2QkFBQyxRQUFHLG9CQUFKO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFBUTtBQUFBLE1BQ1IsdUJBQUMsWUFBTyxXQUFVLGFBQVksU0FBU3pDLFNBQVEsaUJBQS9DO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFFQTtBQUFBLFNBSkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUtBO0FBQUEsSUFFQSx1QkFBQyxTQUFJLFdBQVUsZUFDYjtBQUFBLDZCQUFDLFVBQUssV0FBVSxlQUFjLGtCQUE5QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQWdDO0FBQUEsTUFDaEMsdUJBQUMsVUFBSyxXQUFVLGlCQUFpQnFCLGVBQUtxQixNQUFNdkMsVUFBVSxLQUF0RDtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQXdEO0FBQUEsTUFDeEQsdUJBQUMsVUFBSyxXQUFVLGdCQUFlLG1CQUEvQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQWtDO0FBQUEsU0FIcEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUlBO0FBQUEsSUFFQSx1QkFBQyxTQUFJLFdBQVUsd0JBQ2I7QUFBQSw2QkFBQyxTQUFJLFdBQVUsdUJBQ2I7QUFBQSwrQkFBQyxVQUFLLFdBQVUsd0JBQXVCLHNCQUF2QztBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQTZDO0FBQUEsUUFDN0MsdUJBQUMsWUFBUWMsNkJBQW1CRSxjQUFjLEtBQTFDO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBNEM7QUFBQSxXQUY5QztBQUFBO0FBQUE7QUFBQTtBQUFBLGFBR0E7QUFBQSxNQUNBLHVCQUFDLFNBQUksV0FBVSx1QkFDYjtBQUFBLCtCQUFDLFVBQUssV0FBVSx3QkFBdUIsb0JBQXZDO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBMkM7QUFBQSxRQUMzQyx1QkFBQyxZQUFPO0FBQUE7QUFBQSxXQUFHRixtQkFBbUJHLG9CQUFvQixHQUFHdUIsUUFBUSxDQUFDO0FBQUEsYUFBOUQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUFnRTtBQUFBLFdBRmxFO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFHQTtBQUFBLE1BQ0EsdUJBQUMsU0FBSSxXQUFVLHVCQUNiO0FBQUEsK0JBQUMsVUFBSyxXQUFVLHdCQUF1QixzQkFBdkM7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUE2QztBQUFBLFFBQzdDLHVCQUFDLFlBQVExQjtBQUFBQSw2QkFBbUIyQixtQkFBbUI7QUFBQSxVQUFFO0FBQUEsVUFBRTNCLG1CQUFtQk0sa0JBQWtCO0FBQUEsYUFBeEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUEwRjtBQUFBLFdBRjVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFHQTtBQUFBLFNBWkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQWFBO0FBQUEsSUFFQ04scUJBQXFCQSxrQkFBa0JFLGFBQWEsS0FBS0QsdUJBQ3hELHVCQUFDLFNBQUksV0FBVSw0QkFDYjtBQUFBLDZCQUFDLFNBQUksV0FBVSwwQkFBeUIsMkJBQXhDO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFBbUQ7QUFBQSxNQUNuRCx1QkFBQyxTQUFJO0FBQUE7QUFBQSxRQUFPRCxrQkFBa0JHLGlCQUFpQnVCLFFBQVEsQ0FBQztBQUFBLFFBQUU7QUFBQSxRQUFLekIsb0JBQW9CRSxpQkFBaUJ1QixRQUFRLENBQUM7QUFBQSxXQUE3RztBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQStHO0FBQUEsTUFDL0csdUJBQUMsU0FBSTtBQUFBO0FBQUEsUUFBUTFCLGtCQUFrQk07QUFBQUEsUUFBZTtBQUFBLFFBQUlMLG9CQUFvQks7QUFBQUEsV0FBdEU7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUFxRjtBQUFBLFNBSHZGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FJQTtBQUFBLEtBR0EsQ0FBQ04scUJBQXFCQSxrQkFBa0JFLGVBQWUsTUFDdkQsdUJBQUMsU0FBSSxXQUFVLDRCQUEwQix5REFBekM7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUVBO0FBQUEsSUFHRix1QkFBQyxTQUFJLFdBQVUsb0JBQ2IsaUNBQUMsYUFDQztBQUFBLDZCQUFDLGFBQVEscUJBQVQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUFjO0FBQUEsTUFDZCx1QkFBQyxTQUFJLFdBQVUsZ0JBQ2I7QUFBQSwrQkFBQyxTQUFJLFdBQVUsYUFDYjtBQUFBLGlDQUFDLFVBQUssV0FBVSxhQUFZLGtCQUE1QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUE4QjtBQUFBLFVBQzlCLHVCQUFDLFVBQUssV0FBVSxhQUFZLGdDQUE1QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUE0QztBQUFBLGFBRjlDO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFHQTtBQUFBLFFBQ0EsdUJBQUMsU0FBSSxXQUFVLGFBQ2I7QUFBQSxpQ0FBQyxVQUFLLFdBQVUsYUFBWSxrQkFBNUI7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBOEI7QUFBQSxVQUM5Qix1QkFBQyxVQUFLLFdBQVUsYUFBWSxrQ0FBNUI7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBOEM7QUFBQSxhQUZoRDtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBR0E7QUFBQSxXQVJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFTQTtBQUFBLFNBWEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQVlBLEtBYkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQWNBO0FBQUEsSUFFQSx1QkFBQyxTQUFJLFdBQVUsZUFDWnJCLHNCQUFZK0MsSUFBSSxDQUFBL0IsV0FBVTtBQUN6QixZQUFNZ0MsT0FBT3hELFlBQVl3QixNQUFNO0FBQy9CLGFBQ0U7QUFBQSxRQUFDO0FBQUE7QUFBQSxVQUVDLFdBQVcsY0FBY1QsbUJBQW1CUyxTQUFTLFdBQVcsRUFBRTtBQUFBLFVBQ2xFLFNBQVMsTUFBTVIsa0JBQWtCUSxNQUFNO0FBQUEsVUFDdkMsT0FBTyxFQUFFaUMsYUFBYTFDLG1CQUFtQlMsU0FBU2dDLEtBQUtwRCxRQUFRLGNBQWM7QUFBQSxVQUU3RTtBQUFBLG1DQUFDLFVBQUssV0FBVSxlQUFlb0QsZUFBS3JELFFBQXBDO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQXlDO0FBQUEsWUFDekMsdUJBQUMsVUFBSyxXQUFVLGVBQWVxRCxlQUFLdEQsUUFBcEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBeUM7QUFBQTtBQUFBO0FBQUEsUUFOcENzQjtBQUFBQSxRQURQO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFRQTtBQUFBLElBRUosQ0FBQyxLQWRIO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FlQTtBQUFBLElBRUEsdUJBQUMsU0FBSSxXQUFVLGFBQ1pILHNCQUFZa0MsSUFBSSxDQUFBaEMsU0FBUTtBQUN2QixZQUFNZ0IsU0FBU0wsY0FBY1gsS0FBS21DLEVBQUU7QUFDcEMsWUFBTUMsV0FBV2xCLFlBQVlsQixLQUFLbUMsRUFBRTtBQUVwQyxhQUNFLHVCQUFDLFNBQWtCLFdBQVcsYUFBYW5CLE1BQU0sSUFBSSxPQUFPLEVBQUVrQixhQUFhekQsWUFBWXVCLEtBQUtDLE1BQU0sRUFBRXBCLE1BQU0sR0FDeEc7QUFBQSwrQkFBQyxTQUFJLFdBQVUsZUFDYjtBQUFBLGlDQUFDLFVBQUssV0FBVSxjQUFhO0FBQUE7QUFBQSxZQUFJbUIsS0FBS3FDO0FBQUFBLGVBQXRDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQTRDO0FBQUEsVUFDNUMsdUJBQUMsVUFBSyxXQUFVLGVBQ2JyQjtBQUFBQSx1QkFBV3hDLFdBQVdzQyxhQUFhO0FBQUEsWUFDbkNFLFdBQVd4QyxXQUFXOEQsYUFBYTtBQUFBLFlBQ25DdEIsV0FBV3hDLFdBQVd5QyxVQUFVO0FBQUEsWUFDaENELFdBQVd4QyxXQUFXK0QsZUFBZTtBQUFBLGVBSnhDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBS0E7QUFBQSxhQVBGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFRQTtBQUFBLFFBRUEsdUJBQUMsUUFBRyxXQUFVLGFBQWF2QyxlQUFLckIsUUFBaEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUFxQztBQUFBLFFBQ3JDLHVCQUFDLE9BQUUsV0FBVSxvQkFBb0JxQixlQUFLd0MsZUFBdEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUFrRDtBQUFBLFFBRWxELHVCQUFDLFNBQUksV0FBVSxhQUNiO0FBQUEsaUNBQUMsVUFBSyxXQUFVLGNBQWEsa0JBQTdCO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQStCO0FBQUEsVUFDL0IsdUJBQUMsVUFBSyxXQUFVLGNBQWE7QUFBQTtBQUFBLFlBQUl4QyxLQUFLeUM7QUFBQUEsZUFBdEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBa0Q7QUFBQSxhQUZwRDtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBR0E7QUFBQSxRQUVBLHVCQUFDLFNBQUksV0FBVSxnQkFDYjtBQUFBLGlDQUFDLFVBQUssV0FBVSxpQkFBZ0Isb0JBQWhDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQW9DO0FBQUEsVUFDcEMsdUJBQUMsU0FBSSxXQUFVLGdCQUNaekMsZUFBSzBDLFFBQVFWO0FBQUFBLFlBQUksQ0FBQVcsV0FDaEIsdUJBQUMsVUFBa0IsV0FBVSxjQUFjQSxvQkFBaENBLFFBQVg7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBa0Q7QUFBQSxVQUNuRCxLQUhIO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBSUE7QUFBQSxhQU5GO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFPQTtBQUFBLFFBRUMzQixXQUFXeEMsV0FBV3NDLGFBQ3JCO0FBQUEsVUFBQztBQUFBO0FBQUEsWUFDQyxXQUFVO0FBQUEsWUFDVixTQUFTLE1BQU1PLGVBQWVyQixLQUFLbUMsRUFBRTtBQUFBLFlBQ3JDLFVBQVUsQ0FBQ0MsWUFBWTlDLGFBQWFVLEtBQUt5QztBQUFBQSxZQUN6QyxPQUFPLEVBQUVHLGlCQUFpQm5FLFlBQVl1QixLQUFLQyxNQUFNLEVBQUVwQixNQUFNO0FBQUEsWUFFeEQsV0FBQ3VDLGtCQUFrQixVQUFVSixXQUFXeEMsV0FBV3lDLFNBQVMsV0FBVztBQUFBO0FBQUEsVUFOMUU7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFFBT0E7QUFBQSxXQXBDTWpCLEtBQUttQyxJQUFmO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFzQ0E7QUFBQSxJQUVKLENBQUMsS0E5Q0g7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQStDQTtBQUFBLE9BM0hGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0E0SEEsS0E3SEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQThIQTtBQUVKO0FBQUMvQyxHQTNLZUYsaUJBQWU7QUFBQSxVQUNaYixjQUNzQkMsWUFBWTtBQUFBO0FBQUEsS0FGckNZO0FBQWUsSUFBQTJEO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbInVzZU1lbW8iLCJ1c2VTdGF0ZSIsInVzZUdhbWVTdG9yZSIsInVzZVRlY2hTdG9yZSIsIlRlY2hCcmFuY2giLCJUZWNoU3RhdHVzIiwiQlJBTkNIX0lORk8iLCJCVUlMRElORyIsIm5hbWUiLCJpY29uIiwiY29sb3IiLCJQUk9EVUNUSU9OIiwiQ09NQkFUIiwiQ0lWSUxJQU4iLCJWMV9CUkFOQ0hFUyIsIlRlY2hub2xvZ3lQYW5lbCIsIm9uQ2xvc2UiLCJfcyIsImdhbWUiLCJ0ZWNoUG9pbnRzIiwiY29tcGxldGVkVGVjaHMiLCJzZWxlY3RlZEJyYW5jaCIsInNldFNlbGVjdGVkQnJhbmNoIiwidGVjaE1hbmFnZXIiLCJnZXRUZWNobm9sb2d5TWFuYWdlciIsInRlY2hDb25maWdzIiwiZ2V0QWxsVGVjaENvbmZpZ3MiLCJicmFuY2hUZWNocyIsImZpbHRlciIsInRlY2giLCJicmFuY2giLCJzZXR0bGVtZW50U3RhdGUiLCJnZXRTZXR0bGVtZW50U3RhdGUiLCJyZXNlYXJjaERlc2tTdGF0ZSIsIm5leHRSZXNlYXJjaFByZXZpZXciLCJ0b3RhbExldmVsIiwib3V0cHV0TXVsdGlwbGllciIsIk1hdGgiLCJtaW4iLCJ3b3JrZXJDYXBhY2l0eSIsImdldFRlY2hTdGF0dXMiLCJ0ZWNoSWQiLCJpbmNsdWRlcyIsIkNPTVBMRVRFRCIsImdldFRlY2hQcm9ncmVzcyIsInN0YXR1cyIsIkxPQ0tFRCIsImNhblJlc2VhcmNoIiwiY2FuVW5sb2NrIiwiaGFzUmVzZWFyY2hEZXNrIiwiaGFuZGxlUmVzZWFyY2giLCJyZXN1bHQiLCJzdGFydFJlc2VhcmNoIiwic3VjY2VzcyIsImFsZXJ0IiwibWVzc2FnZSIsImV2ZW50Iiwic3RvcFByb3BhZ2F0aW9uIiwiZmxvb3IiLCJ0b0ZpeGVkIiwiYXNzaWduZWRXb3JrZXJzIiwibWFwIiwiaW5mbyIsImJvcmRlckNvbG9yIiwiaWQiLCJjYW5TdGFydCIsImxldmVsIiwiQVZBSUxBQkxFIiwiUkVTRUFSQ0hJTkciLCJkZXNjcmlwdGlvbiIsImVzc2VuY2VDb3N0IiwidW5sb2NrcyIsInVubG9jayIsImJhY2tncm91bmRDb2xvciIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIlRlY2hub2xvZ3lQYW5lbC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlTWVtbywgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCdcbmltcG9ydCB7IHVzZUdhbWVTdG9yZSB9IGZyb20gJ0B1aS9zdG9yZXMvZ2FtZVN0b3JlJ1xuaW1wb3J0IHsgdXNlVGVjaFN0b3JlIH0gZnJvbSAnQHVpL3N0b3Jlcy90ZWNoU3RvcmUnXG5pbXBvcnQgeyBUZWNoQnJhbmNoLCBUZWNoU3RhdHVzIH0gZnJvbSAnQGFwcC10eXBlcy90ZWNobm9sb2d5LnR5cGVzJ1xuaW1wb3J0ICcuL1RlY2hub2xvZ3lQYW5lbC5jc3MnXG5cbmNvbnN0IEJSQU5DSF9JTkZPOiBSZWNvcmQ8VGVjaEJyYW5jaCwgeyBuYW1lOiBzdHJpbmc7IGljb246IHN0cmluZzsgY29sb3I6IHN0cmluZyB9PiA9IHtcbiAgW1RlY2hCcmFuY2guQlVJTERJTkddOiB7IG5hbWU6ICfnlJ/lrZjnp5HmioAnLCBpY29uOiAn8J+PoCcsIGNvbG9yOiAnIzRjYWY1MCcgfSxcbiAgW1RlY2hCcmFuY2guUFJPRFVDVElPTl06IHsgbmFtZTogJ+eUn+S6p+enkeaKgCcsIGljb246ICfimpLvuI8nLCBjb2xvcjogJyMyMTk2ZjMnIH0sXG4gIFtUZWNoQnJhbmNoLkNPTUJBVF06IHsgbmFtZTogJ+aImOWkh+enkeaKgCcsIGljb246ICfwn5uh77iPJywgY29sb3I6ICcjZjQ0MzM2JyB9LFxuICBbVGVjaEJyYW5jaC5DSVZJTElBTl06IHsgbmFtZTogJ+awkeeUn+enkeaKgCcsIGljb246ICfinKgnLCBjb2xvcjogJyNmZjk4MDAnIH0sXG59XG5cbmNvbnN0IFYxX0JSQU5DSEVTOiBUZWNoQnJhbmNoW10gPSBbVGVjaEJyYW5jaC5CVUlMRElORywgVGVjaEJyYW5jaC5QUk9EVUNUSU9OLCBUZWNoQnJhbmNoLkNPTUJBVF1cblxuaW50ZXJmYWNlIFRlY2hub2xvZ3lQYW5lbFByb3BzIHtcbiAgb25DbG9zZTogKCkgPT4gdm9pZFxufVxuXG5leHBvcnQgZnVuY3Rpb24gVGVjaG5vbG9neVBhbmVsKHsgb25DbG9zZSB9OiBUZWNobm9sb2d5UGFuZWxQcm9wcykge1xuICBjb25zdCB7IGdhbWUgfSA9IHVzZUdhbWVTdG9yZSgpXG4gIGNvbnN0IHsgdGVjaFBvaW50cywgY29tcGxldGVkVGVjaHMgfSA9IHVzZVRlY2hTdG9yZSgpXG4gIGNvbnN0IFtzZWxlY3RlZEJyYW5jaCwgc2V0U2VsZWN0ZWRCcmFuY2hdID0gdXNlU3RhdGU8VGVjaEJyYW5jaD4oVGVjaEJyYW5jaC5CVUlMRElORylcblxuICBjb25zdCB0ZWNoTWFuYWdlciA9IGdhbWU/LmdldFRlY2hub2xvZ3lNYW5hZ2VyKClcbiAgY29uc3QgdGVjaENvbmZpZ3MgPSB0ZWNoTWFuYWdlcj8uZ2V0QWxsVGVjaENvbmZpZ3MoKSB8fCBbXVxuICBjb25zdCBicmFuY2hUZWNocyA9IHRlY2hDb25maWdzLmZpbHRlcih0ZWNoID0+IHRlY2guYnJhbmNoID09PSBzZWxlY3RlZEJyYW5jaClcbiAgY29uc3Qgc2V0dGxlbWVudFN0YXRlID0gZ2FtZT8uZ2V0U2V0dGxlbWVudFN0YXRlKClcbiAgY29uc3QgcmVzZWFyY2hEZXNrU3RhdGUgPSBzZXR0bGVtZW50U3RhdGU/LnJlc2VhcmNoRGVza1N0YXRlXG5cbiAgY29uc3QgbmV4dFJlc2VhcmNoUHJldmlldyA9IHVzZU1lbW8oKCkgPT4ge1xuICAgIGlmICghcmVzZWFyY2hEZXNrU3RhdGUgfHwgcmVzZWFyY2hEZXNrU3RhdGUudG90YWxMZXZlbCA8PSAwKSB7XG4gICAgICByZXR1cm4gbnVsbFxuICAgIH1cblxuICAgIHJldHVybiB7XG4gICAgICBvdXRwdXRNdWx0aXBsaWVyOiBNYXRoLm1pbigxLjYsIDEgKyAocmVzZWFyY2hEZXNrU3RhdGUudG90YWxMZXZlbCArIDEpICogMC4xMiksXG4gICAgICB3b3JrZXJDYXBhY2l0eTogcmVzZWFyY2hEZXNrU3RhdGUud29ya2VyQ2FwYWNpdHkgKyAxLFxuICAgIH1cbiAgfSwgW3Jlc2VhcmNoRGVza1N0YXRlXSlcblxuICBjb25zdCBnZXRUZWNoU3RhdHVzID0gKHRlY2hJZDogc3RyaW5nKTogVGVjaFN0YXR1cyA9PiB7XG4gICAgaWYgKGNvbXBsZXRlZFRlY2hzLmluY2x1ZGVzKHRlY2hJZCkpIHJldHVybiBUZWNoU3RhdHVzLkNPTVBMRVRFRFxuICAgIHJldHVybiB0ZWNoTWFuYWdlcj8uZ2V0VGVjaFByb2dyZXNzKHRlY2hJZCk/LnN0YXR1cyB8fCBUZWNoU3RhdHVzLkxPQ0tFRFxuICB9XG5cbiAgY29uc3QgY2FuUmVzZWFyY2ggPSAodGVjaElkOiBzdHJpbmcpOiBib29sZWFuID0+IHtcbiAgICBpZiAoIXRlY2hNYW5hZ2VyKSByZXR1cm4gZmFsc2VcbiAgICByZXR1cm4gdGVjaE1hbmFnZXIuY2FuUmVzZWFyY2godGVjaElkKS5jYW5VbmxvY2tcbiAgfVxuXG4gIGNvbnN0IGhhc1Jlc2VhcmNoRGVzayA9IChyZXNlYXJjaERlc2tTdGF0ZT8udG90YWxMZXZlbCB8fCAwKSA+IDBcblxuICBjb25zdCBoYW5kbGVSZXNlYXJjaCA9ICh0ZWNoSWQ6IHN0cmluZykgPT4ge1xuICAgIGlmICghdGVjaE1hbmFnZXIpIHJldHVyblxuICAgIGNvbnN0IHJlc3VsdCA9IHRlY2hNYW5hZ2VyLnN0YXJ0UmVzZWFyY2godGVjaElkKVxuICAgIGlmICghcmVzdWx0LnN1Y2Nlc3MpIHtcbiAgICAgIGFsZXJ0KHJlc3VsdC5tZXNzYWdlIHx8ICfnoJTnqbblpLHotKUnKVxuICAgIH1cbiAgfVxuXG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJ0ZWNobm9sb2d5LW92ZXJsYXlcIiBvbkNsaWNrPXtvbkNsb3NlfT5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGVjaG5vbG9neS1wYW5lbFwiIG9uQ2xpY2s9eyhldmVudCkgPT4gZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCl9PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInBhbmVsLWhlYWRlclwiPlxuICAgICAgICAgIDxoMj7np5HmioDnoJTnqbY8L2gyPlxuICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPVwiY2xvc2UtYnRuXCIgb25DbGljaz17b25DbG9zZX0+XG4gICAgICAgICAgICDDl1xuICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRlY2gtcG9pbnRzXCI+XG4gICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwicG9pbnRzLWljb25cIj7impnvuI88L3NwYW4+XG4gICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwicG9pbnRzLWFtb3VudFwiPntNYXRoLmZsb29yKHRlY2hQb2ludHMpfTwvc3Bhbj5cbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJwb2ludHMtbGFiZWxcIj7np5HmioDngrk8L3NwYW4+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicmVzZWFyY2gtYm9udXMtcGFuZWxcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInJlc2VhcmNoLWJvbnVzLWNhcmRcIj5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInJlc2VhcmNoLWJvbnVzLWxhYmVsXCI+56CU56m25Y+w5oC7562J57qnPC9zcGFuPlxuICAgICAgICAgICAgPHN0cm9uZz57cmVzZWFyY2hEZXNrU3RhdGU/LnRvdGFsTGV2ZWwgfHwgMH08L3N0cm9uZz5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInJlc2VhcmNoLWJvbnVzLWNhcmRcIj5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInJlc2VhcmNoLWJvbnVzLWxhYmVsXCI+56CU56m25YCN546HPC9zcGFuPlxuICAgICAgICAgICAgPHN0cm9uZz54eyhyZXNlYXJjaERlc2tTdGF0ZT8ub3V0cHV0TXVsdGlwbGllciB8fCAxKS50b0ZpeGVkKDIpfTwvc3Ryb25nPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicmVzZWFyY2gtYm9udXMtY2FyZFwiPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwicmVzZWFyY2gtYm9udXMtbGFiZWxcIj7oh6rliqjnoJTnqbbluK3kvY08L3NwYW4+XG4gICAgICAgICAgICA8c3Ryb25nPntyZXNlYXJjaERlc2tTdGF0ZT8uYXNzaWduZWRXb3JrZXJzIHx8IDB9L3tyZXNlYXJjaERlc2tTdGF0ZT8ud29ya2VyQ2FwYWNpdHkgfHwgMH08L3N0cm9uZz5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG5cbiAgICAgICAge3Jlc2VhcmNoRGVza1N0YXRlICYmIHJlc2VhcmNoRGVza1N0YXRlLnRvdGFsTGV2ZWwgPiAwICYmIG5leHRSZXNlYXJjaFByZXZpZXcgJiYgKFxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicmVzZWFyY2gtdXBncmFkZS1wcmV2aWV3XCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInJlc2VhcmNoLXVwZ3JhZGUtdGl0bGVcIj7kuIvkuIDnrYnnuqfnoJTnqbblj7DpooTmnJ/mlLbnm4o8L2Rpdj5cbiAgICAgICAgICAgIDxkaXY+56CU56m25YCN546H77yaeHtyZXNlYXJjaERlc2tTdGF0ZS5vdXRwdXRNdWx0aXBsaWVyLnRvRml4ZWQoMil9IOKGkiB4e25leHRSZXNlYXJjaFByZXZpZXcub3V0cHV0TXVsdGlwbGllci50b0ZpeGVkKDIpfTwvZGl2PlxuICAgICAgICAgICAgPGRpdj7oh6rliqjnoJTnqbbluK3kvY3vvJp7cmVzZWFyY2hEZXNrU3RhdGUud29ya2VyQ2FwYWNpdHl9IOKGkiB7bmV4dFJlc2VhcmNoUHJldmlldy53b3JrZXJDYXBhY2l0eX08L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKX1cblxuICAgICAgICB7KCFyZXNlYXJjaERlc2tTdGF0ZSB8fCByZXNlYXJjaERlc2tTdGF0ZS50b3RhbExldmVsID09PSAwKSAmJiAoXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyZXNlYXJjaC11cGdyYWRlLXByZXZpZXdcIj5cbiAgICAgICAgICAgIOW7uumAoOeglOeptuWPsOWQju+8jOeglOeptuWRmOS8muiHquWKqOS6p+WHuuenkeaKgOeCue+8m+WNh+e6p+eglOeptuWPsOS8muaPkOmrmOeglOeptuWAjeeOh+W5tuWinuWKoOiHquWKqOeglOeptuW4reS9jeOAglxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICApfVxuXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGVjaC1wb2ludHMtaGVscFwiPlxuICAgICAgICAgIDxkZXRhaWxzPlxuICAgICAgICAgICAgPHN1bW1hcnk+56eR5oqA54K55p2l5rqQPC9zdW1tYXJ5PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJoZWxwLWNvbnRlbnRcIj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJoZWxwLWl0ZW1cIj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJoZWxwLWljb25cIj7wn5SsPC9zcGFuPlxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImhlbHAtdGV4dFwiPueglOeptuWPsOWSjOeglOeptuWRmOS8muaMgee7reS6p+WHuuenkeaKgOeCueOAgjwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaGVscC1pdGVtXCI+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiaGVscC1pY29uXCI+8J+RuTwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJoZWxwLXRleHRcIj7lh7votKUgQm9zcyDlj6/ku6Xojrflvpfpop3lpJbnp5HmioDngrnjgII8L3NwYW4+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kZXRhaWxzPlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJyYW5jaC10YWJzXCI+XG4gICAgICAgICAge1YxX0JSQU5DSEVTLm1hcChicmFuY2ggPT4ge1xuICAgICAgICAgICAgY29uc3QgaW5mbyA9IEJSQU5DSF9JTkZPW2JyYW5jaF1cbiAgICAgICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgICAgICBrZXk9e2JyYW5jaH1cbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BicmFuY2gtdGFiICR7c2VsZWN0ZWRCcmFuY2ggPT09IGJyYW5jaCA/ICdhY3RpdmUnIDogJyd9YH1cbiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRTZWxlY3RlZEJyYW5jaChicmFuY2gpfVxuICAgICAgICAgICAgICAgIHN0eWxlPXt7IGJvcmRlckNvbG9yOiBzZWxlY3RlZEJyYW5jaCA9PT0gYnJhbmNoID8gaW5mby5jb2xvciA6ICd0cmFuc3BhcmVudCcgfX1cbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImJyYW5jaC1pY29uXCI+e2luZm8uaWNvbn08L3NwYW4+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiYnJhbmNoLW5hbWVcIj57aW5mby5uYW1lfTwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICApXG4gICAgICAgICAgfSl9XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGVjaC1saXN0XCI+XG4gICAgICAgICAge2JyYW5jaFRlY2hzLm1hcCh0ZWNoID0+IHtcbiAgICAgICAgICAgIGNvbnN0IHN0YXR1cyA9IGdldFRlY2hTdGF0dXModGVjaC5pZClcbiAgICAgICAgICAgIGNvbnN0IGNhblN0YXJ0ID0gY2FuUmVzZWFyY2godGVjaC5pZClcblxuICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgPGRpdiBrZXk9e3RlY2guaWR9IGNsYXNzTmFtZT17YHRlY2gtY2FyZCAke3N0YXR1c31gfSBzdHlsZT17eyBib3JkZXJDb2xvcjogQlJBTkNIX0lORk9bdGVjaC5icmFuY2hdLmNvbG9yIH19PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGVjaC1oZWFkZXJcIj5cbiAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRlY2gtbGV2ZWxcIj5Mdi57dGVjaC5sZXZlbH08L3NwYW4+XG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZWNoLXN0YXR1c1wiPlxuICAgICAgICAgICAgICAgICAgICB7c3RhdHVzID09PSBUZWNoU3RhdHVzLkNPTVBMRVRFRCAmJiAn5bey5a6M5oiQJ31cbiAgICAgICAgICAgICAgICAgICAge3N0YXR1cyA9PT0gVGVjaFN0YXR1cy5BVkFJTEFCTEUgJiYgJ+WPr+eglOeptid9XG4gICAgICAgICAgICAgICAgICAgIHtzdGF0dXMgPT09IFRlY2hTdGF0dXMuTE9DS0VEICYmICfmnKrop6PplIEnfVxuICAgICAgICAgICAgICAgICAgICB7c3RhdHVzID09PSBUZWNoU3RhdHVzLlJFU0VBUkNISU5HICYmICfnoJTnqbbkuK0nfVxuICAgICAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cInRlY2gtbmFtZVwiPnt0ZWNoLm5hbWV9PC9oMz5cbiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZWNoLWRlc2NyaXB0aW9uXCI+e3RlY2guZGVzY3JpcHRpb259PC9wPlxuXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZWNoLWNvc3RcIj5cbiAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImNvc3QtbGFiZWxcIj7mtojogJc8L3NwYW4+XG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJjb3N0LXZhbHVlXCI+4pqZ77iPIHt0ZWNoLmVzc2VuY2VDb3N0fTwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGVjaC11bmxvY2tzXCI+XG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ1bmxvY2tzLWxhYmVsXCI+6Kej6ZSB5YaF5a65PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ1bmxvY2tzLWxpc3RcIj5cbiAgICAgICAgICAgICAgICAgICAge3RlY2gudW5sb2Nrcy5tYXAodW5sb2NrID0+IChcbiAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBrZXk9e3VubG9ja30gY2xhc3NOYW1lPVwidW5sb2NrLXRhZ1wiPnt1bmxvY2t9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAge3N0YXR1cyAhPT0gVGVjaFN0YXR1cy5DT01QTEVURUQgJiYgKFxuICAgICAgICAgICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJyZXNlYXJjaC1idG5cIlxuICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBoYW5kbGVSZXNlYXJjaCh0ZWNoLmlkKX1cbiAgICAgICAgICAgICAgICAgICAgZGlzYWJsZWQ9eyFjYW5TdGFydCB8fCB0ZWNoUG9pbnRzIDwgdGVjaC5lc3NlbmNlQ29zdH1cbiAgICAgICAgICAgICAgICAgICAgc3R5bGU9e3sgYmFja2dyb3VuZENvbG9yOiBCUkFOQ0hfSU5GT1t0ZWNoLmJyYW5jaF0uY29sb3IgfX1cbiAgICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgICAgeyFoYXNSZXNlYXJjaERlc2sgPyAn6ZyA6KaB56CU56m25Y+wJyA6IHN0YXR1cyA9PT0gVGVjaFN0YXR1cy5MT0NLRUQgPyAn6ZyA6KaB5YmN572u56eR5oqAJyA6ICflvIDlp4vnoJTnqbYnfVxuICAgICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICApXG4gICAgICAgICAgfSl9XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gIClcbn1cbiJdLCJmaWxlIjoiRDovR2FtZURlc2lnbi9Qcm9qZWN0cy9pZGxlLWNvbGxlY3RpdmUvc3JjL3VpL2NvbXBvbmVudHMvdGVjaG5vbG9neS9UZWNobm9sb2d5UGFuZWwudHN4In0=

@@ -2,20 +2,53 @@
 node_modules/
 
 # Build outputs
+dist/
+build/
 release/
+out/
+win-unpacked/
+
+# Packaged artifacts
+*.zip
+*.7z
+*.tar.gz
+*.tgz
+*.rar
+*.exe
+*.app
+*.dmg
+*.msi
+
+# Local packaged folders
+Idle-Collective-Portable/
+Idle-Collective-便携版/
+idle-collective-web/
+idle-collective-离线版/
+
+# Logs
 *.log
+server-data/
 
 # IDE
 .vscode/
 .idea/
+.vs/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Electron
-out/
+# Python cache
+__pycache__/
+
+# Root-level build output (old build artifacts)
+/assets/
+
+# AI-generated art candidates (regenerated on demand)
+/art-source/generated/
 
 # Environment
 .env
 .env.local
+
+.vercel

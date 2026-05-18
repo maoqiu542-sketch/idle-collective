@@ -1,0 +1,88 @@
+{
+  "techs": [
+    {
+      "id": "building_tech_1",
+      "name": "基础居住",
+      "description": "解锁房屋和厨房，稳定聚落生活。",
+      "branch": "building",
+      "level": 1,
+      "essenceCost": 20,
+      "prerequisites": [],
+      "unlockTime": 0,
+      "unlocks": ["house", "kitchen"],
+      "effects": [
+        { "type": "unlock", "target": "building", "value": 1, "description": "解锁基础生活建筑" }
+      ]
+    },
+    {
+      "id": "building_tech_2",
+      "name": "聚落扩建",
+      "description": "解锁仓库、招募站和更高阶研究设施。",
+      "branch": "building",
+      "level": 2,
+      "essenceCost": 60,
+      "prerequisites": ["building_tech_1"],
+      "unlockTime": 0,
+      "unlocks": ["warehouse", "recruitment_station", "library"],
+      "effects": [
+        { "type": "capacity", "target": "storage", "value": 0.3, "description": "储备容量提升" }
+      ]
+    },
+    {
+      "id": "production_tech_1",
+      "name": "基础生产",
+      "description": "解锁农场，确保食物供给稳定。",
+      "branch": "production",
+      "level": 1,
+      "essenceCost": 20,
+      "prerequisites": [],
+      "unlockTime": 0,
+      "unlocks": ["farm"],
+      "effects": [
+        { "type": "efficiency", "target": "farming", "value": 0.1, "description": "农业效率提升" }
+      ]
+    },
+    {
+      "id": "production_tech_2",
+      "name": "资源提炼",
+      "description": "解锁伐木机与采石机，增强基础资源循环。",
+      "branch": "production",
+      "level": 2,
+      "essenceCost": 60,
+      "prerequisites": ["production_tech_1"],
+      "unlockTime": 0,
+      "unlocks": ["lumber_mill", "quarry"],
+      "effects": [
+        { "type": "efficiency", "target": "gathering", "value": 0.15, "description": "采集效率提升" }
+      ]
+    },
+    {
+      "id": "combat_tech_1",
+      "name": "基础战备",
+      "description": "解锁兵营，提高战斗准备效率。",
+      "branch": "combat",
+      "level": 1,
+      "essenceCost": 40,
+      "prerequisites": [],
+      "unlockTime": 0,
+      "unlocks": ["barracks"],
+      "effects": [
+        { "type": "bonus", "target": "combat", "value": 0.12, "description": "战斗能力提升" }
+      ]
+    },
+    {
+      "id": "combat_tech_2",
+      "name": "战备统筹",
+      "description": "强化招募与备战流程，提升阶段应对能力。",
+      "branch": "combat",
+      "level": 2,
+      "essenceCost": 100,
+      "prerequisites": ["combat_tech_1"],
+      "unlockTime": 0,
+      "unlocks": ["boss_command", "laboratory"],
+      "effects": [
+        { "type": "capacity", "target": "boss_team_size", "value": 1, "description": "Boss 备战人数提升" }
+      ]
+    }
+  ]
+}

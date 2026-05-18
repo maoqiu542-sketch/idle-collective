@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://idle-collective.local/art-pipeline/style-profile.schema.json",
+  "title": "Style Profiles",
+  "type": "object",
+  "required": ["version", "profiles"],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "model",
+          "negative_prompt",
+          "palette",
+          "seed_ranges",
+          "postprocess"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "model": {
+            "type": "object",
+            "required": ["checkpoint", "sampler", "scheduler", "steps", "cfg"],
+            "properties": {
+              "checkpoint": { "type": "string" },
+              "sampler": { "type": "string" },
+              "scheduler": { "type": "string" },
+              "steps": { "type": "integer", "minimum": 1 },
+              "cfg": { "type": "number", "minimum": 0 }
+            }
+          },
+          "loras": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "strength"],
+              "properties": {
+                "name": { "type": "string" },
+                "strength": { "type": "number" }
+              }
+            }
+          },
+          "negative_prompt": {
+            "type": "string"
+          },
+          "palette": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            }
+          },
+          "seed_ranges": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["start", "end"],
+              "properties": {
+                "start": { "type": "integer", "minimum": 0 },
+                "end": { "type": "integer", "minimum": 0 }
+              }
+            }
+          },
+          "postprocess": {
+            "type": "object",
+            "required": ["safe_margin", "alpha_threshold", "blur_threshold"],
+            "properties": {
+              "safe_margin": { "type": "integer", "minimum": 0 },
+              "alpha_threshold": { "type": "integer", "minimum": 0, "maximum": 255 },
+              "blur_threshold": { "type": "number", "minimum": 0 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

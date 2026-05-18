@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "review_mode": "heuristic_screen_only",
+  "semantic_review_required_for_final": true,
+  "categories": {
+    "terrain": {
+      "description": "Terrain must read as continuous outdoor ground material with no border, no center object, and no scene illustration.",
+      "critical_metrics": [
+        "coverage",
+        "continuity",
+        "variation",
+        "naturality"
+      ],
+      "score_threshold": 85,
+      "critical_threshold": 80
+    },
+    "resource_node": {
+      "description": "Resource nodes must present one clear resource subject on transparent background with strong small-size readability.",
+      "critical_metrics": [
+        "silhouette",
+        "readability",
+        "subject_scale"
+      ],
+      "score_threshold": 82,
+      "critical_threshold": 80
+    },
+    "building_map": {
+      "description": "Buildings must keep a consistent map-view angle, strong outline, and readable mass at 32px.",
+      "critical_metrics": [
+        "silhouette",
+        "readability",
+        "map_scale"
+      ],
+      "score_threshold": 82,
+      "critical_threshold": 80
+    },
+    "ui_icon_fallback": {
+      "description": "UI icons must communicate one idea with minimal clutter and clean transparency.",
+      "critical_metrics": [
+        "silhouette",
+        "readability"
+      ],
+      "score_threshold": 82,
+      "critical_threshold": 80
+    },
+    "character_portrait": {
+      "description": "Character portraits must have obvious profession identity and a stable UI-friendly face crop.",
+      "critical_metrics": [
+        "face_scale",
+        "readability"
+      ],
+      "score_threshold": 82,
+      "critical_threshold": 80
+    },
+    "boss_portrait": {
+      "description": "Boss portraits must look threatening, distinct, and readable as boss-grade characters.",
+      "critical_metrics": [
+        "face_scale",
+        "readability"
+      ],
+      "score_threshold": 82,
+      "critical_threshold": 80
+    }
+  }
+}
