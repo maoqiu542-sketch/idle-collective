@@ -54,6 +54,8 @@
     "art:build": "npm run art:sync-specs && npm run art:bootstrap && npm run art:export && npm run art:manifest && npm run art:staged-export && npm run art:staged-manifest && npm run art:validate",
     "test": "vitest",
     "test:run": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "lint": "eslint src electron server --ext .ts,.tsx",
     "typecheck": "tsc --noEmit"
   },

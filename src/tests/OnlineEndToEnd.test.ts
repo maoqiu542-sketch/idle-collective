@@ -1,9 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import WebSocket from 'ws'
 import { startOnlineServer, type OnlineServerInstance } from '../../server/index'
-import type { OnlineMessage, OnlineFullSnapshot, OnlineTickSnapshot, OnlineAreaLayout } from '../types/online.types'
+import type { OnlineMessage, OnlineFullSnapshot } from '../types/online.types'
 import { ProductionBuildingType } from '../types/production-building.types'
-import { ResourceType } from '../types/map.types'
 
 const ONLINE_PROTOCOL_VERSION = 1
 
@@ -30,29 +29,10 @@ function waitForMessage(socket: WebSocket, typeFilter?: string): Promise<OnlineM
           return
         }
         resolve(msg)
-      } catch (e) {
+      } catch {
         reject(new Error(`无效消息: ${raw}`))
       }
     })
-  })
-}
-
-function waitForMultiple(socket: WebSocket, typeFilters: string[]): Promise<OnlineMessage[]> {
-  const results: OnlineMessage[] = []
-  const pending = new Set(typeFilters)
-  return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => reject(new Error(`等待多条消息超时 [${typeFilters}]`)), 15000)
-    const listener = (raw: Buffer) => {
-      const msg = JSON.parse(raw.toString()) as OnlineMessage
-      results.push(msg)
-      pending.delete(msg.type)
-      if (pending.size === 0) {
-        clearTimeout(timeout)
-        socket.off('message', listener)
-        resolve(results)
-      }
-    }
-    socket.on('message', listener)
   })
 }
 
@@ -254,8 +234,6 @@ describe('联机端到端集成测试', () => {
     }
 
     if (harvestX < 0) return
-
-    const resourceType = mapData.tiles[harvestY - alphaArea.offsetY][harvestX - alphaArea.offsetX].resource!.type
 
     alphaSocket.send(createMessage('player:action', {
       type: 'manualHarvest',
