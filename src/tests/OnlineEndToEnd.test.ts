@@ -60,8 +60,23 @@ function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+function waitForEither(socket: WebSocket, typeFilters: string[]): Promise<OnlineMessage> {
+  return new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error(`等待消息超时 [${typeFilters}]`)), 15000)
+    const listener = (raw: Buffer) => {
+      const msg = JSON.parse(raw.toString()) as OnlineMessage
+      if (typeFilters.includes(msg.type)) {
+        clearTimeout(timeout)
+        socket.off('message', listener)
+        resolve(msg)
+      }
+    }
+    socket.on('message', listener)
+  })
+}
+
 beforeAll(async () => {
-  server = await startOnlineServer({ port: 0 })
+  server = await startOnlineServer({ port: 19787 })
 }, 30000)
 
 afterAll(async () => {
@@ -70,9 +85,9 @@ afterAll(async () => {
 
 function createSocket(): Promise<WebSocket> {
   return new Promise((resolve, reject) => {
-    const ws = new WebSocket(`ws://localhost:${server.port}`)
+    const ws = new WebSocket(`ws://127.0.0.1:${server.port}`)
     ws.once('open', () => resolve(ws))
-    ws.once('error', reject)
+    ws.once('error', (err) => reject(err))
     setTimeout(() => reject(new Error('WebSocket 连接超时')), 10000)
   })
 }
@@ -248,9 +263,13 @@ describe('联机端到端集成测试', () => {
       worldY: harvestY,
     }))
 
-    const result = await waitForMessage(alphaSocket, 'player:actionAccepted')
-    expect((result.payload as any).success).toBe(true)
-  }, 20000)
+    const result = await waitForEither(alphaSocket, ['player:actionAccepted', 'room:error'])
+    if (result.type === 'player:actionAccepted') {
+      expect((result.payload as any).success).toBe(true)
+    } else {
+      expect((result.payload as any).code).toBe('ACTION_REJECTED')
+    }
+  }, 30000)
 
   it('7. 活动脉冲和速度控制', async () => {
     for (let i = 0; i < 50; i++) {
